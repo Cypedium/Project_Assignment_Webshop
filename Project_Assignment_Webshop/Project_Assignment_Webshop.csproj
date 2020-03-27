@@ -30,7 +30,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Models\ViewModels\" />
     <Folder Include="Models\Repo\" />
     <Folder Include="Models\Services\" />
     <Folder Include="Views\Shared\" />
