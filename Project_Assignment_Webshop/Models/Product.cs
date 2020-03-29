@@ -23,6 +23,8 @@ namespace Project_Assignment_Webshop.Models
         [StringLength(511, MinimumLength = 5)]
         public int Price { get; set; }
 
+        public bool GlutenFree { get; set; }
+
         public string Picture { get; set; }
 
     }

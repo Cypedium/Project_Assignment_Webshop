@@ -1,0 +1,41 @@
+﻿@model List<Product>
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Create Product</h1>
+<hr />
+<br />
+
+@*<a asp-action="Create" type="button" class="btn btn-success">Create Student</a>*@
+
+
+
+<hr />
+<br />
+@ViewBag.msg
+<br />
+<table class="table table-striped">
+    <tr>
+        <td>Name</td>
+        <td>Description</td>
+        <td>Price</td>
+        <td>Action</td>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr id="@("StudentId" + item.Id)">
+            <td>@item.Name</td>
+            <td>@item.Description</td>
+            <td>@item.Price</td>
+            <td>@*@item.Assignmnets*@</td>
+            <td>@*@item.Student_Course_Maps*@</td>
+            <td>
+                <a asp-route-id="@item.Id" asp-action="Details" type="button" class="btn btn-info">Details</a>&nbsp;
+                <a asp-route-id="@item.Id" asp-action="Remove" type="button" class="btn btn-danger">Remove</a>&nbsp;
+                <a asp-route-id="@item.Id" asp-action="Edit" type="button" class="btn btn-warning">Rename</a>&nbsp;
+            </td>
+        </tr>
+    }
+
+</table>
