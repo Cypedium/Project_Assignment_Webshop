@@ -53,11 +53,11 @@ namespace Project_Assignment_Webshop
 
             services.AddMvc();
 
-            // In production, the React files will be served from this directory
-            //services.AddSpaStaticFiles(configuration =>
-            //{
-            //    configuration.RootPath = "ClientApp/build";
-            //});
+            //In production, the React files will be served from this directory
+            services.AddSpaStaticFiles(configuration =>
+            {
+                configuration.RootPath = "ClientApp/build";
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -91,15 +91,19 @@ namespace Project_Assignment_Webshop
                     pattern: "{controller=Home}/{action=Index}/{id?}");
             });
 
-            app.UseSpa(spa =>
-            {
-               spa.Options.SourcePath = "ClientApp";
+            //NEED TO UNCOMMENT THIS SECTION WHEN DATABASE-REPO-SERVICE ARE COMPLITED
 
-                if (env.IsDevelopment())
-                {
-                    spa.UseReactDevelopmentServer(npmScript: "start");
-               }
-            });
+            //app.UseSpa(spa =>
+            //{
+            //   spa.Options.SourcePath = "ClientApp";
+
+            //    if (env.IsDevelopment())
+            //    {
+            //        spa.UseReactDevelopmentServer(npmScript: "start");
+            //   }
+            //});
+
+            //--------------------------------------------------------------------------
         }
     }
 }

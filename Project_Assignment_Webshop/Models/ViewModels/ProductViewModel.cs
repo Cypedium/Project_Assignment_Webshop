@@ -13,6 +13,10 @@ namespace Project_Assignment_Webshop.Models
         public string Name { get; set; }
 
         [Required]
+        [StringLength(999, MinimumLength = 1)]
+        public int Number { get; set; }
+
+        [Required]
         [StringLength(127, MinimumLength = 6)]
         public string Description { get; set; }
 

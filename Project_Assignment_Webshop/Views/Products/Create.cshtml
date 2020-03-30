@@ -1,0 +1,40 @@
+﻿@model ProductViewModel
+@{
+    ViewData["Title"] = "Create";
+}
+<h1>Create</h1>
+<hr />
+<br />
+
+<form asp-action="Create" asp-controller="Products" method="post" class="btn btn-success">
+
+    <div asp-validation-summary="All"></div>
+
+    <label asp-for="Number"></label>
+    <input asp-for="Number" />
+    <span asp-validation-for="Number"></span>
+    <br />
+
+    <label asp-for="Name"></label>
+    <input asp-for="Name" />
+    <span asp-validation-for="Name"></span>
+    <br />
+
+    <label asp-for="Price"></label>
+    <input asp-for="Price" />
+    <span asp-validation-for="Price"></span>
+    <br />
+
+    <label asp-for="Description"></label>
+    <input asp-for="Description" />
+    <span asp-validation-for="Description"></span>
+    <br />
+
+    <hr />
+    <input type="submit" value="Add Student" />
+    <br />
+
+    <input type="submit" value="Back to Create Product" asp-action="Index" asp-controller="Products" class="btn btn-link"/>
+
+</form>
+
