@@ -110,53 +110,53 @@ namespace Project_Assignment_Webshop.Controllers
             return View(product);
         }
 
-        [HttpPost]
-        public IActionResult ChangeProductView(int productType)
-        {
-            if (ModelState.IsValid)
-            {
-                if (productType == 0)
-                {
-                    return RedirectToAction("Order_Pizza");
-                }
-                else if (productType == 1)
-                {
-                    return RedirectToAction("Order_ProteinType");
-                }
-                else if (productType == 2)
-                {
-                    return RedirectToAction("Order_Sallad");
-                }
-                else if (productType == 3)
-                {
-                    return RedirectToAction("Order_Hamburger");
-                }
-                else if (productType == 4)
-                {
-                    return RedirectToAction("Order_HotDog");
-                }
-                else if (productType == 5)
-                {
-                    return RedirectToAction("Order_ALaCarte");
-                }
-                else if (productType == 6)
-                {
-                    return RedirectToAction("Order_Tillbehör");
-                }
-                else if (productType == 7)
-                {
-                    return RedirectToAction("Order_Såser");
-                }
-                else if (productType == 8)
-                {
-                    return RedirectToAction("Order_Drycker");
-                }
-                else if (productType < 0 && productType > 8)
-                {
-                    return RedirectToAction("Index");
-                }
-            }
-            return View(productType);
-        }
+        //[HttpPost]
+        //public IActionResult ChangeProductView(int productType)
+        //{
+        //    if (ModelState.IsValid)
+        //    {
+        //        if (productType == 0)
+        //        {
+        //            return RedirectToAction("Order_Pizza");
+        //        }
+        //        else if (productType == 1)
+        //        {
+        //            return RedirectToAction("Order_ProteinType");
+        //        }
+        //        else if (productType == 2)
+        //        {
+        //            return RedirectToAction("Order_Sallad");
+        //        }
+        //        else if (productType == 3)
+        //        {
+        //            return RedirectToAction("Order_Hamburger");
+        //        }
+        //        else if (productType == 4)
+        //        {
+        //            return RedirectToAction("Order_HotDog");
+        //        }
+        //        else if (productType == 5)
+        //        {
+        //            return RedirectToAction("Order_ALaCarte");
+        //        }
+        //        else if (productType == 6)
+        //        {
+        //            return RedirectToAction("Order_Tillbehör");
+        //        }
+        //        else if (productType == 7)
+        //        {
+        //            return RedirectToAction("Order_Såser");
+        //        }
+        //        else if (productType == 8)
+        //        {
+        //            return RedirectToAction("Order_Drycker");
+        //        }
+        //        else if (productType < 0 && productType > 8)
+        //        {
+        //            return RedirectToAction("Index");
+        //        }
+        //    }
+        //    return View(productType);
+        //}
     }
 }
