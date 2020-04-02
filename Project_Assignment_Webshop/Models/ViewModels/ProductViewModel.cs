@@ -8,22 +8,29 @@ namespace Project_Assignment_Webshop.Models
 {
     public class ProductViewModel
     {
-        [Required]
-        [StringLength(63, MinimumLength = 2)]
-        public string Name { get; set; }
 
         [Required]
-        [StringLength(999, MinimumLength = 1)]
+        [Display(Name = "Type of Product")]
+        public int ProductType { get; set; }
+
+        [Required]
+        [Display(Name = "Number")]
+        //[StringLength(255)]
         public int Number { get; set; }
 
         [Required]
-        [StringLength(127, MinimumLength = 6)]
+        [Display(Name = "Name of Product")]
+        //[StringLength(63)]
+        public string Name { get; set; }
+
+        [Required]
+        [Display(Name = "Description")]
+        //[StringLength(127)]
         public string Description { get; set; }
 
         [Required]
-        [StringLength(511, MinimumLength = 5)]
+        [Display(Name = "Price")]
+        //[StringLength(511)]
         public int Price { get; set; }
-
-        public bool GlutenFree { get; set; }
     }
 }

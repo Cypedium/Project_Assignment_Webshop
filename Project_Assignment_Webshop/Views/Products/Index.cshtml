@@ -3,39 +3,38 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Create Product</h1>
+<h1>List of Products</h1>
 <hr />
+<a asp-action="Create" type="button" class="btn btn-success">Create Product</a>
 <br />
-
-@*<a asp-action="Create" type="button" class="btn btn-success">Create Student</a>*@
-
-
-
 <hr />
-<br />
-@ViewBag.msg
+@ViewBag.msg @*Sending message to Administrator: for example removed product successfully*@
 <br />
 <table class="table table-striped">
-    <tr>
-        <td>Name</td>
-        <td>Description</td>
-        <td>Price</td>
-        <td>Action</td>
-    </tr>
-    @foreach (var item in Model)
-    {
-        <tr id="@("StudentId" + item.Id)">
-            <td>@item.Name</td>
-            <td>@item.Description</td>
-            <td>@item.Price</td>
-            <td>@*@item.Assignmnets*@</td>
-            <td>@*@item.Student_Course_Maps*@</td>
-            <td>
-                <a asp-route-id="@item.Id" asp-action="Details" type="button" class="btn btn-info">Details</a>&nbsp;
-                <a asp-route-id="@item.Id" asp-action="Remove" type="button" class="btn btn-danger">Remove</a>&nbsp;
-                <a asp-route-id="@item.Id" asp-action="Edit" type="button" class="btn btn-warning">Rename</a>&nbsp;
-            </td>
+    <thead class="thead-light">
+        <tr>
+            <th>Number</th>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Price</th>
+            <th>Actions</th>
         </tr>
-    }
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr id="@("ProductId" + item.Id)">
+                <td class="m-2">@item.Number</td>
+                <td class="m-2">@item.Name</td>
+                <td class="m-2">@item.Description</td>
+                <td class="m-2">@item.Price</td>
+                <td>
+                    <a asp-route-id="@item.Id" asp-action="Details" type="button" class="btn btn-info m-2">Details</a>&nbsp;
+                    <a asp-route-id="@item.Id" asp-action="Edit" type="button" class="btn btn-warning m-2">Rename</a>&nbsp;
+                    <a asp-route-id="@item.Id" asp-action="Remove" type="button" class="btn btn-danger m-2">Remove</a>&nbsp;
+                </td>
+            </tr>
+        }
+    </tbody>
 
 </table>

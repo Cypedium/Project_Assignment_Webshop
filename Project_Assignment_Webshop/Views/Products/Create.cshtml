@@ -2,13 +2,18 @@
 @{
     ViewData["Title"] = "Create";
 }
-<h1>Create</h1>
+<h1>Create Product</h1>
 <hr />
 <br />
 
-<form asp-action="Create" asp-controller="Products" method="post" class="btn btn-success">
+<form asp-controller="Products" asp-action="Create" method="post" class="btn btn-success">
 
     <div asp-validation-summary="All"></div>
+
+    <label asp-for="ProductType"></label>
+    <input asp-for="ProductType" />
+    <span asp-validation-for="ProductType"></span>
+    <br />
 
     <label asp-for="Number"></label>
     <input asp-for="Number" />
@@ -30,11 +35,18 @@
     <span asp-validation-for="Description"></span>
     <br />
 
-    <hr />
-    <input type="submit" value="Add Student" />
+
+    <!----//<div class="custom-control custom-radio"-</div>-->
+    @*<label asp-for="Glutenfree">Glutenfree</label><br>
+        <input asp-for="Glutenfree "type="checkbox" name="Glutenfree" value="true">
+        <span asp-validation-for="Glutenfree"></span>*@
     <br />
 
-    <input type="submit" value="Back to Create Product" asp-action="Index" asp-controller="Products" class="btn btn-link"/>
+    <hr />
+    <input type="submit" value="Create Product" />
+    <br />
+
+    <input type="submit" value="Back To List" asp-action="Index" />
 
 </form>
 

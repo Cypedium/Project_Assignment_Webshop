@@ -1,0 +1,28 @@
+﻿@model Product
+@{
+    ViewData["Title"] = "Details";
+}
+<h1>Details</h1>
+<hr />
+<br />
+
+<form asp-controller="Products" asp-action="Details" method="post" class="btn btn-outline-info">
+
+    <label asp-for="ProductType"></label>
+    <input asp-for="ProductType" disabled />
+    <br />
+
+    <label asp-for="Number"></label>
+    <input asp-for="Number" disabled />
+    <br />
+
+    <label asp-for="Name"></label>
+    <input asp-for="Name" disabled />
+    <br />
+
+    <label asp-for="Description"></label>
+    <input asp-for="Description" disabled />
+    <br />
+
+    <input type="submit" value="Back To List" asp-action="Index" />
+</form>

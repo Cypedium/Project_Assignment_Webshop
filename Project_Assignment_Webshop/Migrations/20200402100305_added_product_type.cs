@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Project_Assignment_Webshop.Migrations
 {
-    public partial class added_field_number : Migration
+    public partial class added_product_type : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -52,12 +52,11 @@ namespace Project_Assignment_Webshop.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Number = table.Column<int>(maxLength: 999, nullable: false),
-                    Name = table.Column<string>(maxLength: 63, nullable: false),
-                    Description = table.Column<string>(maxLength: 127, nullable: false),
-                    Price = table.Column<int>(maxLength: 511, nullable: false),
-                    GlutenFree = table.Column<bool>(nullable: false),
-                    Picture = table.Column<string>(nullable: true)
+                    ProductType = table.Column<int>(nullable: false),
+                    Number = table.Column<int>(nullable: false),
+                    Name = table.Column<string>(nullable: false),
+                    Description = table.Column<string>(nullable: false),
+                    Price = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {

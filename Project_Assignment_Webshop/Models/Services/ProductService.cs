@@ -22,8 +22,9 @@ namespace Project_Assignment_Webshop.Models
         {
             Product newProduct = new Product()
             {
-                Name = product.Name,
+                ProductType = product.ProductType,
                 Number = product.Number,
+                Name = product.Name,
                 Description = product.Description,
                 Price = product.Price
             };

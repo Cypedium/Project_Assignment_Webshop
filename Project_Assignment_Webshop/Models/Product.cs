@@ -12,24 +12,30 @@ namespace Project_Assignment_Webshop.Models
         public int Id { get; set; }
 
         [Required]
-        [StringLength(999, MinimumLength = 1)]
-        public int Number { get; set; } 
+        [Display(Name = "Type of Product")]
+        public int ProductType { get; set; }
 
         [Required]
-        [StringLength(63, MinimumLength = 2)]
+        [Display(Name = "Number")]
+        //[StringLength(255)]
+        public int Number { get; set; }
+
+        [Required]
+        [Display(Name = "Name of Product")]
+        //[StringLength(63)]
         public string Name { get; set; }
 
         [Required]
-        [StringLength(127, MinimumLength = 6)]
+        [Display(Name = "Description")]
+        //[StringLength(127)]
         public string Description { get; set; }
 
         [Required]
-        [StringLength(511, MinimumLength = 5)]
+        [Display(Name = "Price")]
+        //[StringLength(511)]
         public int Price { get; set; }
 
-        public bool GlutenFree { get; set; }
-
-        public string Picture { get; set; }
+        //public string Picture { get; set; }
 
     }
 }

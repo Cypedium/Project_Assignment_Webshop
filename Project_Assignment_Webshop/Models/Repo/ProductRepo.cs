@@ -45,6 +45,8 @@ namespace Project_Assignment_Webshop.Models
         {
             Product newProduct = Find(product.Id);
 
+            newProduct.ProductType = product.ProductType;
+            newProduct.Number = product.Number;
             newProduct.Name = product.Name;
             newProduct.Description = product.Description;
             newProduct.Price = product.Price;

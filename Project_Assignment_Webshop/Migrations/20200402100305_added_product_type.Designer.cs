@@ -10,8 +10,8 @@ using Project_Assignment_Webshop.Models;
 namespace Project_Assignment_Webshop.Migrations
 {
     [DbContext(typeof(HandleWebshopsDbContext))]
-    [Migration("20200330085722_added_field_number")]
-    partial class added_field_number
+    [Migration("20200402100305_added_product_type")]
+    partial class added_product_type
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -226,27 +226,20 @@ namespace Project_Assignment_Webshop.Migrations
 
                     b.Property<string>("Description")
                         .IsRequired()
-                        .HasColumnType("nvarchar(127)")
-                        .HasMaxLength(127);
-
-                    b.Property<bool>("GlutenFree")
-                        .HasColumnType("bit");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasColumnType("nvarchar(63)")
-                        .HasMaxLength(63);
-
-                    b.Property<int>("Number")
-                        .HasColumnType("int")
-                        .HasMaxLength(999);
-
-                    b.Property<string>("Picture")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("Number")
+                        .HasColumnType("int");
+
                     b.Property<int>("Price")
-                        .HasColumnType("int")
-                        .HasMaxLength(511);
+                        .HasColumnType("int");
+
+                    b.Property<int>("ProductType")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 

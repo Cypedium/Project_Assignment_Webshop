@@ -224,27 +224,20 @@ namespace Project_Assignment_Webshop.Migrations
 
                     b.Property<string>("Description")
                         .IsRequired()
-                        .HasColumnType("nvarchar(127)")
-                        .HasMaxLength(127);
-
-                    b.Property<bool>("GlutenFree")
-                        .HasColumnType("bit");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasColumnType("nvarchar(63)")
-                        .HasMaxLength(63);
-
-                    b.Property<int>("Number")
-                        .HasColumnType("int")
-                        .HasMaxLength(999);
-
-                    b.Property<string>("Picture")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("Number")
+                        .HasColumnType("int");
+
                     b.Property<int>("Price")
-                        .HasColumnType("int")
-                        .HasMaxLength(511);
+                        .HasColumnType("int");
+
+                    b.Property<int>("ProductType")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
