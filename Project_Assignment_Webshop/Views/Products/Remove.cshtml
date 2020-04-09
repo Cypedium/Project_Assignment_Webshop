@@ -4,18 +4,13 @@
 }
 <h1>Remove Product</h1>
 <br />
-<form asp-action="Remove" asp-controller="Products" method="post" class="btn btn-outline-danger">
+<form asp-action="Remove" asp-controller="Products" method="post" class="btn btn-danger">
     <input asp-for="Id" value="@Model.Id" type="hidden" />
     <font style="align-content: stretch">
 
         <label asp-for="Name"></label>
         <input asp-for="Name" disabled />
         <br />
-
-        <label asp-for="Price"></label>
-        <input asp-for="Price" disabled />
-        <br />
-
         <hr />
 
         <input type="submit" value="Remove Product?" />

@@ -10,7 +10,7 @@ using Project_Assignment_Webshop.Models;
 
 namespace Project_Assignment_Webshop.Controllers    
 {
-    [Authorize]
+    //[Authorize]
     public class ProductsController : Controller
     {
         readonly IProductService _productService;
@@ -78,11 +78,11 @@ namespace Project_Assignment_Webshop.Controllers
 
             if (result)
             {
-                ViewBag.msg = "Your Student has been succesfully removed";
+                ViewBag.msg = "Your Product has been succesfully removed from the database.";
             }
             else
             {
-                ViewBag.msg = "Unable to remove Student";
+                ViewBag.msg = "Unable to remove Student from database.";
             }
 
             return View("Index", _productService.All());
