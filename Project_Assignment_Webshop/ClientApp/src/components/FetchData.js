@@ -5,31 +5,33 @@ export class FetchData extends Component {
 
   constructor(props) {
     super(props);
-    this.state = { forecasts: [], loading: true };
+    this.state = { products: [], loading: true };
   }
 
   componentDidMount() {
-    this.populateWeatherData();
+    this.ProductsData();
   }
 
-  static renderForecastsTable(forecasts) {
+  static renderProductsTable(products) {
     return (
       <table className='table table-striped' aria-labelledby="tabelLabel">
         <thead>
-          <tr>
-            <th>Date</th>
-            <th>Temp. (C)</th>
-            <th>Temp. (F)</th>
-            <th>Summary</th>
-          </tr>
+            <tr>
+                <th>ProductType</th>
+                <th>Number</th>
+                <th>Name(C)</th>
+                <th>Description(F)</th>
+                <th>Price</th>
+            </tr>
         </thead>
         <tbody>
-          {forecasts.map(forecast =>
-            <tr key={forecast.date}>
-              <td>{forecast.date}</td>
-              <td>{forecast.temperatureC}</td>
-              <td>{forecast.temperatureF}</td>
-              <td>{forecast.summary}</td>
+          {products.map(product =>
+            <tr key={products.Id}>
+                <td>{product.ProductType}</td>    
+                <td>{product.Number}</td>
+                <td>{product.Name}</td>
+                <td>{product.Description}</td>
+                <td>{product.Price}</td>
             </tr>
           )}
         </tbody>
@@ -40,7 +42,7 @@ export class FetchData extends Component {
   render() {
     let contents = this.state.loading
       ? <p><em>Loading...</em></p>
-      : FetchData.renderForecastsTable(this.state.forecasts);
+      : FetchData.renderForecastsTable(this.state.products);
 
     return (
       <div>
@@ -51,9 +53,9 @@ export class FetchData extends Component {
     );
   }
 
-  async populateWeatherData() {
-    const response = await fetch('weatherforecast');
+  async produtctsData() {
+    const response = await fetch('productListAPI');
     const data = await response.json();
-    this.setState({ forecasts: data, loading: false });
+    this.setState({ products: data, loading: false });
   }
 }
