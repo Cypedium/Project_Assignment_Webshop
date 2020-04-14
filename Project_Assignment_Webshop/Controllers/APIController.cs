@@ -23,31 +23,8 @@ namespace Project_Assignment_Webshop.Controllers
         [HttpGet]
         public IEnumerable<string> Get()
         {
-             string productListAPI = JsonConvert.SerializeObject(_productService.All());
+            string productListAPI = JsonConvert.SerializeObject(_productService.All());
             yield return productListAPI; 
         }
-
-        //private readonly ILogger<WeatherForecastController> _logger;
-
-        //public WeatherForecastController(ILogger<WeatherForecastController> logger)
-        //{
-        //    _logger = logger;
-        //}
-
-        //[HttpGet]
-        //public IEnumerable<WeatherForecast> Get()
-        //{
-        //    var rng = new Random();
-        //    return Enumerable.Range(1, 5).Select(index => new WeatherForecast
-        //    {
-        //        Date = DateTime.Now.AddDays(index),
-        //        TemperatureC = rng.Next(-20, 55),
-        //        Summary = Summaries[rng.Next(Summaries.Length)]
-        //    })
-        //    .ToArray();
-        //}
-
-
-
     }        
 }
