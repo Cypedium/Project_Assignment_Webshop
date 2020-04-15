@@ -5,42 +5,40 @@ export default class List extends Component {
         render() {  
             const TableHeader = props => {
                 return (
-                        <tr>
-                            <th>
-                                <button className="btn btn-link m-2" onClick={() => props.sortByString("brand")}>Brand</button>
-                            </th>
-                            <th>
-                                <button className="btn btn-link m-2" onClick={() => props.sortByInt("model")}>Model</button>
-                            </th>
-                            <th>
-                                <button className="btn btn-link m-2 " onClick={() => props.sortByInt("year")}>Year</button>
-                            </th>
-                            <th>
-                                <button className="btn btn-link m-2" onClick={() => props.sortByInt("price")}>Price</button>
-                            </th> 
-                            <th>
-                                <div className="m-2">Options</div>
-                            </th>                     
-                        </tr>
+                    <tr>
+                        <th>
+                            <button className="btn btn-link m-2" onClick={() => props.sortByString("Number")}>Number</button>
+                        </th>
+                        <th>
+                            <button className="btn btn-link m-2" onClick={() => props.sortByString("Name")}>Name</button>
+                        </th>
+                        <th>
+                            <button className="btn btn-link m-2" onClick={() => props.sortByInt("Description")}>Description</button>
+                        </th>
+                        <th>
+                            <button className="btn btn-link m-2" onClick={() => props.sortByInt("Price")}>Price</button>
+                        </th> 
+                        <th>
+                            <div className="m-2">Options</div>
+                        </th>                     
+                    </tr>
                 );  
             }
 
             const TableBody = props => {
-                const rows = props.carList.map((row) => {
+                const rows = props.productList.map((row) => {
                     return (                    
-                            <tr key={"carId" + row.Id}>
-
-                                <td className="">{row.brand}</td>
-                                <td>{row.model}</td>
-                                <td>{row.year}</td>
-                                <td>{row.price}</td>
+                            <tr key={"ProductId" + row.Id}>
+                                <td>{row.Number}</td>
+                                <td>{row.Name}</td>
+                                <td>{row.Description}</td>
+                                <td>{row.Price}</td>
                                 <td>
-                                    <button className="btn btn-primary" onClick={() => props.detailCar(row.Id)}>Detail</button>
+                                    <button className="btn btn-primary" onClick={() => props.detailProduct(row.Id)}>Detail</button>
                                     {" "}
-                                    <button className="btn btn-danger" onClick={() => props.removeCar(row.Id) }>Delete</button>
+                                    <button className="btn btn-danger" onClick={() => props.removeProduct(row.Id) }>Delete</button>
                                     {" "}
-                                    <button className="btn btn-success" onClick={() => props.addCarToCart(row.Id) }>AddToCart</button>
-                                    
+                                    <button className="btn btn-success" onClick={() => props.addProductToProductt(row.Id) }>AddToCart</button>                                   
                                 </td>                            
                             </tr>                    
                     )
@@ -52,10 +50,10 @@ export default class List extends Component {
                     <TableHeader sortByInt={this.props.sortByInt}
                                 sortByString={this.props.sortByString} />
                                 
-                    <TableBody  carList={this.props.carList}
-                                detailCar={this.props.detailCar}
-                                removeCar={this.props.removeCar}
-                                addCarToCart={this.props.addCarToCart} />
+                    <TableBody  productList={this.props.productList}
+                                detailProduct={this.props.detailProduct}
+                                removeProduct={this.props.removeProduct}
+                                addProductToProductt={this.props.addProductToProductt} />
                 </Fragment>
             );
         }

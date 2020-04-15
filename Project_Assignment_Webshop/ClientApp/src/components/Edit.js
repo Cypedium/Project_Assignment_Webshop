@@ -2,10 +2,10 @@ import React, { Component, Fragment } from 'react';
 
 export default class Edit extends Component {
     initialState = {
-        brand: this.props.carListEdit[0].brand,
-        model: this.props.carListEdit[0].model,
-        year: this.props.carListEdit[0].year,
-        price: this.props.carListEdit[0].price
+        brand: this.props.productListEdit[0].brand,
+        model: this.props.productListEdit[0].model,
+        year: this.props.productListEdit[0].year,
+        price: this.props.productListEdit[0].price
     }
     
     state = this.initialState;
@@ -32,7 +32,7 @@ export default class Edit extends Component {
            
             return (
                     <Fragment>
-                        <h2>Edit Car</h2>              
+                        <h2>Edit Product</h2>              
                         <form className="from-group">
                             <label for="">Brand</label>
                             <input type="text" name="brand" id="brand" value={brand} onChange={handleChange} />

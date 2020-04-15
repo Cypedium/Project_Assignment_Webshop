@@ -19,8 +19,8 @@ export class FetchData extends Component {
             <tr>
                 <th>ProductType</th>
                 <th>Number</th>
-                <th>Name(C)</th>
-                <th>Description(F)</th>
+                <th>Name</th>
+                <th>Description</th>
                 <th>Price</th>
             </tr>
         </thead>

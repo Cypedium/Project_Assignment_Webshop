@@ -19,19 +19,19 @@ export default class Details extends Component {
                 )
             }
             const TableBody = props => {
-                const rows = props.carListView.map((row) => {
+                const rows = props.productListView.map((row) => {
                     return (                    
-                            <tr key={"carId" + row.Id}>
+                            <tr key={"ProductId" + row.Id}>
                                 <td>{row.brand}</td>
                                 <td>{row.model}</td>
                                 <td>{row.year}</td>
                                 <td>{row.price}</td>
                                 <td>
-                                    <button className="btn btn-danger" onClick={() => props.removeCar(row.Id) }>Delete</button>
+                                    <button className="btn btn-danger" onClick={() => props.removeProduct(row.Id) }>Delete</button>
                                 </td>
                                 {" "}
                                 <td>
-                                    <button className="btn btn-primary" onClick={() => props.editCar(row.Id)}>Edit</button>
+                                    <button className="btn btn-primary" onClick={() => props.editProduct(row.Id)}>Edit</button>
                                 </td>                                                  
                             </tr>                    
                     )
@@ -41,7 +41,7 @@ export default class Details extends Component {
             return (
                 <table>
                     <TableHeader />
-                    <TableBody  carListView={this.props.carListView} removeCar={this.props.removeCar} editCar={this.props.editCar} />
+                    <TableBody  productListView={this.props.productListView} removeProduct={this.props.removeProduct} editProduct={this.props.editProduct} />
                 </table>
             );
         }

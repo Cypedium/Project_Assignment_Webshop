@@ -27,7 +27,7 @@ export default class Create extends Component {
         
             return (
                     <Fragment>
-                        <h2>Create New Car</h2>              
+                        <h2>Create New Product</h2>              
                         <form>
                             <label for="">Brand</label>
                             <input type="text" name="brand" id="brand" value={brand} onChange={handleChange} />
