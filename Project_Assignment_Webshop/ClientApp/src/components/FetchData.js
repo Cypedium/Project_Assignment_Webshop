@@ -26,7 +26,7 @@ export class FetchData extends Component {
         </thead>
         <tbody>
           {products.map(product =>
-            <tr key={products.Id}>
+            <tr key={product.Id}>
                 <td>{product.ProductType}</td>    
                 <td>{product.Number}</td>
                 <td>{product.Name}</td>

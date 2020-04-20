@@ -6,22 +6,9 @@ import List from "./components/List";
 import Edit from "./components/Edit";
 import NavBar from "./components/navbar";
 import Counters from "./components/counters";
-import FetchData from "./components/FetchData";
 
-export default class App extends Component {
-    //Implement Axios
-    state = () => {
-        const [data, setData] = this.useState({ productList: [] });
-        useEffect(async () => {
-            const fetchData = async () => {
-                const result = await axios('https://localhost:44399/API',
-                );
 
-                setData(result.data);
-            }
-            fetchData()
-        }, []);
-    }
+class App extends Component {
 
     state = {
         counters: [
@@ -29,68 +16,77 @@ export default class App extends Component {
             { id: 2, value: 0 },
             { id: 3, value: 0 },
             { id: 4, value: 0 }
-        ], productList: [],
-        //productList: [],
-        //    {
-        //        "Id": "1",
-        //        "brand": "Saab",
-        //        "model": "9-5 Turbo",
-        //        "year": "2005",
-        //        "price": "5000 SEK",
-        //        "addedToCart" : "0"
-        //    },
-        //    {
-        //        "Id": "2",
-        //        "brand": "Volvo",
-        //        "model": "760",
-        //        "year": "1994",
-        //        "price": "3000 SEK",
-        //        "addedToCart" : "0"
-        //    },
-        //    {
-        //        "Id": "3",
-        //        "brand": "BMW",
-        //        "model": "525i",
-        //        "year": "2001",
-        //        "price": "11000 SEK",
-        //        "addedToCart" : "0"
-        //    },
-        //    {
-        //        "Id": "4",
-        //        "brand": "Nissan",
-        //        "model": "300",
-        //        "year": "2012",
-        //        "price": "185000 SEK",
-        //        "addedToCart" : "0"
-        //    },
-        //    {
-        //        "Id": "5",
-        //        "brand": "Tesla",
-        //        "model": "1000",
-        //        "year": "2019",
-        //        "price": "1995000 SEK",
-        //        "addedToCart" : "0"
-        //    }
-        //]
-        createButtonClicked: false, editButtonClicked: false, details: true, showEditproduct: false, toggleSort: true, oldColumn: ""
+        ],
+        //productList: [
+            //{
+            //    "Id": "1",
+            //    "ProductType": "0",
+            //    "Number": "1",
+            //    "Name": "Margerita",
+            //    "Description": "Tomatsås, ost.",
+            //    "Price": "75 kr",
+            //    "addedToCart": "0"
+            //},
+            //{
+            //    "Id": "2",
+            //    "ProductType": "0",
+            //    "Number": "2",
+            //    "Name": "Hawaii",
+            //    "Description": "Tomatsås, ost, skinka, annanas.",
+            //    "Price": "75 kr",
+            //    "addedToCart": "0"
+            //},
+            //{
+            //    "Id": "3",
+            //    "ProductType": "5",
+            //    "Number": "1",
+            //    "Name": "Hamburgare 90 g",
+            //    "Description": "Nötkött, ost.",
+            //    "Price": "80 kr",
+            //    "addedToCart": "0"
+            //},
+            //{
+            //    "Id": "4",
+            //    "ProductType": "3",
+            //    "Number": "1",
+            //    "Name": "Kebabtallrik",
+            //    "Description": "Kebab, strips, tomat, gurka, sallad",
+            //    "Price": "75 kr",
+            //    "addedToCart": "0"
+            //}
+        //],
+        createButtonClicked: false, addToCartButtonClicked: false, editButtonClicked: false, details: true, showEditCar: false, toggleSort: true, oldColumn: ""
+    }
+
+    state = () => {
+        const [setData] = useState({ productList: [] });
+        useEffect(async () => {
+            const fetchData = async () => {
+                const result = await axios('./API',
+                );
+
+                setData(result.data);
+            }
+            fetchData()
+        }, []);
+        console.log(this.productList);
     }
 
     
 
 
+    //-----SHOPPING CART--------------------------------------------------------------------------------------------------------------------------------
+    constructor(props) {
+        super(props);
+        console.log("App - Constructor"); /*need to passing throw props*/
+        // this.state = this.props.api;
+    };
 
-    //-----SHOPPING productT--------------------------------------------------------------------------------------------------------------------------------
-    //constructor(props) {
-    //  super(props);
-    //  console.log("App - Constructor"); /*need to passing throw props*/
-    // this.state = this.props.api;
-    //}
-
-    //componentDidMount() {
-    //  console.log("App - Mounted");
-    // Ajax Call
-    //this.setState({api})
-    //}
+    componentDidMount() {
+        console.log("App - Mounted");
+        // Ajax Call
+        //this.setState({api})
+    }
 
     handleIncrement = counter => {
         const counters = [...this.state.counters]; /*clone the state*/
@@ -98,7 +94,7 @@ export default class App extends Component {
         counters[index] = { ...counter };
         counters[index].value++;
         this.setState({ counters });
-    }
+    };
 
     handleDecrement = counter => {
         const counters = [...this.state.counters]; /*clone the state*/
@@ -108,7 +104,7 @@ export default class App extends Component {
             counters[index].value--;
             this.setState({ counters });
         }
-    }
+    };
 
     handleReset = () => {
         const counters = this.state.counters.map(c => { /*this creates an array*/
@@ -116,30 +112,31 @@ export default class App extends Component {
             return c;
         });
         this.setState({ counters });
-    }
+    };
 
     handleDelete = (counterId) => {
         const counters = this.state.counters.filter(c => c.id !== counterId);
-        this.setState({ counters: counters }); /*override property with constant*/
-    }
+        this.setState({ counters: counters }) /*override property with constant*/
+    };
     //-----------------------------------------------------------------------------------------------------------------
 
-    //------MANAGE product-------------------------------------------------------------------------------------------------
-    removeproduct = Id => {
+    //------MANAGE CAR-------------------------------------------------------------------------------------------------
+    removeCar = Id => {
         const { productList } = this.state;
         this.setState(
             {
-                productList: productList.filter((aProduct) => { return aProduct.Id !== Id })
+                carList: productList.filter((aProduct) => { return aProduct.Id !== Id })
             });
     }
 
     //---PREPARED FUNCTION FOR PROJECT WEBSHOP------------------------------------------------------------------------
-    //addProductToCart = Id => {
-    //    const { productList } = this.state;
+    //addCarToCart = Id => {
+    //  const { productList } = this.state;
     //}
     //-----------------------------------------------------------------------------------------------------------------
 
-    detailproduct = Id => {
+    detailProduct = Id => {
+
         const { productList } = this.state;
         this.setState(
             {
@@ -148,7 +145,17 @@ export default class App extends Component {
         this.setState({ details: false });
     }
 
-    editproduct = Id => {
+    /* editCar = car => {
+    const { carList } =this.state;
+    this.setState(
+        {
+          carList: carList.append(car)
+        }
+      );
+      this.setState({showEditCar: false})
+    } */
+
+    editProduct = Id => {
         const { productList } = this.state;
         this.setState(
             {
@@ -159,19 +166,19 @@ export default class App extends Component {
 
 
     handleSubmitCreate = product => {
-        this.setState({ productList: [...this.state.productList, product] });
-        this.setState({ createButtonClicked: false });
+        this.setState({ productList: [...this.state.carList, product] });
+        this.setState({ createButtonClicked: false })
     }
 
     handleSubmitEdit = product => {
         this.setState({ productList: [...this.state.productList, product] });
-        this.setState({ editButtonClicked: false });
+        this.setState({ editButtonClicked: false })
     }
 
     sortByString = (column) => { /* use arrowfunction to binds this */
         const { productList, toggleSort, oldColumn } = this.state;
         this.setState({
-            productList: productList.sort((a, b) => (
+            carList: productList.sort((a, b) => (
                 toggleSort === true
                     ? ((a[column].toLowerCase() < b[column].toLowerCase()) || column !== oldColumn)
                         ? -1
@@ -190,13 +197,13 @@ export default class App extends Component {
                     ? false
                     : true,
             oldColumn: column
-        });
+        })
     }
 
     sortByInt = (column) => { /* use arrowfunction to binds this */
         const { productList, toggleSort, oldColumn } = this.state;
         this.setState({
-            productList: productList.sort((a, b) => (
+            carList: productList.sort((a, b) => (
                 toggleSort === true || column !== oldColumn
                     ? parseFloat(a[column]) - parseFloat(b[column])
                     : parseFloat(b[column]) - parseFloat(a[column])
@@ -206,45 +213,26 @@ export default class App extends Component {
                     ? false
                     : true,
             oldColumn: column
-        });
+        })
     }
+    //----------------------------------------------------------------------------------------------------------------------
 
     render() {
         console.log("App - Rendered");
-        const { createButtonClicked, details, editButtonClicked, counters } = this.state;
+
+        const { addToCartButtonClicked, createButtonClicked, details, editButtonClicked, counters } = this.state;
         return (
             <Fragment>
-                <ul>
-                    {data.productList.map(item => (
-                        <li key={item.objectID}>
-                            <a href={item.url}>{item.title}</a>
-                        </li>
-                    ))}
-                </ul>
-
-                <Layout>
-                    <Route exact path='/' component={App} />
-                    <Route path='/fetch-data' component={FetchData} />
-                </Layout>
-
                 <NavBar
                     totalCounters={counters.filter(c => c.value > 0).length} /*only display values greater than zero*/
                 />
-                <main className="container">
-                    <Counters
-                        counters={counters}
-                        onReset={this.handleReset}
-                        onIncrement={this.handleIncrement}
-                        onDecrement={this.handleDecrement}
-                        onDelete={this.handleDelete}
-                    />
-                </main>
+
                 <table> {/* Head */}
                     <tr>
                         <td></td>
                         <td>
-                            <h1>Handle products</h1>
-                            <button className="btn btn-info" onClick={() => this.setState({ createButtonClicked: true })}>Create new product</button>
+                            <h1>Handle Products</h1>
+                            <button className="btn btn-info" onClick={() => this.setState({ createButtonClicked: true })}>Create new Product</button>
                         </td>
                         <td></td>
                     </tr>
@@ -253,13 +241,16 @@ export default class App extends Component {
                         <td>
                             {details ? (
                                 <Fragment>
-                                    <h2>List of products</h2>
+                                    <h2>List of Products</h2>
                                     <List productList={this.state.productList}
-                                        detailproduct={this.detailproduct}
-                                        removeproduct={this.removeproduct}
+                                        detailProduct={this.detailProduct}
+                                        removeProduct={this.removeProduct}
                                         sortByInt={this.sortByInt}
-                                        sortByString={this.sortByString}
-                                        addproductToproductt={this.addproductToproductt} />
+                                        sortByString={this.sortByString}   
+                                    />
+                                    <span>
+                                        <button onClick={() => this.setState({ addToCartButtonClicked: true })}> AddToCart </button>
+                                    </span>
                                 </Fragment>
                             ) : (
                                     <Fragment>
@@ -268,27 +259,40 @@ export default class App extends Component {
                                             <button onClick={() => this.setState({ details: true })}> Back to List </button>
                                         </span>
                                         <Details
-                                            productListView={this.state.productListView}
-                                            removeproduct={this.removeproduct}
-                                            editproduct={this.editproduct} />
+                                            carListView={this.state.productListView}
+                                            removeCar={this.removeProduct}
+                                            editCar={this.editProduct} />
                                     </Fragment>
                                 )
                             }
                             <br />
                         </td>
                         <td>
-                            {createButtonClicked
-                                ? (
-                                    <Create handleSubmitCreate={this.handleSubmitCreate} />
-                                )
-                                : editButtonClicked
-                                    ? (
-                                        <Edit
-                                            productListEdit={this.state.productListEdit}
-                                            handleSubmitEdit={this.handleSubmitEdit}
-                                        />
-                                    )
-                                    : (null)
+                            {createButtonClicked ? (
+                                <Create handleSubmitCreate={this.handleSubmitCreate} />
+                            )
+                            : editButtonClicked ? (
+                                <Edit
+                                    productListEdit={this.state.productListEdit}
+                                    handleSubmitEdit={this.handleSubmitEdit}
+                                />
+                            )
+                            : addToCartButtonClicked ? (  
+                                <main className="container">
+                                    <Counters
+                                        counters={counters}
+                                        onReset={this.handleReset}
+                                        onIncrement={this.handleIncrement}
+                                        onDecrement={this.handleDecrement}
+                                        onDelete={this.handleDelete}
+                                    />
+                               
+                                <span>
+                                    <button onClick={() => this.setState({ addToCartButtonClicked: false })}> Back to List </button>
+                                            </span>
+                                        </main>
+                            )
+                     : (null)
                             }
                         </td>
                         <td></td>
@@ -299,3 +303,5 @@ export default class App extends Component {
         );
     }
 }
+
+export default App;
