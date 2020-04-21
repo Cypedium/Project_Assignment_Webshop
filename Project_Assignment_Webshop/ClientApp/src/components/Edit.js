@@ -27,28 +27,33 @@ export default class Edit extends Component {
 
 
     render() {
-        const {brand, model, year, price} = this.state;
+        const { ProductType, Number, Name, Description, Price} = this.state;
         const {handleChange, submitForm} = this;
            
             return (
                     <Fragment>
                         <h2>Edit Product</h2>              
                         <form className="from-group">
-                            <label for="">Brand</label>
-                            <input type="text" name="brand" id="brand" value={brand} onChange={handleChange} />
-                            <br />
-                            <label for="">Model</label>
-                            <input type="text" name="model" id="model" value={model} onChange={handleChange} />
-                            <br />
-                            <label for="">Year</label>
-                            <input type="text" name="year" id="year" value={year} onChange={handleChange} />
-                            <br />
+                            <label for="">ProductType</label>
+                            <input type="text" name="ProductType" id="ProductType" value={ProductType} onChange={handleChange} />
+
+                            <label for="">Number</label>
+                            <input type="text" name="Number" id="Number" value={Number} onChange={handleChange} />
+
+                            <label for="">Name</label>
+                            <input type="text" name="Name" id="Name" value={Name} onChange={handleChange} />
+
+                            <label for="">Description</label>
+                            <input type="text" name="Description" id="Description" value={Description} onChange={handleChange} />
+
                             <label for="">Price</label>
-                            <input type="text" name="price" id="price" value={price} onChange={handleChange} />
-                            <br />
-                            <input className="btn btn-primary" type="button" value="Submit" onClick={submitForm} />                          
-                        </form>
+                            <input type="text" name="Price" id="Price" value={Price} onChange={handleChange} />
+
+                            <input className="btn btn-info" type="button" value="Submit" onClick={submitForm} />                         
+                            </form>
                     </Fragment>         
             );
     }
 }
+
+                        

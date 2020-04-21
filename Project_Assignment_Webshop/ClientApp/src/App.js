@@ -1,92 +1,61 @@
-import React, { Component, Fragment, useEffect, useState } from 'react';
+import React, { Component, Fragment, } from 'react';
 import axios from 'axios';
-import Details from "./components/Details";
-import Create from "./components/Create";
-import List from "./components/List";
-import Edit from "./components/Edit";
-import NavBar from "./components/navbar";
-import Counters from "./components/counters";
+import Details from './components/Details';
+import Create from './components/Create';
+import List from './components/List';
+import Edit from './components/Edit';
+import NavBar from './components/navbar';
+import Counters from './components/counters';
 
+const API = 'https://localhost:44399/API/productListAPI' //Hur kommer jag åt min genererade API lista?
+
+console.log("CleanAPI:" + API);
+//const DEFAULT_QUERY = 'redux';
 
 class App extends Component {
+    //constructor(props) {
+      //  super(props);
 
-    state = {
-        counters: [
-            { id: 1, value: 0 },
-            { id: 2, value: 0 },
-            { id: 3, value: 0 },
-            { id: 4, value: 0 }
-        ],
-        //productList: [
-            //{
-            //    "Id": "1",
-            //    "ProductType": "0",
-            //    "Number": "1",
-            //    "Name": "Margerita",
-            //    "Description": "Tomatsås, ost.",
-            //    "Price": "75 kr",
-            //    "addedToCart": "0"
-            //},
-            //{
-            //    "Id": "2",
-            //    "ProductType": "0",
-            //    "Number": "2",
-            //    "Name": "Hawaii",
-            //    "Description": "Tomatsås, ost, skinka, annanas.",
-            //    "Price": "75 kr",
-            //    "addedToCart": "0"
-            //},
-            //{
-            //    "Id": "3",
-            //    "ProductType": "5",
-            //    "Number": "1",
-            //    "Name": "Hamburgare 90 g",
-            //    "Description": "Nötkött, ost.",
-            //    "Price": "80 kr",
-            //    "addedToCart": "0"
-            //},
-            //{
-            //    "Id": "4",
-            //    "ProductType": "3",
-            //    "Number": "1",
-            //    "Name": "Kebabtallrik",
-            //    "Description": "Kebab, strips, tomat, gurka, sallad",
-            //    "Price": "75 kr",
-            //    "addedToCart": "0"
-            //}
-        //],
-        createButtonClicked: false, addToCartButtonClicked: false, editButtonClicked: false, details: true, showEditCar: false, toggleSort: true, oldColumn: ""
+        state = {
+            productList: [],
+                
+            counters: [
+                { id: 1, value: 0 },
+                { id: 2, value: 0 },
+                { id: 3, value: 0 },
+                { id: 4, value: 0 }
+            ],
+
+            createButtonClicked: false,
+            addToCartButtonClicked: false,
+            editButtonClicked: false,
+            details: true,
+            showEditCar: false,
+            toggleSort: true,
+            oldColumn: "",
+
+            isLoading: false,
+            error: null
+        }
+        //---END OF STATE-----------------------------------------------------------------------------------------------------------------------------------
+    //}   
+   
+    componentDidMount() {
+        this.setState({ isLoading: true });
+        axios.get(API)
+            .then(result => this.setState({
+                productList: result.data.productList,
+
+                isLoading: false
+            }))
+            .catch(error => this.setState({
+                error,
+                isLoading: false
+            }));
     }
-
-    state = () => {
-        const [setData] = useState({ productList: [] });
-        useEffect(async () => {
-            const fetchData = async () => {
-                const result = await axios('./API',
-                );
-
-                setData(result.data);
-            }
-            fetchData()
-        }, []);
-        console.log(this.productList);
-    }
-
     
 
-
     //-----SHOPPING CART--------------------------------------------------------------------------------------------------------------------------------
-    constructor(props) {
-        super(props);
-        console.log("App - Constructor"); /*need to passing throw props*/
-        // this.state = this.props.api;
-    };
-
-    componentDidMount() {
-        console.log("App - Mounted");
-        // Ajax Call
-        //this.setState({api})
-    }
 
     handleIncrement = counter => {
         const counters = [...this.state.counters]; /*clone the state*/
@@ -145,16 +114,6 @@ class App extends Component {
         this.setState({ details: false });
     }
 
-    /* editCar = car => {
-    const { carList } =this.state;
-    this.setState(
-        {
-          carList: carList.append(car)
-        }
-      );
-      this.setState({showEditCar: false})
-    } */
-
     editProduct = Id => {
         const { productList } = this.state;
         this.setState(
@@ -166,7 +125,7 @@ class App extends Component {
 
 
     handleSubmitCreate = product => {
-        this.setState({ productList: [...this.state.carList, product] });
+        this.setState({ productList: [...this.state.productList, product] });
         this.setState({ createButtonClicked: false })
     }
 
@@ -219,7 +178,7 @@ class App extends Component {
 
     render() {
         console.log("App - Rendered");
-
+        console.log("ComponentDidMount:" + this.productList);
         const { addToCartButtonClicked, createButtonClicked, details, editButtonClicked, counters } = this.state;
         return (
             <Fragment>
