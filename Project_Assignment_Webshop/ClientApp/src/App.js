@@ -7,7 +7,7 @@ import Edit from './components/Edit';
 import NavBar from './components/navbar';
 import Counters from './components/counters';
 
-const API = 'https://localhost:44399/API/productListAPI' //Hur kommer jag åt min genererade API lista?
+const API = 'https://localhost:44399/API/'; //Hur kommer jag åt min genererade API lista?
 
 console.log("CleanAPI:" + API);
 //const DEFAULT_QUERY = 'redux';
@@ -44,7 +44,7 @@ class App extends Component {
         this.setState({ isLoading: true });
         axios.get(API)
             .then(result => this.setState({
-                productList: result.data.productList,
+                productList: result.data, //before result.data.productList
 
                 isLoading: false
             }))
@@ -99,7 +99,7 @@ class App extends Component {
     }
 
     //---PREPARED FUNCTION FOR PROJECT WEBSHOP------------------------------------------------------------------------
-    //addCarToCart = Id => {
+    //addProductToCart = Id => {
     //  const { productList } = this.state;
     //}
     //-----------------------------------------------------------------------------------------------------------------
@@ -162,7 +162,7 @@ class App extends Component {
     sortByInt = (column) => { /* use arrowfunction to binds this */
         const { productList, toggleSort, oldColumn } = this.state;
         this.setState({
-            carList: productList.sort((a, b) => (
+            productList: productList.sort((a, b) => (
                 toggleSort === true || column !== oldColumn
                     ? parseFloat(a[column]) - parseFloat(b[column])
                     : parseFloat(b[column]) - parseFloat(a[column])
@@ -218,9 +218,9 @@ class App extends Component {
                                             <button onClick={() => this.setState({ details: true })}> Back to List </button>
                                         </span>
                                         <Details
-                                            carListView={this.state.productListView}
-                                            removeCar={this.removeProduct}
-                                            editCar={this.editProduct} />
+                                            productListView={this.state.productListView}
+                                            removeProduct={this.removeProduct}
+                                            editProduct={this.editProduct} />
                                     </Fragment>
                                 )
                             }

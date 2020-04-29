@@ -51,7 +51,7 @@ export default class List extends Component {
                 });
                 return <tbody>{rows}</tbody>
             }
-            return (
+            return (                
                 <Fragment>
                     <TableHeader
                         sortByInt={this.props.sortByInt}

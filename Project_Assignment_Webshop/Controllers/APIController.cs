@@ -11,7 +11,7 @@ using Project_Assignment_Webshop.Models;
 
 namespace Project_Assignment_Webshop.Controllers
 {
-    [Authorize]
+    //[Authorize]
     [ApiController]
     [Route("[controller]")]
     public class APIController : ControllerBase
@@ -24,10 +24,10 @@ namespace Project_Assignment_Webshop.Controllers
         }
         // GET: api/API
         [HttpGet]
-        public IEnumerable<string> Get()
+        public string Get()
         {
             string productListAPI = JsonConvert.SerializeObject(_productService.All());
-            yield return productListAPI; 
+            return productListAPI; 
         }
     }        
 }
