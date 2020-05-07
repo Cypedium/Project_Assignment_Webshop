@@ -4,13 +4,10 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Project_Assignment_Webshop.Models
+namespace Project_Assignment_Webshop.Models.ViewModels
 {
-    public class Customer
+    public class CustomerViewModel
     {
-        [Key]
-        public int Id { get; set; }
-
         [Required]
         [StringLength(31, MinimumLength = 2)]
         [Display(Name = "First Name")]
@@ -29,9 +26,5 @@ namespace Project_Assignment_Webshop.Models
         [StringLength(16, MinimumLength = 16)]
         [Display(Name = "Credit Card")]
         public long UserCreditCard { get; set; }
-
-        /*---Database connections-----------------------------------*/
-        public List<Order> Orders { get; set; } //init for database one to many User to Order
-        /*----------------------------------------------------------*/
     }
 }
