@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Project_Assignment_Webshop.Models.Services
+namespace Project_Assignment_Webshop.Models.IServices
 {
     interface ICustomerService
     {

@@ -7,10 +7,10 @@ namespace Project_Assignment_Webshop.Models
 {
     public interface IProductRepo
     {
+        List<Product> All();   
         Product Create(Product product);
         Product Find(int id);
-        Product Update(Product product);
         bool Remove(Product product);
-        List<Product> All();   
+        Product Update(Product product);
     }
 }

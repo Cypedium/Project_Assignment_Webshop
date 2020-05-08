@@ -12,6 +12,8 @@ using Microsoft.Extensions.Hosting;
 using Project_Assignment_Webshop.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.SpaServices.ReactDevelopmentServer;
+using Project_Assignment_Webshop.Models.Repo.IRepo;
+using Project_Assignment_Webshop.Models.IServices;
 
 namespace Project_Assignment_Webshop
 {
@@ -48,8 +50,11 @@ namespace Project_Assignment_Webshop
             });
             //More Identity settings ca be found at https://docs.microsoft.com/en-us/aspnet/core/security/authentication/identity?view=aspnetcore-3.1&tabs=visual-studio
 
+            //Inpendecy Injection configures
             services.AddScoped<IProductRepo, ProductRepo>();
             services.AddScoped<IProductService, ProductService>();
+            services.AddScoped<IOrderRowRepo, OrderRowRepo>();
+            services.AddScoped<IOrderRowService, OrderRowService>();
 
             services.AddMvc();
 

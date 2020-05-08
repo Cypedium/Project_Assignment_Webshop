@@ -19,8 +19,8 @@ namespace Project_Assignment_Webshop.Models
 
             //Look for any Databasedata
             if (context.Roles.Any() &&
-                context.Products.Any() //&&
-                //context.Orders.Any() &&
+                context.Products.Any() &&
+                context.OrderRows.Any()
                 //context.Assignments.Any() &&
                 //context.Teachers.Any()
                 )

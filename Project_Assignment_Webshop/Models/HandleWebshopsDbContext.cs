@@ -23,7 +23,7 @@ namespace Project_Assignment_Webshop.Models
         {
             base.OnModelCreating(modelbuilder);
 
-            modelBuilder.Entity<OrderRow>()
+            modelbuilder.Entity<OrderRow>()
                 .HasOne(p => p.Product)
                 .WithOne(o => o.OrderRow)
                 .HasForeignKey<Product>(p => p.OrderRowForeignKey);

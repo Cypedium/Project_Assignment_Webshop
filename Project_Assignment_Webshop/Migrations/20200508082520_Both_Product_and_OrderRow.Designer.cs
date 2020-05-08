@@ -10,8 +10,8 @@ using Project_Assignment_Webshop.Models;
 namespace Project_Assignment_Webshop.Migrations
 {
     [DbContext(typeof(HandleWebshopsDbContext))]
-    [Migration("20200402100305_added_product_type")]
-    partial class added_product_type
+    [Migration("20200508082520_Both_Product_and_OrderRow")]
+    partial class Both_Product_and_OrderRow
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -217,6 +217,121 @@ namespace Project_Assignment_Webshop.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
+            modelBuilder.Entity("Project_Assignment_Webshop.Models.Cashier", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("OrderDate")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Cashiers");
+                });
+
+            modelBuilder.Entity("Project_Assignment_Webshop.Models.Customer", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("E_mail")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(63)")
+                        .HasMaxLength(63);
+
+                    b.Property<string>("F_Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(31)")
+                        .HasMaxLength(31);
+
+                    b.Property<string>("L_Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(31)")
+                        .HasMaxLength(31);
+
+                    b.Property<long>("UserCreditCard")
+                        .HasColumnType("bigint")
+                        .HasMaxLength(16);
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Customers");
+                });
+
+            modelBuilder.Entity("Project_Assignment_Webshop.Models.Order", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int?>("CashierId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("CustomerId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("OrderTime")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("ReceiptId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Status")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CashierId");
+
+                    b.HasIndex("CustomerId");
+
+                    b.HasIndex("ReceiptId");
+
+                    b.ToTable("Orders");
+                });
+
+            modelBuilder.Entity("Project_Assignment_Webshop.Models.OrderRow", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("Amount")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("CashierId")
+                        .HasColumnType("int");
+
+                    b.Property<bool>("GlutenFree")
+                        .HasColumnType("bit");
+
+                    b.Property<int?>("OrderId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("ReceiptId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CashierId");
+
+                    b.HasIndex("OrderId");
+
+                    b.HasIndex("ReceiptId");
+
+                    b.ToTable("OrderRows");
+                });
+
             modelBuilder.Entity("Project_Assignment_Webshop.Models.Product", b =>
                 {
                     b.Property<int>("Id")
@@ -235,6 +350,12 @@ namespace Project_Assignment_Webshop.Migrations
                     b.Property<int>("Number")
                         .HasColumnType("int");
 
+                    b.Property<int>("OrderRowForeignKey")
+                        .HasColumnType("int");
+
+                    b.Property<byte>("Picture")
+                        .HasColumnType("tinyint");
+
                     b.Property<int>("Price")
                         .HasColumnType("int");
 
@@ -243,7 +364,27 @@ namespace Project_Assignment_Webshop.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("OrderRowForeignKey")
+                        .IsUnique();
+
                     b.ToTable("Products");
+                });
+
+            modelBuilder.Entity("Project_Assignment_Webshop.Models.Receipt", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int?>("CashierId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CashierId");
+
+                    b.ToTable("Receipts");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -295,6 +436,52 @@ namespace Project_Assignment_Webshop.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("Project_Assignment_Webshop.Models.Order", b =>
+                {
+                    b.HasOne("Project_Assignment_Webshop.Models.Cashier", "Cashier")
+                        .WithMany()
+                        .HasForeignKey("CashierId");
+
+                    b.HasOne("Project_Assignment_Webshop.Models.Customer", "Customer")
+                        .WithMany("Orders")
+                        .HasForeignKey("CustomerId");
+
+                    b.HasOne("Project_Assignment_Webshop.Models.Receipt", "Receipt")
+                        .WithMany()
+                        .HasForeignKey("ReceiptId");
+                });
+
+            modelBuilder.Entity("Project_Assignment_Webshop.Models.OrderRow", b =>
+                {
+                    b.HasOne("Project_Assignment_Webshop.Models.Cashier", "Cashier")
+                        .WithMany("OrderRows")
+                        .HasForeignKey("CashierId");
+
+                    b.HasOne("Project_Assignment_Webshop.Models.Order", null)
+                        .WithMany("OrderRows")
+                        .HasForeignKey("OrderId");
+
+                    b.HasOne("Project_Assignment_Webshop.Models.Receipt", null)
+                        .WithMany("OrderRows")
+                        .HasForeignKey("ReceiptId");
+                });
+
+            modelBuilder.Entity("Project_Assignment_Webshop.Models.Product", b =>
+                {
+                    b.HasOne("Project_Assignment_Webshop.Models.OrderRow", "OrderRow")
+                        .WithOne("Product")
+                        .HasForeignKey("Project_Assignment_Webshop.Models.Product", "OrderRowForeignKey")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("Project_Assignment_Webshop.Models.Receipt", b =>
+                {
+                    b.HasOne("Project_Assignment_Webshop.Models.Cashier", null)
+                        .WithMany("Receipts")
+                        .HasForeignKey("CashierId");
                 });
 #pragma warning restore 612, 618
         }
