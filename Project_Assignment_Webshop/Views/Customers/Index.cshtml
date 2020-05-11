@@ -1,0 +1,46 @@
+﻿@model List<Customer>
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>List of Products</h1>
+<hr />
+<a asp-action="Create" type="button" class="btn btn-success">Create Customer</a>
+<br />
+<hr />
+@ViewBag.msg @*Sending message to Administrator: for example removed product successfully*@
+<br />
+<table class="table table-striped">
+    <thead class="thead-light">
+        <tr>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>E-mail</th>
+            <th>CreditCard</th>
+            <th>Actions</th>
+            <th></th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr id="@("CustomerId" + item.Id)">
+                <td>@item.F_Name</td>
+                <td>@item.L_Name</td>
+                <td>@item.E_mail</td>
+                <td>@item.CreditCard</td>
+                <td>
+                    <a asp-route-id="@item.Id" asp-action="Details" type="button" class="btn btn-info m-2">Details</a>
+                </td>
+                <td>
+                    <a asp-route-id="@item.Id" asp-action="Edit" type="button" class="btn btn-warning m-2">Rename</a>
+                </td>
+                <td>
+                    <a asp-route-id="@item.Id" asp-action="Remove" type="button" class="btn btn-danger m-2">Remove</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+
+</table>

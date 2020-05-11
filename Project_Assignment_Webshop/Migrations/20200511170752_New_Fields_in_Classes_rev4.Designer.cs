@@ -10,8 +10,8 @@ using Project_Assignment_Webshop.Models;
 namespace Project_Assignment_Webshop.Migrations
 {
     [DbContext(typeof(HandleWebshopsDbContext))]
-    [Migration("20200511131651_New_Fields_in_Classes_rev2")]
-    partial class New_Fields_in_Classes_rev2
+    [Migration("20200511170752_New_Fields_in_Classes_rev4")]
+    partial class New_Fields_in_Classes_rev4
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -244,6 +244,11 @@ namespace Project_Assignment_Webshop.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<string>("CreditCard")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(16)")
+                        .HasMaxLength(16);
+
                     b.Property<string>("E_mail")
                         .IsRequired()
                         .HasColumnType("nvarchar(63)")
@@ -258,10 +263,6 @@ namespace Project_Assignment_Webshop.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(31)")
                         .HasMaxLength(31);
-
-                    b.Property<long>("UserCreditCard")
-                        .HasColumnType("bigint")
-                        .HasMaxLength(16);
 
                     b.HasKey("Id");
 
@@ -381,9 +382,6 @@ namespace Project_Assignment_Webshop.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int?>("CashierId")
-                        .HasColumnType("int");
-
                     b.Property<string>("Customer")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -393,8 +391,6 @@ namespace Project_Assignment_Webshop.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("CashierId");
 
                     b.ToTable("Receipts");
                 });
@@ -453,7 +449,7 @@ namespace Project_Assignment_Webshop.Migrations
             modelBuilder.Entity("Project_Assignment_Webshop.Models.Order", b =>
                 {
                     b.HasOne("Project_Assignment_Webshop.Models.Cashier", "Cashier")
-                        .WithMany()
+                        .WithMany("Receipts")
                         .HasForeignKey("CashierId");
 
                     b.HasOne("Project_Assignment_Webshop.Models.Customer", "Customer")
@@ -487,13 +483,6 @@ namespace Project_Assignment_Webshop.Migrations
                         .HasForeignKey("Project_Assignment_Webshop.Models.Product", "OrderRowForeignKey")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-                });
-
-            modelBuilder.Entity("Project_Assignment_Webshop.Models.Receipt", b =>
-                {
-                    b.HasOne("Project_Assignment_Webshop.Models.Cashier", null)
-                        .WithMany("Receipts")
-                        .HasForeignKey("CashierId");
                 });
 #pragma warning restore 612, 618
         }

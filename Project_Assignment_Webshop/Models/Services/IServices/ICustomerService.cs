@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Project_Assignment_Webshop.Models.IServices
 {
-    interface ICustomerService
+    public interface ICustomerService
     {
         Customer Create(CustomerViewModel customer);
         Customer Find(int id);

@@ -7,12 +7,12 @@ export default class List extends Component {
             const TableHeader = props => {
                 return (
                     <tr> 
-                        <th>
-                            {/* Hiding
+                        {/*<th>
+                            * Hiding
                             <button className="text-left btn btn-link" onClick={() => props.sortByInt("ProductType")}>ProductType</button>
-                            */}
-                        </th>
-                        
+                            
+                        </th>*/}
+                        <th>Picture</th>
                         <th>
                             <button className="text-left btn btn-link" onClick={() => props.sortByInt("Number")}>Number</button>
                         </th>
@@ -39,12 +39,12 @@ export default class List extends Component {
                 const rows = props.productList.map((row) => {
                     return (
                             <tr key={"ProductId" + row.Id}>
-                                <td><img src={salami} height="25%" width="25%" /></td>
-                                <td>{/*--Hiding--{row.ProductType}--*/}</td>
+                                <td><img src={salami} height="49" width="49" /></td>
+                                {/*--Hiding--{row.ProductType}--*/}
                                 <td>{row.Number}</td>
                                 <td>{row.Name}</td>
                                 <td>{row.Description}</td>
-                                <td></td>
+                                
                                 <td>{row.Price}</td>
                                 
                                 <td>

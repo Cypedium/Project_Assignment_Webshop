@@ -1,0 +1,41 @@
+﻿@model CustomerViewModel
+@{
+    ViewData["Title"] = "Create";
+}
+<h1>Create Customer</h1>
+<hr />
+<br />
+
+<form asp-action="Create" method="post" class="btn btn-success">
+
+    <div asp-validation-summary="All"></div>
+
+    <br />
+
+    <label asp-for="F_Name"></label>
+    <input asp-for="F_Name" />
+    <span asp-validation-for="F_Name"></span>
+    <br />
+
+    <label asp-for="L_Name"></label>
+    <input asp-for="L_Name" />
+    <span asp-validation-for="L_Name"></span>
+    <br />
+
+    <label asp-for="E_mail"></label>
+    <input asp-for="E_mail" />
+    <span asp-validation-for="E_mail"></span>
+    <br />
+
+    <label asp-for="CreditCard"></label>
+    <input asp-for="CreditCard" />
+    <span asp-validation-for="CreditCard"></span>
+    <br />
+
+    <hr />
+    <input type="submit" value="Create Customer" />
+    <br />
+
+    <input type="submit" value="Back To List" asp-action="Index" />
+
+</form>

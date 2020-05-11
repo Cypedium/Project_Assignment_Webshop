@@ -23,8 +23,9 @@ namespace Project_Assignment_Webshop.Models.ViewModels
         [Display(Name = "E-mail")]
         public string E_mail { get; set; }
 
-        [StringLength(16, MinimumLength = 16)]
+        [Required]
+        [StringLength(16)]
         [Display(Name = "Credit Card")]
-        public long UserCreditCard { get; set; }
+        public string CreditCard { get; set; }
     }
 }

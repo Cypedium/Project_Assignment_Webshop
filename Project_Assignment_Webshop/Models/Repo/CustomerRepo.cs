@@ -49,7 +49,7 @@ namespace Project_Assignment_Webshop.Models.Repo
             newCustomer.F_Name = customer.F_Name;
             newCustomer.L_Name = customer.L_Name;
             newCustomer.E_mail = customer.E_mail;
-            newCustomer.UserCreditCard = customer.UserCreditCard;
+            newCustomer.CreditCard = customer.CreditCard;
 
             _handleWebshopsDbContext.SaveChanges();
 

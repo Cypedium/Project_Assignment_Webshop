@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Project_Assignment_Webshop.Migrations
 {
-    public partial class New_Fields_in_Classes_rev2 : Migration
+    public partial class New_Fields_in_Classes_rev4 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -69,11 +69,25 @@ namespace Project_Assignment_Webshop.Migrations
                     F_Name = table.Column<string>(maxLength: 31, nullable: false),
                     L_Name = table.Column<string>(maxLength: 31, nullable: false),
                     E_mail = table.Column<string>(maxLength: 63, nullable: false),
-                    UserCreditCard = table.Column<long>(maxLength: 16, nullable: false)
+                    CreditCard = table.Column<string>(maxLength: 16, nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Customers", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Receipts",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Customer = table.Column<string>(nullable: false),
+                    OrderDate = table.Column<string>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Receipts", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -180,27 +194,6 @@ namespace Project_Assignment_Webshop.Migrations
                         principalTable: "AspNetUsers",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Receipts",
-                columns: table => new
-                {
-                    Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Customer = table.Column<string>(nullable: false),
-                    OrderDate = table.Column<string>(nullable: false),
-                    CashierId = table.Column<int>(nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Receipts", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_Receipts_Cashiers_CashierId",
-                        column: x => x.CashierId,
-                        principalTable: "Cashiers",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -372,11 +365,6 @@ namespace Project_Assignment_Webshop.Migrations
                 table: "Products",
                 column: "OrderRowForeignKey",
                 unique: true);
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Receipts_CashierId",
-                table: "Receipts",
-                column: "CashierId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -412,13 +400,13 @@ namespace Project_Assignment_Webshop.Migrations
                 name: "Orders");
 
             migrationBuilder.DropTable(
+                name: "Cashiers");
+
+            migrationBuilder.DropTable(
                 name: "Customers");
 
             migrationBuilder.DropTable(
                 name: "Receipts");
-
-            migrationBuilder.DropTable(
-                name: "Cashiers");
         }
     }
 }

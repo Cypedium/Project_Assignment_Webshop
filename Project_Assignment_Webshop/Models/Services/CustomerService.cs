@@ -27,7 +27,7 @@ namespace Project_Assignment_Webshop.Models.IServices.InterfaceServices
                 F_Name = customer.F_Name,
                 L_Name = customer.L_Name,
                 E_mail = customer.E_mail,
-                UserCreditCard = customer.UserCreditCard
+                CreditCard = customer.CreditCard
             };
             return _customerRepo.Create(newCustomer);
 
