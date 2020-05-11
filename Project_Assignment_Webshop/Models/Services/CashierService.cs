@@ -1,4 +1,5 @@
-﻿using Project_Assignment_Webshop.Models.ViewModels;
+﻿using Project_Assignment_Webshop.Models.Repo.IRepo;
+using Project_Assignment_Webshop.Models.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,29 +9,46 @@ namespace Project_Assignment_Webshop.Models.IServices
 {
     public class CashierService : ICashierService
     {
+        readonly ICashierRepo _cashierRepo;
+
+        public CashierService(ICashierRepo cashierRepo)
+        {
+            _cashierRepo = cashierRepo;
+        }
         public List<Cashier> All()
         {
-            throw new NotImplementedException();
+            return _cashierRepo.All();
         }
 
         public Cashier Create(CashierViewModel cashier)
         {
-            throw new NotImplementedException();
-        }
+            Cashier newCashier = new Cashier()
+            {
+                Customer = cashier.Costumer,
+                OrderTime = cashier.OrderTime,
+                OrderRows = cashier.OrderRows   
+            };
+            return _cashierRepo.Create(newCashier);
 
-        public Cashier Find(int id)
-        {
-            throw new NotImplementedException();
         }
 
         public bool Remove(int id)
         {
-            throw new NotImplementedException();
+            Cashier cashier = Find(id);
+            if (cashier == null)
+            {
+                return false;
+            }
+            return _cashierRepo.Remove(cashier);
+        }
+        public Cashier Find(int id)
+        {
+            return _cashierRepo.Find(id);
         }
 
         public Cashier Update(Cashier cashier)
         {
-            throw new NotImplementedException();
+            return _cashierRepo.Update(cashier);
         }
     }
 }

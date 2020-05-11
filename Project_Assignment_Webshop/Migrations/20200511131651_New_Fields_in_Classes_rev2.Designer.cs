@@ -10,8 +10,8 @@ using Project_Assignment_Webshop.Models;
 namespace Project_Assignment_Webshop.Migrations
 {
     [DbContext(typeof(HandleWebshopsDbContext))]
-    [Migration("20200508082520_Both_Product_and_OrderRow")]
-    partial class Both_Product_and_OrderRow
+    [Migration("20200511131651_New_Fields_in_Classes_rev2")]
+    partial class New_Fields_in_Classes_rev2
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -224,7 +224,11 @@ namespace Project_Assignment_Webshop.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("OrderDate")
+                    b.Property<string>("Customer")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("OrderTime")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -379,6 +383,14 @@ namespace Project_Assignment_Webshop.Migrations
 
                     b.Property<int?>("CashierId")
                         .HasColumnType("int");
+
+                    b.Property<string>("Customer")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("OrderDate")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 

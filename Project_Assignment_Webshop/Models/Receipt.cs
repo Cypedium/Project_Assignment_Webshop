@@ -11,6 +11,12 @@ namespace Project_Assignment_Webshop.Models
         [Key]
         public int Id { get; set; }
 
+        [Required]
+        public string Customer { get; set; }
+
+        [Required]
+        public string OrderDate { get; set; }
+
      /*---Database connections-----------------------------------*/
         public List<OrderRow> OrderRows { get; set; }
      /*----------------------------------------------------------*/

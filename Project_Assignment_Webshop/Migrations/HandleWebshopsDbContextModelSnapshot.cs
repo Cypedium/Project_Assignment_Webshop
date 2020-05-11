@@ -222,7 +222,11 @@ namespace Project_Assignment_Webshop.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("OrderDate")
+                    b.Property<string>("Customer")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("OrderTime")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -377,6 +381,14 @@ namespace Project_Assignment_Webshop.Migrations
 
                     b.Property<int?>("CashierId")
                         .HasColumnType("int");
+
+                    b.Property<string>("Customer")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("OrderDate")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 

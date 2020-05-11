@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Project_Assignment_Webshop.Migrations
 {
-    public partial class Both_Product_and_OrderRow : Migration
+    public partial class New_Fields_in_Classes_rev2 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -52,7 +52,8 @@ namespace Project_Assignment_Webshop.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    OrderDate = table.Column<string>(nullable: false)
+                    Customer = table.Column<string>(nullable: false),
+                    OrderTime = table.Column<string>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -187,6 +188,8 @@ namespace Project_Assignment_Webshop.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
+                    Customer = table.Column<string>(nullable: false),
+                    OrderDate = table.Column<string>(nullable: false),
                     CashierId = table.Column<int>(nullable: true)
                 },
                 constraints: table =>

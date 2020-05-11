@@ -14,6 +14,8 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.SpaServices.ReactDevelopmentServer;
 using Project_Assignment_Webshop.Models.Repo.IRepo;
 using Project_Assignment_Webshop.Models.IServices;
+using Project_Assignment_Webshop.Models.IServices.InterfaceServices;
+using Project_Assignment_Webshop.Models.Repo;
 
 namespace Project_Assignment_Webshop
 {
@@ -50,11 +52,29 @@ namespace Project_Assignment_Webshop
             });
             //More Identity settings ca be found at https://docs.microsoft.com/en-us/aspnet/core/security/authentication/identity?view=aspnetcore-3.1&tabs=visual-studio
 
-            //Inpendecy Injection configures
-            services.AddScoped<IProductRepo, ProductRepo>();
-            services.AddScoped<IProductService, ProductService>();
+            //---Inpendecy Injection configures----------------------
+            services.AddScoped<ICashierRepo, CashierRepo>();
+            services.AddScoped<ICashierService, CashierService>();
+
+            services.AddScoped<ICustomerRepo, CustomerRepo>();
+            services.AddScoped<ICustomerService, CustomerService>();
+
+            services.AddScoped<IOrderRepo, OrderRepo>();
+            services.AddScoped<IOrderService, OrderService>();
+
             services.AddScoped<IOrderRowRepo, OrderRowRepo>();
             services.AddScoped<IOrderRowService, OrderRowService>();
+
+            services.AddScoped<IProductRepo, ProductRepo>();
+            services.AddScoped<IProductService, ProductService>();
+
+            services.AddScoped<IReceiptRepo, ReceiptRepo>();
+            services.AddScoped<IReceiptService, ReceiptService>();
+
+
+
+
+            //-------------------------------------------------------
 
             services.AddMvc();
 
