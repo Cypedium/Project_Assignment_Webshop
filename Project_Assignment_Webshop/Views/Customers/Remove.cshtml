@@ -1,0 +1,30 @@
+﻿@model Customer
+@{
+    ViewData["Title"] = "Remove";
+}
+<h1>Remove Customer</h1>
+<br />
+<form asp-action="Remove" method="post" class="btn btn-danger"> 
+    <input asp-for="Id" value="@Model.Id" type="hidden" />
+    <font style="align-content: stretch">
+
+        <label asp-for="F_Name"></label>
+        <input asp-for="F_Name" disabled />
+        <br />
+
+        <label asp-for="L_Name"></label>
+        <input asp-for="L_Name" disabled />
+        <br />
+
+        <label asp-for="E_mail"></label>
+        <input asp-for="E_mail" disabled />
+        <br />
+
+        <hr />
+
+        <input type="submit" value="Remove Product?" />
+        <br />
+
+        <input type="submit" value="Back To List" asp-action="Index" />
+    </font>
+</form>

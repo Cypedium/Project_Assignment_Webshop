@@ -99,7 +99,7 @@ namespace Project_Assignment_Webshop.Controllers
             return View(rename_Customer);
         }
         [HttpPost]
-        public IActionResult Edit(Customer customer)
+        public IActionResult Rename(Customer customer)
         {
             if (ModelState.IsValid)
             {

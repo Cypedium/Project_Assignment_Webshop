@@ -1,0 +1,29 @@
+﻿@model Customer
+@{
+    ViewData["Title"] = "Details";
+}
+<h1>Customer Details</h1>
+<hr />
+<br />
+
+<form asp-action="Details" method="post" class="btn btn-info col-lg-8"> @*No asp-controller is needed*@
+
+    <br />
+    <label asp-for="F_Name"></label>
+    <input asp-for="F_Name" disabled />
+    <br />
+
+    <label asp-for="L_Name"></label>
+    <input asp-for="L_Name" disabled />
+    <br />
+
+    <label asp-for="E_mail"></label>
+    <input asp-for="E_mail" disabled />
+    <br />
+
+    <label asp-for="CreditCard"></label>
+    <input asp-for="CreditCard" disabled />
+    <br />
+
+    <input type="submit" value="Back To List" asp-action="Index" class="align-content-end" />
+</form>

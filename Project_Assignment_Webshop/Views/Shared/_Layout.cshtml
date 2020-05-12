@@ -11,41 +11,59 @@
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-white border-bottom box-shadow mb-3">
             <div class="container">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">MVC-Database-SPA</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Assignment Webshop</a>
+                
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                            aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
 
-                <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
+                    <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
 
-                    <partial name="_LoginPartial" />
+                        <partial name="_LoginPartial" />
+                        <ul class="navbar-nav flex-grow-1">
 
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="App" asp-action=""> Home</a>
-                        </li>
-                        @*----Administrate Back End-----------------------------------------------------------------------------*@
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Products" asp-action="Index"> Modify Products</a>
-                        </li>
+                            @*---Home------------------------------------------------------------------------------------------------------*@
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="" asp-action=""> Home</a>
+                            </li>
+                            @*-------------------------------------------------------------------------------------------------------------*@
 
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Costumers" asp-action="Index"> Modify Costumers</a>
-                        </li>
+                            @*----Administrate Back End-----------------------------------------------------------------------------*@                              
 
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Orders" asp-action="Index"> Modify Orders</a>
-                        </li>
-                        @*------------------------------------------------------------------------------------------------------*@
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Cashiers" asp-action="Index">Cashier</a>
+                            </li>
 
-                        @*----Administrate Front End-----------------------------------------------------------------------------*@
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="API" asp-action="Get"> Fetch Products</a>
-                        </li>
-                        @*------------------------------------------------------------------------------------------------------*@
-                    </ul>
-                </div>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Customers" asp-action="Index">Customer</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Orders" asp-action="Index">Order</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="OrderRows" asp-action="Index">OrderRow</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Products" asp-action="Index">Product</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Receipts" asp-action="Index">Receipt</a>
+                            </li>
+                        
+                            @*------------------------------------------------------------------------------------------------------*@
+                   
+                            @*----Administrate Front End-----------------------------------------------------------------------------*@
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="App" asp-action="Get"> Fetch Products</a>
+                            </li>
+                            @*------------------------------------------------------------------------------------------------------*@
+                        </ul>
+                    </div>
             </div>
         </nav>
     </header>

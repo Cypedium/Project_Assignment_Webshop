@@ -1,0 +1,41 @@
+﻿@model Customer
+@{
+    ViewData["Title"] = "Rename";
+}
+<h1>Rename Product</h1>
+<br />
+@*asp-controller="TheController" isn't needed when the cshtml-file is in the same sub-folder as the controller*@
+<form asp-action="Rename" method="post" class="btn btn-warning">
+
+    <font style="align-content: stretch">
+
+        <div asp-validation-summary="All"></div>
+
+        <label asp-for="F_Name"></label>
+        <input asp-for="F_Name" />
+        <span asp-validation-for="F_Name"></span>
+        <br />
+
+        <label asp-for="L_Name"></label>
+        <input asp-for="L_Name" />
+        <span asp-validation-for="L_Name"></span>
+        <br />
+
+        <label asp-for="E_mail"></label>
+        <input asp-for="E_mail" />
+        <span asp-validation-for="E_mail"></span>
+        <br />
+
+        <label asp-for="CreditCard"></label>
+        <input asp-for="CreditCard" />
+        <span asp-validation-for="CreditCard"></span>
+        <br />
+
+        <hr />
+
+        <input type="submit" value="Rename Customer" asp-action="Edit" formmethod="post" />
+        <br />
+
+        <input type="submit" value="Back to List" asp-action="Index" />
+    </font>
+</form>
