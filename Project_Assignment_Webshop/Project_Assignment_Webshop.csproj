@@ -31,6 +31,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Content Remove="wwwroot\pic\salami.jpg" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Remove="ClientApp\src\components\FetchData.js" />
   </ItemGroup>
 
@@ -60,10 +64,7 @@
     <None Include="wwwroot\lib\jquery\dist\jquery.js" />
     <None Include="wwwroot\lib\jquery\dist\jquery.min.js" />
     <None Include="wwwroot\lib\jquery\dist\jquery.min.map" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="wwwroot\pic\" />
+    <None Include="wwwroot\pic\salami.jpg" />
   </ItemGroup>
 
   <Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('$(SpaRoot)node_modules') ">

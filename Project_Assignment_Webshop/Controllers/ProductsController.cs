@@ -115,43 +115,67 @@ namespace Project_Assignment_Webshop.Controllers
         //{
         //    if (ModelState.IsValid)
         //    {
-        //        if (productType == 0)
+        //        if (productType == 1)
         //        {
-        //            return RedirectToAction("Order_Pizza");
-        //        }
-        //        else if (productType == 1)
-        //        {
-        //            return RedirectToAction("Order_ProteinType");
+        //            return RedirectToAction("Order_Pizza_Klass_1");
         //        }
         //        else if (productType == 2)
-        //        {
-        //            return RedirectToAction("Order_Sallad");
+        //       {
+        //           return RedirectToAction("Order_Pizza_Klass_2");
         //        }
         //        else if (productType == 3)
-        //        {
-        //            return RedirectToAction("Order_Hamburger");
+        //       {
+        //           return RedirectToAction("Order_Pizza_Klass_3");
         //        }
         //        else if (productType == 4)
-        //        {
-        //            return RedirectToAction("Order_HotDog");
+        //       {
+        //           return RedirectToAction("Order_Pizza_Special");
         //        }
         //        else if (productType == 5)
         //        {
-        //            return RedirectToAction("Order_ALaCarte");
+        //            return RedirectToAction("Order_Sallad");
         //        }
         //        else if (productType == 6)
         //        {
-        //            return RedirectToAction("Order_Tillbehör");
+        //            return RedirectToAction("Order_Hamburgare");
         //        }
-        //        else if (productType == 7)
+        //         else if (productType == 7)
         //        {
-        //            return RedirectToAction("Order_Såser");
+        //            return RedirectToAction("Order_Korv");
         //        }
         //        else if (productType == 8)
         //        {
+        //            return RedirectToAction("Order_A_La_Carte");
+        //        }
+        //        else if (productType == 10)
+        //        {
+        //            return RedirectToAction("Order_Kebab");
+        //        }
+        //         else if (productType == 11)
+        //        {
+        //            return RedirectToAction("Order_Gyros");
+        //        }
+        //         else if (productType == 12)
+        //        {
+        //            return RedirectToAction("Order_Kyckling");
+        //        }
+        //         else if (productType == 13)
+        //        {
+        //            return RedirectToAction("Order_Falafel");
+        //        }
+        //        else if (productType == 20)
+        //        {
+        //            return RedirectToAction("Order_Tillbehör");
+        //        }
+        //        else if (productType == 21)
+        //        {
+        //            return RedirectToAction("Order_Såser");
+        //        }
+        //        else if (productType == 22)
+        //        {
         //            return RedirectToAction("Order_Drycker");
         //        }
-        //        else if (productType < 0 && productType > 8)
+        //        else if ((productType < 1 && productType > 13) && !(productType > 19 && productType < 23))
         //        {
         //            return RedirectToAction("Index");
         //        }

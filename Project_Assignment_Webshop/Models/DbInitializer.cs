@@ -17,8 +17,9 @@ namespace Project_Assignment_Webshop.Models
             // Check if our database is created if not then create it
             context.Database.EnsureCreated();
 
-            //Look for any Databasedata
+            //Look for Data in the Db
             if (context.Roles.Any() &&
+                context.Users.Any() &&
                 context.Products.Any() &&
                 context.OrderRows.Any()
                 //context.Assignments.Any() &&
@@ -41,6 +42,8 @@ namespace Project_Assignment_Webshop.Models
                 roleManager.CreateAsync(role).Wait();
             }
 
+            //-------------------------------------------------------//
+
             //--------------Users seed-------------------------------//
 
             IdentityUser[] identityUsers = new IdentityUser[]
@@ -59,37 +62,444 @@ namespace Project_Assignment_Webshop.Models
                 userManager.CreateAsync(identityUsers[i], passwords[i]);
             }
 
+            //--------------------------------------------------------//
+
             //----------Role to Users seed----------------------------//
 
 
+            //--------------------------------------------------------//
 
 
             //-------Students seeed-----------------------------------//
+           
+            var productSeed = new Product[]
+            {
+                
+            /*--Pizza Klass 1----------------------------------------*/
+            new Product()
+                {
+                    ProductType = 1,
+                    Number =  1,
+                    Name = "Vesuvo",
+                    Description = "Skinka",
+                    Price = 70
+                },
 
-            //var studentSeed = new Student[]
-            //{
-            //    new Student(){
-            //        F_Name = "Kent",
-            //        L_Name = "Olsson",
-            //        E_mail = "kent.olsson@gmail.com"
-            //    },
-            //    new Student(){
-            //        F_Name = "Max",
-            //        L_Name = "Olsson",
-            //        E_mail = "max.olsson@gmail.com"
-            //    },
-            //    new Student(){
-            //        F_Name = "Tindra",
-            //        L_Name = "Snövit",
-            //        E_mail = "tindra.snövit@gmail.com"
-            //    }
-            //};
+                new Product()
+                {
+                    ProductType = 1,
+                    Number =  2,
+                    Name = "Bolognese",
+                    Description = "Köttfärssås, lök",
+                    Price = 70
+                },
 
-            //foreach (Student student in studentSeed)
-            //{
-            //    context.Students.Add(student);
-            //}
-            //context.SaveChanges();
+                new Product()
+                {
+                    ProductType = 1,
+                    Number =  3,
+                    Name = "Calzone",
+                    Description = "Skinka (Inbakad)",
+                    Price = 70
+                },
+
+                new Product()
+                {
+                    ProductType = 1,
+                    Number =  4,
+                    Name = "Salami",
+                    Description = "Salami, Färsk Vitlök",
+                    Price = 70
+                },
+
+                new Product()
+                {
+                    ProductType = 1,
+                    Number =  5,
+                    Name = "Opera",
+                    Description = "Skinka Tonfisk",
+                    Price = 70
+                },
+
+                new Product()
+                {
+                    ProductType = 1,
+                    Number =  6,
+                    Name = "Hawaii",
+                    Description = "Skinka, Ananas",
+                    Price = 70
+                },
+
+                new Product()
+                {
+                    ProductType = 1,
+                    Number =  7,
+                    Name = "Capricciosa",
+                    Description = "Skinka, Championer",
+                    Price = 70
+                },
+
+                new Product()
+                {
+                    ProductType = 1,
+                    Number =  8,
+                    Name = "Banana",
+                    Description = "Skinka, Banan, Ananas, Curry",
+                    Price = 70
+                },
+                /*--Pizza Klass 2------------*/
+                new Product()
+                 {
+                    ProductType = 2,
+                    Number =  9,
+                    Name = "Mama Mia",
+                    Description = "Tonfisk, Räkor, Paprika",
+                    Price = 75
+                },
+
+                new Product()
+                 {
+                    ProductType = 2,
+                    Number =  10,
+                    Name = "Roma",
+                    Description = "Champinjoner, Räkor",
+                    Price = 75
+                },
+
+                new Product()
+                 {
+                    ProductType = 2,
+                    Number =  11,
+                    Name = "Bussola",
+                    Description = "Skinka, Räkor",
+                    Price = 75
+                },
+
+                new Product()
+                 {
+                    ProductType = 2,
+                    Number =  12,
+                    Name = "Cleopatra",
+                    Description = "Bacon, Lök Räkor",
+                    Price = 75
+                },
+
+                new Product()
+                 {
+                    ProductType = 2,
+                    Number =  13,
+                    Name = "Vegetarisk",
+                    Description = "Champinjoner, Lök, Paprika, Ananas, Oliver, Kronärtskocka",
+                    Price = 75
+                },
+
+                new Product()
+                 {
+                    ProductType = 2,
+                    Number =  14,
+                    Name = "Kreta",
+                    Description = "Pepperonikorv, Salladsost, Färsk Tomat, Vitlök, Mozzarella",
+                    Price = 75
+                },
+
+                new Product()
+                 {
+                    ProductType = 2,
+                    Number =  15,
+                    Name = "Victoria",
+                    Description = "Kyckling, Ananas, Banan, Curry",
+                    Price = 75
+                },
+
+                /*--Pizza Klass 3-----------------------------*/
+                new Product()
+                 {
+                    ProductType = 3,
+                    Number =  16,
+                    Name = "Kebabpizza",
+                    Description = "Kebab, Lök, Tomat, Pefferoni, Vitlöksås",
+                    Price = 80
+                },
+
+                new Product()
+                 {
+                    ProductType = 3,
+                    Number =  17,
+                    Name = "Gyrospizza",
+                    Description = "Gyros, Lök, Tomat, Pefferoni, Vitlöksås",
+                    Price = 80
+                },
+
+                new Product()
+                {
+                    ProductType = 3,
+                    Number =  16,
+                    Name = "Qautro",
+                    Description = "Skinka, Räkor, Musslor, Championer, Kronärtskocka",
+                    Price = 80
+                },
+
+                /*-----Pizza Special-----------*/
+                new Product()
+                {   
+                    ProductType = 4, 
+                    Number = 17,
+                    Name = "Josefins Special",
+                    Description = "Kebab, Ananas, Lök, Tomat, Pefferoni, Vitlöksås",
+                    Price = 90
+                },
+
+                new Product()
+                {   
+                    ProductType = 4,
+                    Number = 17,
+                    Name = "Mikaels Special",
+                    Description = "Salami, Färsk Vitlök, Ägg, Championer, Röd Chili",
+                    Price = 90
+                },
+
+                new Product()
+                {
+                    ProductType = 4,
+                    Number = 17,
+                    Name = "Rinkabyholm",
+                    Description = "Kebab/Gyros, Tomater, Salladsost, Mozzarella, Tomat",
+                    Price = 90
+                },
+
+                 /*--Sallader-----------------*/
+                new Product()
+                {
+                    ProductType = 5,
+                    Number = 18,
+                    Name = "Räksallad",
+                    Description = "Räkor, Ost, Sparris, Ananas, Citron",
+                    Price = 80
+                },
+
+                new Product()
+                {
+                    ProductType = 5,
+                    Number = 19,
+                    Name = "Tonfisksallad",
+                    Description = "Tonfisk, Paprika, Ost, Ananas, Citron",
+                    Price = 80
+                },
+
+                new Product()
+                {
+                    ProductType = 5,
+                    Number = 18,
+                    Name = "Kebab/Gyros sallad",
+                    Description = "Kebab/Gyros, Oliver, Salladsost",
+                    Price = 80
+                },
+
+                /*--Hamburgare---------------*/
+                new Product()
+                {
+                    ProductType = 6, 
+                    Number = 19,
+                    Name = "Happy Burger 45 g",
+                    Description = "Ketchup",
+                    Price = 40
+                },
+
+                new Product()
+                {
+                    ProductType = 6,
+                    Number = 19,
+                    Name = "Högrev 200 g",
+                    Description = "Högrev Angus, Hickoryrökt Bacon, Amerikansk Dressing, Ketchup, Sallad, Gurka, Tomat",
+                    Price = 99
+                },
+
+                new Product()
+                {
+                    ProductType = 6,
+                    Number = 19,
+                    Name = "SuperBurger 150 g",
+                    Description = "Nötkött, Ost, Dressing, Ketchup, Gurka, Tomat",
+                    Price = 45
+                },
+
+                 /*--Korv------------------------*/
+                new Product()
+                {
+                    ProductType = 7, 
+                    Number = 20,
+                    Name = "Smal Kokt",
+                    Description = "Bröd",
+                    Price = 20
+                },
+
+                new Product()
+                {
+                    ProductType = 7,
+                    Number = 21,
+                    Name = "Smal Grillad",
+                    Description = "Strips",
+                    Price = 45
+                },
+
+                new Product()
+                {
+                    ProductType = 7,
+                    Number = 21,
+                    Name = "Smal Grillad Special",
+                    Description = "Bröd, Mos",
+                    Price = 15
+                },
+
+                /*--A La Carte----------------*/
+                new Product()
+                {
+                    ProductType = 8, 
+                    Number = 22,
+                    Name = "Köttbullar med mos",
+                    Description = "10 st Köttbullar, lingon, mos",
+                    Price = 55
+                },
+
+                new Product()
+                {
+                    ProductType = 8,
+                    Number = 23,
+                    Name = "Lövbit med Strips",
+                    Description = "Lövbit, Strips, Perslijesmör, sallad, gurka, tomat",
+                    Price = 55
+                },
+
+                /*--Kebab----------------*/
+                new Product()
+                {
+                    ProductType = 10, 
+                    Number = 24,
+                    Name = "Kebab med bröd",
+                    Description = "Kebab, Pitabröd, Sallad, Röd Lök, Gurka, Tomat, Pefferoni, Sås",
+                    Price = 65
+                },
+
+                new Product()
+                {
+                    ProductType = 11,
+                    Number = 24,
+                    Name = "Gyros med bröd",
+                    Description = "Gyros, Pitabröd, Sallad, Röd Lök, Gurka, Tomat, Pefferoni, Sås",
+                    Price = 65
+                },
+
+                new Product()
+                {
+                    ProductType = 12,
+                    Number = 24,
+                    Name = "Kycklingrulle",
+                    Description = "Kyckling, Tunnbröd, Sallad, Röd Lök, Gurka, Tomat, Pefferoni, Sås",
+                    Price = 80
+                },
+
+                new Product()
+                {
+                    ProductType = 13,
+                    Number = 24,
+                    Name = "Falafeltallrik",
+                    Description = "Falafel, Strips, Sallad, Röd Lök, Gurka, Tomat, Pefferoni, Sås",
+                    Price = 80
+                },
+
+                /*Tillbehör*/
+                new Product()
+                {
+                    ProductType = 20, 
+                    Number = 1,
+                    Name = "Pizzasallad",
+                    Description = "Vitkål, olja, kryddor",
+                    Price = 5
+                },
+
+                new Product()
+                {
+                    ProductType = 20,
+                    Number = 2,
+                    Name = "Rostad Lök",
+                    Description = "Gul Lök, kryddor",
+                    Price = 5
+                },
+
+                new Product()
+                {
+                    ProductType = 20,
+                    Number = 3,
+                    Name = "Ananas",
+                    Description = "Ananas",
+                    Price = 5
+                },
+
+                /*--Såser------------------*/
+                new Product()
+                {
+                    ProductType = 21, 
+                    Number = 1,
+                    Name = "Vitlökssås",
+                    Description = "Creme Fraiche, vitlök, olivolja",
+                    Price = 5
+                },
+
+                new Product()
+                {
+                    ProductType = 21,
+                    Number = 2,
+                    Name = "Röd stark sås",
+                    Description = "Tomatsås, Röd Chili, Grön Chili, Olivolja",
+                    Price = 5
+                },
+
+                new Product()
+                {
+                    ProductType = 21,
+                    Number = 3,
+                    Name = "Road Island",
+                    Description = "Road Island",
+                    Price = 5
+                },
+
+                /*--Drycker---------------*/
+                new Product()
+                {
+                    ProductType = 22, 
+                    Number = 1,
+                    Name = "Coca cola",
+                    Description = "33 ml",
+                    Price = 15
+                },
+
+                new Product()
+                {
+                    ProductType = 22,
+                    Number = 2,
+                    Name = "Mineralvatten",
+                    Description = "50 ml",
+                    Price = 20
+                },
+
+                new Product()
+                {
+                    ProductType = 22,
+                    Number = 3,
+                    Name = "Fanta",
+                    Description = "1 l",
+                    Price = 40
+                },
+
+            };
+
+            foreach (Product product in productSeed)
+            {
+                context.Products.Add(product);
+            }
+            context.SaveChanges();
+
+            //--------------------------------------------------------------//
 
             ////-------Courses seeed-----------------------------------//
 
