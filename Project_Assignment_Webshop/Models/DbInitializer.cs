@@ -20,11 +20,7 @@ namespace Project_Assignment_Webshop.Models
             //Look for Data in the Db
             if (context.Roles.Any() &&
                 context.Users.Any() &&
-                context.Products.Any() &&
-                context.OrderRows.Any()
-                //context.Assignments.Any() &&
-                //context.Teachers.Any()
-                )
+                context.Products.Any() )
             {
                 return; //DB has been seeded
             }

@@ -10,8 +10,8 @@ using Project_Assignment_Webshop.Models;
 namespace Project_Assignment_Webshop.Migrations
 {
     [DbContext(typeof(HandleWebshopsDbContext))]
-    [Migration("20200511170752_New_Fields_in_Classes_rev4")]
-    partial class New_Fields_in_Classes_rev4
+    [Migration("20200513125235_Configured_Seeding_in_Initilializer")]
+    partial class Configured_Seeding_in_Initilializer
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

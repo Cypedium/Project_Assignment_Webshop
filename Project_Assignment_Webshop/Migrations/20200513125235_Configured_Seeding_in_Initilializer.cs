@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Project_Assignment_Webshop.Migrations
 {
-    public partial class New_Fields_in_Classes_rev4 : Migration
+    public partial class Configured_Seeding_in_Initilializer : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
