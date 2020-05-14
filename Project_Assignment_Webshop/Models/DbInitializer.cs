@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity;
 
@@ -8,6 +9,10 @@ namespace Project_Assignment_Webshop.Models
 {
     public class DbInitializer
     {
+        private static readonly int menu_number = 0;
+        private static readonly int accessories_number = 0;
+        private static readonly int drinks_number = 0;
+        private static readonly int productType_number = 0;
         internal static void Initialize(
             HandleWebshopsDbContext context,
             RoleManager<IdentityRole> roleManager,
@@ -18,9 +23,9 @@ namespace Project_Assignment_Webshop.Models
             context.Database.EnsureCreated();
 
             //Look for Data in the Db
-            if (context.Roles.Any() &&
-                context.Users.Any() &&
-                context.Products.Any() )
+            if (
+                context.Products.Any()
+                )
             {
                 return; //DB has been seeded
             }
@@ -33,12 +38,11 @@ namespace Project_Assignment_Webshop.Models
                 new IdentityRole("God")
 
             };
+
             foreach (var role in identityRoles)
             {
                 roleManager.CreateAsync(role).Wait();
             }
-
-            //-------------------------------------------------------//
 
             //--------------Users seed-------------------------------//
 
@@ -58,24 +62,21 @@ namespace Project_Assignment_Webshop.Models
                 userManager.CreateAsync(identityUsers[i], passwords[i]);
             }
 
-            //--------------------------------------------------------//
-
             //----------Role to Users seed----------------------------//
 
 
-            //--------------------------------------------------------//
+           //--Write role to users seed here---
 
 
-            //-------Students seeed-----------------------------------//
-           
-            var productSeed = new Product[]
-            {
-                
-            /*--Pizza Klass 1----------------------------------------*/
-            new Product()
+            //-------Products seeed-----------------------------------//
+          
+            Product[] productSeed = new Product[]
+            {               
+                /*--Pizza Klass 1----------------------------------------*/
+                new Product()
                 {
-                    ProductType = 1,
-                    Number =  1,
+                    ProductType = productType_number+1,
+                    Number =  menu_number+1,
                     Name = "Vesuvo",
                     Description = "Skinka",
                     Price = 70
@@ -83,17 +84,8 @@ namespace Project_Assignment_Webshop.Models
 
                 new Product()
                 {
-                    ProductType = 1,
-                    Number =  2,
-                    Name = "Bolognese",
-                    Description = "Köttfärssås, lök",
-                    Price = 70
-                },
-
-                new Product()
-                {
-                    ProductType = 1,
-                    Number =  3,
+                    ProductType = productType_number,
+                    Number =  menu_number+1,
                     Name = "Calzone",
                     Description = "Skinka (Inbakad)",
                     Price = 70
@@ -101,126 +93,55 @@ namespace Project_Assignment_Webshop.Models
 
                 new Product()
                 {
-                    ProductType = 1,
-                    Number =  4,
+                    ProductType = productType_number,
+                    Number =  menu_number+1,
                     Name = "Salami",
                     Description = "Salami, Färsk Vitlök",
                     Price = 70
                 },
-
-                new Product()
-                {
-                    ProductType = 1,
-                    Number =  5,
-                    Name = "Opera",
-                    Description = "Skinka Tonfisk",
-                    Price = 70
-                },
-
-                new Product()
-                {
-                    ProductType = 1,
-                    Number =  6,
-                    Name = "Hawaii",
-                    Description = "Skinka, Ananas",
-                    Price = 70
-                },
-
-                new Product()
-                {
-                    ProductType = 1,
-                    Number =  7,
-                    Name = "Capricciosa",
-                    Description = "Skinka, Championer",
-                    Price = 70
-                },
-
-                new Product()
-                {
-                    ProductType = 1,
-                    Number =  8,
-                    Name = "Banana",
-                    Description = "Skinka, Banan, Ananas, Curry",
-                    Price = 70
-                },
+               
                 /*--Pizza Klass 2------------*/
                 new Product()
-                 {
-                    ProductType = 2,
-                    Number =  9,
-                    Name = "Mama Mia",
-                    Description = "Tonfisk, Räkor, Paprika",
-                    Price = 75
-                },
-
-                new Product()
-                 {
-                    ProductType = 2,
-                    Number =  10,
+                {
+                    ProductType = productType_number+1,
+                    Number =  menu_number+1,
                     Name = "Roma",
                     Description = "Champinjoner, Räkor",
                     Price = 75
                 },
 
                 new Product()
-                 {
-                    ProductType = 2,
-                    Number =  11,
-                    Name = "Bussola",
-                    Description = "Skinka, Räkor",
-                    Price = 75
-                },
-
-                new Product()
-                 {
-                    ProductType = 2,
-                    Number =  12,
-                    Name = "Cleopatra",
-                    Description = "Bacon, Lök Räkor",
-                    Price = 75
-                },
-
-                new Product()
-                 {
-                    ProductType = 2,
-                    Number =  13,
+                {
+                    ProductType = productType_number,
+                    Number =  menu_number+1,
                     Name = "Vegetarisk",
                     Description = "Champinjoner, Lök, Paprika, Ananas, Oliver, Kronärtskocka",
                     Price = 75
                 },
 
                 new Product()
-                 {
-                    ProductType = 2,
-                    Number =  14,
+                {
+                    ProductType = productType_number,
+                    Number =  menu_number+1,
                     Name = "Kreta",
                     Description = "Pepperonikorv, Salladsost, Färsk Tomat, Vitlök, Mozzarella",
                     Price = 75
                 },
 
-                new Product()
-                 {
-                    ProductType = 2,
-                    Number =  15,
-                    Name = "Victoria",
-                    Description = "Kyckling, Ananas, Banan, Curry",
-                    Price = 75
-                },
-
                 /*--Pizza Klass 3-----------------------------*/
                 new Product()
-                 {
-                    ProductType = 3,
-                    Number =  16,
+                {
+                    ProductType = productType_number+1,
+                    Number =  menu_number+1,
                     Name = "Kebabpizza",
                     Description = "Kebab, Lök, Tomat, Pefferoni, Vitlöksås",
                     Price = 80
                 },
 
                 new Product()
-                 {
-                    ProductType = 3,
-                    Number =  17,
+                {
+                    ProductType = productType_number,
+                    Number =  menu_number+1,
                     Name = "Gyrospizza",
                     Description = "Gyros, Lök, Tomat, Pefferoni, Vitlöksås",
                     Price = 80
@@ -228,27 +149,27 @@ namespace Project_Assignment_Webshop.Models
 
                 new Product()
                 {
-                    ProductType = 3,
-                    Number =  16,
-                    Name = "Qautro",
+                    ProductType = productType_number,
+                    Number =  menu_number+1,
+                    Name = "Qautro Stagioni",
                     Description = "Skinka, Räkor, Musslor, Championer, Kronärtskocka",
                     Price = 80
                 },
 
                 /*-----Pizza Special-----------*/
                 new Product()
-                {   
-                    ProductType = 4, 
-                    Number = 17,
+                {
+                    ProductType = productType_number+1,
+                    Number = menu_number+1,
                     Name = "Josefins Special",
                     Description = "Kebab, Ananas, Lök, Tomat, Pefferoni, Vitlöksås",
                     Price = 90
                 },
 
                 new Product()
-                {   
-                    ProductType = 4,
-                    Number = 17,
+                {
+                    ProductType = productType_number,
+                    Number = menu_number+1,
                     Name = "Mikaels Special",
                     Description = "Salami, Färsk Vitlök, Ägg, Championer, Röd Chili",
                     Price = 90
@@ -256,18 +177,18 @@ namespace Project_Assignment_Webshop.Models
 
                 new Product()
                 {
-                    ProductType = 4,
-                    Number = 17,
+                    ProductType = productType_number,
+                    Number = menu_number+1,
                     Name = "Rinkabyholm",
                     Description = "Kebab/Gyros, Tomater, Salladsost, Mozzarella, Tomat",
                     Price = 90
                 },
 
-                 /*--Sallader-----------------*/
+                    /*--Sallader-----------------*/
                 new Product()
                 {
-                    ProductType = 5,
-                    Number = 18,
+                    ProductType = productType_number+1,
+                    Number = menu_number+1,
                     Name = "Räksallad",
                     Description = "Räkor, Ost, Sparris, Ananas, Citron",
                     Price = 80
@@ -275,8 +196,8 @@ namespace Project_Assignment_Webshop.Models
 
                 new Product()
                 {
-                    ProductType = 5,
-                    Number = 19,
+                    ProductType = productType_number,
+                    Number = menu_number+1,
                     Name = "Tonfisksallad",
                     Description = "Tonfisk, Paprika, Ost, Ananas, Citron",
                     Price = 80
@@ -284,8 +205,8 @@ namespace Project_Assignment_Webshop.Models
 
                 new Product()
                 {
-                    ProductType = 5,
-                    Number = 18,
+                    ProductType = productType_number,
+                    Number = menu_number+1,
                     Name = "Kebab/Gyros sallad",
                     Description = "Kebab/Gyros, Oliver, Salladsost",
                     Price = 80
@@ -294,8 +215,8 @@ namespace Project_Assignment_Webshop.Models
                 /*--Hamburgare---------------*/
                 new Product()
                 {
-                    ProductType = 6, 
-                    Number = 19,
+                    ProductType = productType_number+1,
+                    Number = menu_number+1,
                     Name = "Happy Burger 45 g",
                     Description = "Ketchup",
                     Price = 40
@@ -303,8 +224,8 @@ namespace Project_Assignment_Webshop.Models
 
                 new Product()
                 {
-                    ProductType = 6,
-                    Number = 19,
+                    ProductType = productType_number,
+                    Number = menu_number+1,
                     Name = "Högrev 200 g",
                     Description = "Högrev Angus, Hickoryrökt Bacon, Amerikansk Dressing, Ketchup, Sallad, Gurka, Tomat",
                     Price = 99
@@ -312,18 +233,18 @@ namespace Project_Assignment_Webshop.Models
 
                 new Product()
                 {
-                    ProductType = 6,
-                    Number = 19,
+                    ProductType = productType_number,
+                    Number = menu_number+1,
                     Name = "SuperBurger 150 g",
                     Description = "Nötkött, Ost, Dressing, Ketchup, Gurka, Tomat",
                     Price = 45
                 },
 
-                 /*--Korv------------------------*/
+                /*--Korv------------------------*/
                 new Product()
                 {
-                    ProductType = 7, 
-                    Number = 20,
+                    ProductType = productType_number+1,
+                    Number = menu_number+1,
                     Name = "Smal Kokt",
                     Description = "Bröd",
                     Price = 20
@@ -331,8 +252,8 @@ namespace Project_Assignment_Webshop.Models
 
                 new Product()
                 {
-                    ProductType = 7,
-                    Number = 21,
+                    ProductType = productType_number,
+                    Number = menu_number+1,
                     Name = "Smal Grillad",
                     Description = "Strips",
                     Price = 45
@@ -340,8 +261,8 @@ namespace Project_Assignment_Webshop.Models
 
                 new Product()
                 {
-                    ProductType = 7,
-                    Number = 21,
+                    ProductType = productType_number,
+                    Number = menu_number+1,
                     Name = "Smal Grillad Special",
                     Description = "Bröd, Mos",
                     Price = 15
@@ -350,8 +271,8 @@ namespace Project_Assignment_Webshop.Models
                 /*--A La Carte----------------*/
                 new Product()
                 {
-                    ProductType = 8, 
-                    Number = 22,
+                    ProductType = productType_number+1,
+                    Number = menu_number+1,
                     Name = "Köttbullar med mos",
                     Description = "10 st Köttbullar, lingon, mos",
                     Price = 55
@@ -359,18 +280,27 @@ namespace Project_Assignment_Webshop.Models
 
                 new Product()
                 {
-                    ProductType = 8,
-                    Number = 23,
+                    ProductType = productType_number,
+                    Number = menu_number+1,
                     Name = "Lövbit med Strips",
                     Description = "Lövbit, Strips, Perslijesmör, sallad, gurka, tomat",
                     Price = 55
                 },
 
+                new Product()
+                {
+                    ProductType = productType_number,
+                    Number = menu_number+1,
+                    Name = "Panerad Flundra",
+                    Description = "Kalmarflundra, ströbröd, ägg",
+                    Price = 79
+                },
+
                 /*--Kebab----------------*/
                 new Product()
                 {
-                    ProductType = 10, 
-                    Number = 24,
+                    ProductType = productType_number+1,
+                    Number = menu_number+1,
                     Name = "Kebab med bröd",
                     Description = "Kebab, Pitabröd, Sallad, Röd Lök, Gurka, Tomat, Pefferoni, Sås",
                     Price = 65
@@ -378,8 +308,8 @@ namespace Project_Assignment_Webshop.Models
 
                 new Product()
                 {
-                    ProductType = 11,
-                    Number = 24,
+                    ProductType = productType_number+1,
+                    Number = menu_number+1,
                     Name = "Gyros med bröd",
                     Description = "Gyros, Pitabröd, Sallad, Röd Lök, Gurka, Tomat, Pefferoni, Sås",
                     Price = 65
@@ -387,8 +317,8 @@ namespace Project_Assignment_Webshop.Models
 
                 new Product()
                 {
-                    ProductType = 12,
-                    Number = 24,
+                    ProductType = productType_number+1,
+                    Number = menu_number+1,
                     Name = "Kycklingrulle",
                     Description = "Kyckling, Tunnbröd, Sallad, Röd Lök, Gurka, Tomat, Pefferoni, Sås",
                     Price = 80
@@ -396,18 +326,18 @@ namespace Project_Assignment_Webshop.Models
 
                 new Product()
                 {
-                    ProductType = 13,
-                    Number = 24,
+                    ProductType = productType_number+1,
+                    Number = menu_number+1,
                     Name = "Falafeltallrik",
                     Description = "Falafel, Strips, Sallad, Röd Lök, Gurka, Tomat, Pefferoni, Sås",
                     Price = 80
                 },
 
-                /*Tillbehör*/
+                /*Tillbehör/Accessories*/
                 new Product()
                 {
-                    ProductType = 20, 
-                    Number = 1,
+                    ProductType = productType_number+1,
+                    Number = accessories_number+1,
                     Name = "Pizzasallad",
                     Description = "Vitkål, olja, kryddor",
                     Price = 5
@@ -415,8 +345,8 @@ namespace Project_Assignment_Webshop.Models
 
                 new Product()
                 {
-                    ProductType = 20,
-                    Number = 2,
+                    ProductType = productType_number,
+                    Number = accessories_number+1,
                     Name = "Rostad Lök",
                     Description = "Gul Lök, kryddor",
                     Price = 5
@@ -424,8 +354,8 @@ namespace Project_Assignment_Webshop.Models
 
                 new Product()
                 {
-                    ProductType = 20,
-                    Number = 3,
+                    ProductType = productType_number,
+                    Number = accessories_number+1,
                     Name = "Ananas",
                     Description = "Ananas",
                     Price = 5
@@ -434,8 +364,8 @@ namespace Project_Assignment_Webshop.Models
                 /*--Såser------------------*/
                 new Product()
                 {
-                    ProductType = 21, 
-                    Number = 1,
+                    ProductType = productType_number+1,
+                    Number = accessories_number+1,
                     Name = "Vitlökssås",
                     Description = "Creme Fraiche, vitlök, olivolja",
                     Price = 5
@@ -443,8 +373,8 @@ namespace Project_Assignment_Webshop.Models
 
                 new Product()
                 {
-                    ProductType = 21,
-                    Number = 2,
+                    ProductType = productType_number,
+                    Number = accessories_number+1,
                     Name = "Röd stark sås",
                     Description = "Tomatsås, Röd Chili, Grön Chili, Olivolja",
                     Price = 5
@@ -452,8 +382,8 @@ namespace Project_Assignment_Webshop.Models
 
                 new Product()
                 {
-                    ProductType = 21,
-                    Number = 3,
+                    ProductType = productType_number,
+                    Number = accessories_number+1,
                     Name = "Road Island",
                     Description = "Road Island",
                     Price = 5
@@ -462,8 +392,8 @@ namespace Project_Assignment_Webshop.Models
                 /*--Drycker---------------*/
                 new Product()
                 {
-                    ProductType = 22, 
-                    Number = 1,
+                    ProductType = productType_number+1,
+                    Number = drinks_number+1,
                     Name = "Coca cola",
                     Description = "33 ml",
                     Price = 15
@@ -471,8 +401,8 @@ namespace Project_Assignment_Webshop.Models
 
                 new Product()
                 {
-                    ProductType = 22,
-                    Number = 2,
+                    ProductType = productType_number,
+                    Number = drinks_number+1,
                     Name = "Mineralvatten",
                     Description = "50 ml",
                     Price = 20
@@ -480,12 +410,12 @@ namespace Project_Assignment_Webshop.Models
 
                 new Product()
                 {
-                    ProductType = 22,
-                    Number = 3,
+                    ProductType = productType_number,
+                    Number = drinks_number+1,
                     Name = "Fanta",
                     Description = "1 l",
                     Price = 40
-                },
+                }
 
             };
 
@@ -494,8 +424,7 @@ namespace Project_Assignment_Webshop.Models
                 context.Products.Add(product);
             }
             context.SaveChanges();
-
-            //--------------------------------------------------------------//
+            
 
             ////-------Courses seeed-----------------------------------//
 

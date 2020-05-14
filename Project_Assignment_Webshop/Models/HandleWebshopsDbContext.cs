@@ -18,11 +18,10 @@ namespace Project_Assignment_Webshop.Models
         public DbSet<Product> Products { get; set; }
         public DbSet<Receipt> Receipts { get; set; }
 
-        //--Only needed with many to many database realtionships-------------------------------------------
         protected override void OnModelCreating(ModelBuilder modelbuilder)
         {
             base.OnModelCreating(modelbuilder);
-
+            //One to One configuration OrderRow-Product
             modelbuilder.Entity<OrderRow>()
                 .HasOne(p => p.Product)
                 .WithOne(o => o.OrderRow)

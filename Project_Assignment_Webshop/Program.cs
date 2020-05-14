@@ -44,8 +44,9 @@ namespace Project_Assignment_Webshop
         public static IHostBuilder CreateHostBuilder(string[] args) =>
             Host.CreateDefaultBuilder(args)
                 .ConfigureWebHostDefaults(webBuilder =>
-                {
-                    webBuilder.UseStartup<Startup>();
-                });
+                    {
+                        webBuilder.UseStartup<Startup>();
+                    }
+                );
     }
 }

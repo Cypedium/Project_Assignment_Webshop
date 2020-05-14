@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Project_Assignment_Webshop.Migrations
 {
-    public partial class Configured_Seeding_in_Initilializer : Migration
+    public partial class Test_Initiliazer : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
