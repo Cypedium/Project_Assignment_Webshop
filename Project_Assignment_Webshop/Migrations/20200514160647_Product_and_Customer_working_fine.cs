@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Project_Assignment_Webshop.Migrations
 {
-    public partial class Test_Initiliazer : Migration
+    public partial class Product_and_Customer_working_fine : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -277,7 +277,6 @@ namespace Project_Assignment_Webshop.Migrations
                     Name = table.Column<string>(nullable: false),
                     Description = table.Column<string>(nullable: false),
                     Price = table.Column<int>(nullable: false),
-                    Picture = table.Column<byte>(nullable: false),
                     OrderRowForeignKey = table.Column<int>(nullable: false)
                 },
                 constraints: table =>

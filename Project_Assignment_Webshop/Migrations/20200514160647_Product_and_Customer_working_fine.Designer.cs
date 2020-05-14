@@ -10,8 +10,8 @@ using Project_Assignment_Webshop.Models;
 namespace Project_Assignment_Webshop.Migrations
 {
     [DbContext(typeof(HandleWebshopsDbContext))]
-    [Migration("20200514092644_Test_Initiliazer")]
-    partial class Test_Initiliazer
+    [Migration("20200514160647_Product_and_Customer_working_fine")]
+    partial class Product_and_Customer_working_fine
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -357,9 +357,6 @@ namespace Project_Assignment_Webshop.Migrations
 
                     b.Property<int>("OrderRowForeignKey")
                         .HasColumnType("int");
-
-                    b.Property<byte>("Picture")
-                        .HasColumnType("tinyint");
 
                     b.Property<int>("Price")
                         .HasColumnType("int");

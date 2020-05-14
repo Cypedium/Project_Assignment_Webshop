@@ -70,10 +70,9 @@ namespace Project_Assignment_Webshop.Models
 
             //-------Products seeed-----------------------------------//
           
-            Product[] productSeed = new Product[]
-            {               
-                /*--Pizza Klass 1----------------------------------------*/
-                new Product()
+            var productSeed = new Product[]
+            {                
+                new Product() /*--Pizza Klass 1--*/
                 {
                     ProductType = productType_number+1,
                     Number =  menu_number+1,
@@ -81,7 +80,6 @@ namespace Project_Assignment_Webshop.Models
                     Description = "Skinka",
                     Price = 70
                 },
-
                 new Product()
                 {
                     ProductType = productType_number,
@@ -90,7 +88,6 @@ namespace Project_Assignment_Webshop.Models
                     Description = "Skinka (Inbakad)",
                     Price = 70
                 },
-
                 new Product()
                 {
                     ProductType = productType_number,
@@ -98,10 +95,8 @@ namespace Project_Assignment_Webshop.Models
                     Name = "Salami",
                     Description = "Salami, Färsk Vitlök",
                     Price = 70
-                },
-               
-                /*--Pizza Klass 2------------*/
-                new Product()
+                },                            
+                new Product() /*--Pizza Klass 2------------*/
                 {
                     ProductType = productType_number+1,
                     Number =  menu_number+1,
@@ -109,7 +104,6 @@ namespace Project_Assignment_Webshop.Models
                     Description = "Champinjoner, Räkor",
                     Price = 75
                 },
-
                 new Product()
                 {
                     ProductType = productType_number,
@@ -118,7 +112,6 @@ namespace Project_Assignment_Webshop.Models
                     Description = "Champinjoner, Lök, Paprika, Ananas, Oliver, Kronärtskocka",
                     Price = 75
                 },
-
                 new Product()
                 {
                     ProductType = productType_number,
@@ -126,10 +119,8 @@ namespace Project_Assignment_Webshop.Models
                     Name = "Kreta",
                     Description = "Pepperonikorv, Salladsost, Färsk Tomat, Vitlök, Mozzarella",
                     Price = 75
-                },
-
-                /*--Pizza Klass 3-----------------------------*/
-                new Product()
+                },                
+                new Product() /*--Pizza Klass 3--*/
                 {
                     ProductType = productType_number+1,
                     Number =  menu_number+1,
@@ -137,7 +128,6 @@ namespace Project_Assignment_Webshop.Models
                     Description = "Kebab, Lök, Tomat, Pefferoni, Vitlöksås",
                     Price = 80
                 },
-
                 new Product()
                 {
                     ProductType = productType_number,
@@ -146,7 +136,6 @@ namespace Project_Assignment_Webshop.Models
                     Description = "Gyros, Lök, Tomat, Pefferoni, Vitlöksås",
                     Price = 80
                 },
-
                 new Product()
                 {
                     ProductType = productType_number,
@@ -154,10 +143,8 @@ namespace Project_Assignment_Webshop.Models
                     Name = "Qautro Stagioni",
                     Description = "Skinka, Räkor, Musslor, Championer, Kronärtskocka",
                     Price = 80
-                },
-
-                /*-----Pizza Special-----------*/
-                new Product()
+                },               
+                new Product() /*-----Pizza Special-----------*/
                 {
                     ProductType = productType_number+1,
                     Number = menu_number+1,
@@ -165,7 +152,6 @@ namespace Project_Assignment_Webshop.Models
                     Description = "Kebab, Ananas, Lök, Tomat, Pefferoni, Vitlöksås",
                     Price = 90
                 },
-
                 new Product()
                 {
                     ProductType = productType_number,
@@ -174,7 +160,6 @@ namespace Project_Assignment_Webshop.Models
                     Description = "Salami, Färsk Vitlök, Ägg, Championer, Röd Chili",
                     Price = 90
                 },
-
                 new Product()
                 {
                     ProductType = productType_number,
@@ -182,10 +167,8 @@ namespace Project_Assignment_Webshop.Models
                     Name = "Rinkabyholm",
                     Description = "Kebab/Gyros, Tomater, Salladsost, Mozzarella, Tomat",
                     Price = 90
-                },
-
-                    /*--Sallader-----------------*/
-                new Product()
+                },                   
+                new Product() /*--Sallader--*/
                 {
                     ProductType = productType_number+1,
                     Number = menu_number+1,
@@ -193,7 +176,6 @@ namespace Project_Assignment_Webshop.Models
                     Description = "Räkor, Ost, Sparris, Ananas, Citron",
                     Price = 80
                 },
-
                 new Product()
                 {
                     ProductType = productType_number,
@@ -202,7 +184,6 @@ namespace Project_Assignment_Webshop.Models
                     Description = "Tonfisk, Paprika, Ost, Ananas, Citron",
                     Price = 80
                 },
-
                 new Product()
                 {
                     ProductType = productType_number,
@@ -210,10 +191,8 @@ namespace Project_Assignment_Webshop.Models
                     Name = "Kebab/Gyros sallad",
                     Description = "Kebab/Gyros, Oliver, Salladsost",
                     Price = 80
-                },
-
-                /*--Hamburgare---------------*/
-                new Product()
+                },               
+                new Product() /*--Hamburgare--*/
                 {
                     ProductType = productType_number+1,
                     Number = menu_number+1,
@@ -221,7 +200,6 @@ namespace Project_Assignment_Webshop.Models
                     Description = "Ketchup",
                     Price = 40
                 },
-
                 new Product()
                 {
                     ProductType = productType_number,
@@ -230,7 +208,6 @@ namespace Project_Assignment_Webshop.Models
                     Description = "Högrev Angus, Hickoryrökt Bacon, Amerikansk Dressing, Ketchup, Sallad, Gurka, Tomat",
                     Price = 99
                 },
-
                 new Product()
                 {
                     ProductType = productType_number,
@@ -238,10 +215,8 @@ namespace Project_Assignment_Webshop.Models
                     Name = "SuperBurger 150 g",
                     Description = "Nötkött, Ost, Dressing, Ketchup, Gurka, Tomat",
                     Price = 45
-                },
-
-                /*--Korv------------------------*/
-                new Product()
+                },               
+                new Product() /*--Korv--*/
                 {
                     ProductType = productType_number+1,
                     Number = menu_number+1,
@@ -249,7 +224,6 @@ namespace Project_Assignment_Webshop.Models
                     Description = "Bröd",
                     Price = 20
                 },
-
                 new Product()
                 {
                     ProductType = productType_number,
@@ -258,7 +232,6 @@ namespace Project_Assignment_Webshop.Models
                     Description = "Strips",
                     Price = 45
                 },
-
                 new Product()
                 {
                     ProductType = productType_number,
@@ -266,10 +239,8 @@ namespace Project_Assignment_Webshop.Models
                     Name = "Smal Grillad Special",
                     Description = "Bröd, Mos",
                     Price = 15
-                },
-
-                /*--A La Carte----------------*/
-                new Product()
+                },               
+                new Product() /*--A La Carte--*/
                 {
                     ProductType = productType_number+1,
                     Number = menu_number+1,
@@ -277,7 +248,6 @@ namespace Project_Assignment_Webshop.Models
                     Description = "10 st Köttbullar, lingon, mos",
                     Price = 55
                 },
-
                 new Product()
                 {
                     ProductType = productType_number,
@@ -286,7 +256,6 @@ namespace Project_Assignment_Webshop.Models
                     Description = "Lövbit, Strips, Perslijesmör, sallad, gurka, tomat",
                     Price = 55
                 },
-
                 new Product()
                 {
                     ProductType = productType_number,
@@ -294,10 +263,8 @@ namespace Project_Assignment_Webshop.Models
                     Name = "Panerad Flundra",
                     Description = "Kalmarflundra, ströbröd, ägg",
                     Price = 79
-                },
-
-                /*--Kebab----------------*/
-                new Product()
+                },               
+                new Product() /*--Kebab--*/
                 {
                     ProductType = productType_number+1,
                     Number = menu_number+1,
@@ -305,7 +272,6 @@ namespace Project_Assignment_Webshop.Models
                     Description = "Kebab, Pitabröd, Sallad, Röd Lök, Gurka, Tomat, Pefferoni, Sås",
                     Price = 65
                 },
-
                 new Product()
                 {
                     ProductType = productType_number+1,
@@ -314,7 +280,6 @@ namespace Project_Assignment_Webshop.Models
                     Description = "Gyros, Pitabröd, Sallad, Röd Lök, Gurka, Tomat, Pefferoni, Sås",
                     Price = 65
                 },
-
                 new Product()
                 {
                     ProductType = productType_number+1,
@@ -323,7 +288,6 @@ namespace Project_Assignment_Webshop.Models
                     Description = "Kyckling, Tunnbröd, Sallad, Röd Lök, Gurka, Tomat, Pefferoni, Sås",
                     Price = 80
                 },
-
                 new Product()
                 {
                     ProductType = productType_number+1,
@@ -331,10 +295,8 @@ namespace Project_Assignment_Webshop.Models
                     Name = "Falafeltallrik",
                     Description = "Falafel, Strips, Sallad, Röd Lök, Gurka, Tomat, Pefferoni, Sås",
                     Price = 80
-                },
-
-                /*Tillbehör/Accessories*/
-                new Product()
+                },              
+                new Product() /*Tillbehör/Accessories*/
                 {
                     ProductType = productType_number+1,
                     Number = accessories_number+1,
@@ -342,7 +304,6 @@ namespace Project_Assignment_Webshop.Models
                     Description = "Vitkål, olja, kryddor",
                     Price = 5
                 },
-
                 new Product()
                 {
                     ProductType = productType_number,
@@ -351,7 +312,6 @@ namespace Project_Assignment_Webshop.Models
                     Description = "Gul Lök, kryddor",
                     Price = 5
                 },
-
                 new Product()
                 {
                     ProductType = productType_number,
@@ -359,10 +319,8 @@ namespace Project_Assignment_Webshop.Models
                     Name = "Ananas",
                     Description = "Ananas",
                     Price = 5
-                },
-
-                /*--Såser------------------*/
-                new Product()
+                },              
+                new Product() /*--Såser--*/
                 {
                     ProductType = productType_number+1,
                     Number = accessories_number+1,
@@ -370,7 +328,6 @@ namespace Project_Assignment_Webshop.Models
                     Description = "Creme Fraiche, vitlök, olivolja",
                     Price = 5
                 },
-
                 new Product()
                 {
                     ProductType = productType_number,
@@ -379,7 +336,6 @@ namespace Project_Assignment_Webshop.Models
                     Description = "Tomatsås, Röd Chili, Grön Chili, Olivolja",
                     Price = 5
                 },
-
                 new Product()
                 {
                     ProductType = productType_number,
@@ -387,10 +343,8 @@ namespace Project_Assignment_Webshop.Models
                     Name = "Road Island",
                     Description = "Road Island",
                     Price = 5
-                },
-
-                /*--Drycker---------------*/
-                new Product()
+                },               
+                new Product() /*--Drycker--*/
                 {
                     ProductType = productType_number+1,
                     Number = drinks_number+1,
@@ -398,7 +352,6 @@ namespace Project_Assignment_Webshop.Models
                     Description = "33 ml",
                     Price = 15
                 },
-
                 new Product()
                 {
                     ProductType = productType_number,
@@ -407,7 +360,6 @@ namespace Project_Assignment_Webshop.Models
                     Description = "50 ml",
                     Price = 20
                 },
-
                 new Product()
                 {
                     ProductType = productType_number,
@@ -416,93 +368,13 @@ namespace Project_Assignment_Webshop.Models
                     Description = "1 l",
                     Price = 40
                 }
-
             };
 
             foreach (Product product in productSeed)
             {
                 context.Products.Add(product);
             }
-            context.SaveChanges();
-            
-
-            ////-------Courses seeed-----------------------------------//
-
-            //var courseSeed = new Course[]
-            //{
-            //    new Course(){
-            //        Title = "Identity",
-            //        Description = "Asp-Mvc-Identity with Content Management System"
-            //    },
-            //    new Course(){
-            //        Title = "Database",
-            //        Description = "Asp-Mvc-Database with EntityFramework"
-            //    },
-            //    new Course(){
-            //        Title = "Models",
-            //        Description = "Asp-Mvc-Models with ViewModels"
-            //    }
-            //};
-
-            //foreach (Course course in courseSeed)
-            //{
-            //    context.Courses.Add(course);
-            //}
-            //context.SaveChanges();
-
-            ////-------Assignments seeed-----------------------------------//
-
-            //var assignmentSeed = new Assignment[]
-            //{
-            //    new Assignment(){
-            //        Title = "Lecture",
-            //        Description = "Lecture Asp.net Mvc Identity with Content Management System"
-            //    },
-            //    new Assignment(){
-            //        Title = "Assignment",
-            //        Description = "Assignment Asp.net Mvc-Database with EntityFramework"
-            //    },
-            //    new Assignment(){
-            //        Title = "Workshop",
-            //        Description = "Workshop Asp.net Mvc-Models with ViewModels"
-            //    }
-            //};
-
-            //foreach (Assignment assignment in assignmentSeed)
-            //{
-            //    context.Assignments.Add(assignment);
-            //}
-            //context.SaveChanges();
-
-            ////-------Teachers seeed-----------------------------------//
-
-            //var teacherSeed = new Teacher[]
-            //{
-            //    new Teacher(){
-            //        Title = "Senior Teacher",
-            //        F_Name = "Ulf",
-            //        L_Name = "Bengtsson",
-            //        E_mail = "ulf@gmail.com"
-            //    },
-            //    new Teacher(){
-            //        Title = "Youtube Teacher",
-            //        F_Name = "Mosh",
-            //        L_Name = "Magandi",
-            //        E_mail = "mosh@gmail.com"
-            //    },
-            //    new Teacher(){
-            //        Title ="Teacher assistent",
-            //        F_Name = "Mikael",
-            //        L_Name = "Aurell",
-            //        E_mail = "aurell.mikael@gmail.com"
-            //    }
-            //};
-
-            //foreach (Teacher teacher in teacherSeed)
-            //{
-            //    context.Teachers.Add(teacher);
-            //}
-            //context.SaveChanges();
+            context.SaveChanges();          
         }
     }
 }

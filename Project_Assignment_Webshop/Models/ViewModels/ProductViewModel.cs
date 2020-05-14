@@ -8,29 +8,24 @@ namespace Project_Assignment_Webshop.Models
 {
     public class ProductViewModel
     {
-
         [Required]
         [Display(Name = "Type of Product")]
         public int ProductType { get; set; }
 
-        [Required]
+        [Required]       
         [Display(Name = "Number")]
-        //[StringLength(255)]
         public int Number { get; set; }
 
-        [Required]
+        [Required]       
         [Display(Name = "Name of Product")]
-        //[StringLength(63)]
         public string Name { get; set; }
 
-        [Required]
+        [Required]       
         [Display(Name = "Description")]
-        //[StringLength(127)]
         public string Description { get; set; }
 
         [Required]
         [Display(Name = "Price")]
-        //[StringLength(511)]
         public int Price { get; set; }
     }
 }

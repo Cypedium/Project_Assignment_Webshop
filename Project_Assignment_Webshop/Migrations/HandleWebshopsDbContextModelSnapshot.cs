@@ -356,9 +356,6 @@ namespace Project_Assignment_Webshop.Migrations
                     b.Property<int>("OrderRowForeignKey")
                         .HasColumnType("int");
 
-                    b.Property<byte>("Picture")
-                        .HasColumnType("tinyint");
-
                     b.Property<int>("Price")
                         .HasColumnType("int");
 

@@ -35,14 +35,11 @@ namespace Project_Assignment_Webshop.Models
         //[StringLength(511)]
         public int Price { get; set; }
 
-        public byte Picture { get; set; }
+        //public byte Picture { get; set; }
 
         /*---Database connections-----------------------------------*/
         public OrderRow OrderRow { get; set; }
         public int OrderRowForeignKey { get; set; }
         /*----------------------------------------------------------*/
-
-       
-
     }
 }
