@@ -26,7 +26,7 @@ namespace Project_Assignment_Webshop.Controllers
         [HttpGet]
         public string Get()
         {
-            string productListAPI = JsonConvert.SerializeObject(_productService.All());
+            string productListAPI = JsonConvert.SerializeObject(_productService.All_Current());
             return productListAPI; 
         }
     }        

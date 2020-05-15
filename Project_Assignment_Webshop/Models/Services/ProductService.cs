@@ -13,9 +13,14 @@ namespace Project_Assignment_Webshop.Models
         {
             _productRepo = productRepo;
         }
-        public List<Product> All()
+        public List<Product> All_Current()
         {
-            return _productRepo.All();
+            return _productRepo.All_Current();
+        }
+
+        public List<Product> All_Out_of_Order()
+        {
+            return _productRepo.All_Out_of_Order();
         }
 
         public Product Create(ProductViewModel product)

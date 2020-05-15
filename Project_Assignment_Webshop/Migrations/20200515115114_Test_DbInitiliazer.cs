@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Project_Assignment_Webshop.Migrations
 {
-    public partial class Product_and_Customer_working_fine : Migration
+    public partial class Test_DbInitiliazer : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -74,6 +74,23 @@ namespace Project_Assignment_Webshop.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Customers", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Products",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    ProductType = table.Column<int>(nullable: false),
+                    Number = table.Column<int>(nullable: false),
+                    Name = table.Column<string>(nullable: false),
+                    Description = table.Column<string>(nullable: false),
+                    Price = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Products", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -239,6 +256,7 @@ namespace Project_Assignment_Webshop.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Amount = table.Column<int>(nullable: false),
                     GlutenFree = table.Column<bool>(nullable: false),
+                    ProductId = table.Column<int>(nullable: false),
                     CashierId = table.Column<int>(nullable: true),
                     OrderId = table.Column<int>(nullable: true),
                     ReceiptId = table.Column<int>(nullable: true)
@@ -259,35 +277,17 @@ namespace Project_Assignment_Webshop.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
+                        name: "FK_OrderRows_Products_ProductId",
+                        column: x => x.ProductId,
+                        principalTable: "Products",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
                         name: "FK_OrderRows_Receipts_ReceiptId",
                         column: x => x.ReceiptId,
                         principalTable: "Receipts",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Products",
-                columns: table => new
-                {
-                    Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    ProductType = table.Column<int>(nullable: false),
-                    Number = table.Column<int>(nullable: false),
-                    Name = table.Column<string>(nullable: false),
-                    Description = table.Column<string>(nullable: false),
-                    Price = table.Column<int>(nullable: false),
-                    OrderRowForeignKey = table.Column<int>(nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Products", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_Products_OrderRows_OrderRowForeignKey",
-                        column: x => x.OrderRowForeignKey,
-                        principalTable: "OrderRows",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(
@@ -340,6 +340,11 @@ namespace Project_Assignment_Webshop.Migrations
                 column: "OrderId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_OrderRows_ProductId",
+                table: "OrderRows",
+                column: "ProductId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_OrderRows_ReceiptId",
                 table: "OrderRows",
                 column: "ReceiptId");
@@ -358,12 +363,6 @@ namespace Project_Assignment_Webshop.Migrations
                 name: "IX_Orders_ReceiptId",
                 table: "Orders",
                 column: "ReceiptId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Products_OrderRowForeignKey",
-                table: "Products",
-                column: "OrderRowForeignKey",
-                unique: true);
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -384,7 +383,7 @@ namespace Project_Assignment_Webshop.Migrations
                 name: "AspNetUserTokens");
 
             migrationBuilder.DropTable(
-                name: "Products");
+                name: "OrderRows");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");
@@ -393,10 +392,10 @@ namespace Project_Assignment_Webshop.Migrations
                 name: "AspNetUsers");
 
             migrationBuilder.DropTable(
-                name: "OrderRows");
+                name: "Orders");
 
             migrationBuilder.DropTable(
-                name: "Orders");
+                name: "Products");
 
             migrationBuilder.DropTable(
                 name: "Cashiers");

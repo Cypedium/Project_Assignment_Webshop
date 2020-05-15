@@ -22,7 +22,12 @@ namespace Project_Assignment_Webshop.Controllers
 
         public IActionResult Index()
         {
-            return View(_productService.All());
+            return View(_productService.All_Current());
+        }
+
+        public IActionResult Out_of_Order()
+        {
+            return View(_productService.All_Out_of_Order());
         }
 
         //Create-----------------------------------------------------------------------
@@ -57,7 +62,7 @@ namespace Project_Assignment_Webshop.Controllers
         [HttpPost]
         public IActionResult Details() //uses this postaction for back to option
         {
-            return View("Index", _productService.All());
+            return View("Index", _productService.All_Current());
         }
 
         [HttpGet]
@@ -85,7 +90,7 @@ namespace Project_Assignment_Webshop.Controllers
                 ViewBag.msg = "Unable to remove Student from database.";
             }
 
-            return View("Index", _productService.All());
+            return View("Index", _productService.All_Current());
         }
 
         [HttpGet]
@@ -95,7 +100,7 @@ namespace Project_Assignment_Webshop.Controllers
             if (product == null)
             {
                 ViewBag.msg = "The Student was not found";
-                return View(_productService.All());
+                return View(_productService.All_Current());
             }
             return View(product);
         }

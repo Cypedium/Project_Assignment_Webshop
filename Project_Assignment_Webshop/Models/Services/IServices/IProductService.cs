@@ -11,6 +11,8 @@ namespace Project_Assignment_Webshop.Models
         Product Find(int id);
         Product Update(Product product);
         bool Remove(int id);
-        List<Product> All();
+        List<Product> All_Current();
+
+        List<Product> All_Out_of_Order();
     }
 }

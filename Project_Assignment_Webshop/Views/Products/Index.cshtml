@@ -26,6 +26,10 @@
         @foreach (var item in Model)
         {
             <tr id="@("ProductId" + item.Id)">
+                <td>
+                    <img src="~/pic/salami.jpg" />
+                </td>
+                @*<td><img src="~/pic/@(item.Id).jpg" /></td>*@
                 <td>@item.Number</td>
                 <td>@item.Name</td>
                 <td>@item.Description</td>

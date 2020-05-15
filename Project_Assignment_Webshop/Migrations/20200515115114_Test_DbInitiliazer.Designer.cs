@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Project_Assignment_Webshop.Models;
 
 namespace Project_Assignment_Webshop.Migrations
 {
     [DbContext(typeof(HandleWebshopsDbContext))]
-    partial class HandleWebshopsDbContextModelSnapshot : ModelSnapshot
+    [Migration("20200515115114_Test_DbInitiliazer")]
+    partial class Test_DbInitiliazer
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -357,9 +359,6 @@ namespace Project_Assignment_Webshop.Migrations
 
                     b.Property<int>("Number")
                         .HasColumnType("int");
-
-                    b.Property<bool>("Out_of_Order")
-                        .HasColumnType("bit");
 
                     b.Property<int>("Price")
                         .HasColumnType("int");

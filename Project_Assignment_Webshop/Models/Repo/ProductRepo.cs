@@ -12,9 +12,14 @@ namespace Project_Assignment_Webshop.Models
         {
             _handleWebshopsDbContext = handleWebshopsDbContext;
         }
-        public List<Product> All()
+        public List<Product> All_Current()
         {
-            return _handleWebshopsDbContext.Products.ToList();
+            return _handleWebshopsDbContext.Products.Where(p => p.Out_of_Order == false).ToList();
+        }
+
+        public List<Product> All_Out_of_Order()
+        {
+            return _handleWebshopsDbContext.Products.Where(p => p.Out_of_Order == true).ToList();
         }
 
         public Product Create(Product product)

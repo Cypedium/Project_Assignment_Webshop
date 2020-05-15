@@ -18,14 +18,11 @@ namespace Project_Assignment_Webshop.Models
         public DbSet<Product> Products { get; set; }
         public DbSet<Receipt> Receipts { get; set; }
 
-        protected override void OnModelCreating(ModelBuilder modelbuilder)
-        {
-            base.OnModelCreating(modelbuilder);
-            //One to One configuration OrderRow-Product
-            modelbuilder.Entity<OrderRow>()
-                .HasOne(p => p.Product)
-                .WithOne(o => o.OrderRow)
-                .HasForeignKey<Product>(p => p.OrderRowForeignKey);
-        }
+        //protected override void OnModelCreating(ModelBuilder modelbuilder)
+        //{
+        //    base.OnModelCreating(modelbuilder); //need this to configure many to many
+        //    //One to One configuration OrderRow-Product
+           
+        //}
     }
 }

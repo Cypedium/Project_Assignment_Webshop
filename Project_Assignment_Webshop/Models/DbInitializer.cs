@@ -70,7 +70,7 @@ namespace Project_Assignment_Webshop.Models
 
             //-------Products seeed-----------------------------------//
           
-            var productSeed = new Product[]
+            Product[] productSeed = new Product[]
             {                
                 new Product() /*--Pizza Klass 1--*/
                 {
