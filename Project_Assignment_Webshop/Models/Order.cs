@@ -15,8 +15,6 @@ namespace Project_Assignment_Webshop.Models
         public string OrderTime { get; set; }
         //public DateTime(int year, int month, int day, int hour, int minute, int second) {  }
 
-
-
         [Required]
         [Display(Name = "Payed, not payed, delivered.")]
         public string Status { get; set; }

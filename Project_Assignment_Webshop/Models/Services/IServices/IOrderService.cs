@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Project_Assignment_Webshop.Models.IServices
 {
-    interface IOrderService
+    public interface IOrderService
     {
         Order Create(OrderViewModel order);
         Order Find(int id);

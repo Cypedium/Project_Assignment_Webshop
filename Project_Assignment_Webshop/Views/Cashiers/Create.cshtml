@@ -1,0 +1,35 @@
+﻿@model CashierViewModel
+@{
+    ViewData["Title"] = "Create";
+}
+<h1>Create Cashier</h1>
+<hr />
+<br />
+
+<form asp-action="Create" method="post" class="btn btn-success">
+
+    <div asp-validation-summary="All"></div>
+
+    <select asp-for="Customer" class="form-control">
+        @*<option value="Customer">@Customer.F_Name<*@/option>   
+    </select>
+
+    <br />
+
+    <label asp-for="OrderTime"></label>
+    <input asp-for="OrderTime" />
+    <span asp-validation-for="OrderTime"></span>
+    <br />
+
+    <label asp-for="OrderRows"></label>
+    <input asp-for="OrderRows" />
+    <span asp-validation-for="OrderRows"></span>
+    <br />
+
+    <hr />
+    <input type="submit" value="Create Cashier" />
+    <br />
+
+    <input type="submit" value="Back To List" asp-action="Index" />
+
+</form>

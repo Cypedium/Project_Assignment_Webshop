@@ -24,7 +24,7 @@ namespace Project_Assignment_Webshop.Models.IServices
         {
             Cashier newCashier = new Cashier()
             {
-                Customer = cashier.Costumer,
+                Customer = cashier.Customer,
                 OrderTime = cashier.OrderTime,
                 OrderRows = cashier.OrderRows   
             };

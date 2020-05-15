@@ -1,0 +1,45 @@
+﻿@model OrderViewModel
+@{
+    ViewData["Title"] = "Create";
+}
+<h1>Create Order</h1>
+<hr />
+<br />
+
+<form asp-controller="Products" asp-action="Create" method="post" class="btn btn-success">
+
+    <div asp-validation-summary="All"></div>
+
+    @*<select asp-for="Customer" asp-items="Model.Customer">
+        <option value=""></option>
+    </select>*@
+
+    <br />
+    <label asp-for="OrderTime"></label>
+    <input asp-for="OrderTime" />
+    <span asp-validation-for="OrderTime"></span>
+    <br />
+
+    <label asp-for="Status"></label>
+    <input asp-for="Status" />
+    <span asp-validation-for="Status"></span>
+    <br />
+
+    <label asp-for="Amount"></label>
+    <input asp-for="Amount" />
+    <span asp-validation-for="Amount"></span>
+    <br />
+
+    @*<select asp-for="OrderRows" asp-items="@Model.OrderRows">
+        <option value=""></option>
+    </select>*@
+    <br />
+
+    <br />
+    <hr />
+    <input type="submit" value="Create Product" />
+    <br />
+
+    <input type="submit" value="Back To List" asp-action="Index" />
+
+</form>

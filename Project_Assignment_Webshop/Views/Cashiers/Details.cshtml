@@ -1,0 +1,27 @@
+﻿@model Cashier
+@{
+    ViewData["Title"] = "Details";
+}
+<h1>Cashier Details</h1>
+<hr />
+<br />
+
+<form asp-action="Details" method="post" class="btn btn-info col-lg-8">
+
+    <label asp-for="OrderTime"></label>
+    <input asp-for="OrderTime" disabled />
+
+    <br />
+    <label asp-for="Customer"></label>
+    <select asp-for="Customer" disabled></select>
+
+    <br />
+
+    <label asp-for="OrderRows"></label>
+    <input asp-for="OrderRows" disabled />
+    <br />
+
+    <hr />
+    <input type="submit" value="Back To List" asp-action="Index" class="align-content-end" />
+
+</form>

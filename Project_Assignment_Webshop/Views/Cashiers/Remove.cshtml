@@ -1,0 +1,29 @@
+﻿@model Cashier
+@{
+    ViewData["Title"] = "Remove";
+}
+<h1>Remove Product</h1>
+<br />
+<form asp-action="Remove" method="post" class="btn btn-danger">
+    <input asp-for="Id" value="@Model.Id" type="hidden" />
+    <font style="align-content: stretch">
+
+        <label asp-for="Customer"></label>
+        <input asp-for="Customer" disabled />
+        <br />
+
+        <label asp-for="OrderTime"></label>
+        <input asp-for="OrderTime" disabled />
+        <br />
+
+        <label asp-for="OrderRows"></label>
+        <input asp-for="OrderRows" disabled />
+        <br />
+        <hr />
+
+        <input type="submit" value="Remove Cashier" />
+        <br />
+
+        <input type="submit" value="Back To List" asp-action="Index" />
+    </font>
+</form>

@@ -9,7 +9,7 @@ namespace Project_Assignment_Webshop.Models.ViewModels
     public class CashierViewModel
     {
         [Required]
-        public string Costumer { get; set; }
+        public string Customer { get; set; }
 
         [Required]
         public string OrderTime { get; set; }
