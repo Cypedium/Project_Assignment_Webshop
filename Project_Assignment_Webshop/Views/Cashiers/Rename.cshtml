@@ -1,0 +1,31 @@
+﻿@model Cashier
+@{
+    ViewData["Title"] = "Rename";
+}
+<h1>Rename Cashier</h1>
+<br />
+
+<form asp-action="Rename" method="post" class="btn btn-warning">
+
+    <font style="align-content: stretch">
+
+        <div asp-validation-summary="All"></div>
+
+        <label asp-for="OrderTime"></label>
+        <input asp-for="OrderTime" />
+        <span asp-validation-for="OrderTime"></span>
+        <br />
+
+        <label asp-for="OrderRows"></label>
+        <input asp-for="OrderRows" />
+        <span asp-validation-for="OrderRows"></span>
+        <br />
+
+        <hr />
+
+        <input type="submit" value="Rename Customer" asp-action="Edit" formmethod="post" />
+        <br />
+
+        <input type="submit" value="Back to List" asp-action="Index" />
+    </font>
+</form>

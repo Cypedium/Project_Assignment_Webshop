@@ -7,12 +7,10 @@ export default class List extends Component {
             const TableHeader = props => {
                 return (
                     <tr> 
-                        {/*<th>
-                            * Hiding
-                            <button className="text-left btn btn-link" onClick={() => props.sortByInt("ProductType")}>ProductType</button>
-                            
-                        </th>*/}
                         <th>Picture</th>
+                        <th>
+                            <button className="text-left btn btn-link" onClick={() => props.sortByInt("ProductType")}>ProductType</button>  
+                        </th>
                         <th>
                             <button className="text-left btn btn-link" onClick={() => props.sortByInt("Number")}>Number</button>
                         </th>
@@ -40,7 +38,18 @@ export default class List extends Component {
                     return (
                             <tr key={"ProductId" + row.Id}>
                                 <td><img src={salami} height="49" width="49" /></td>
-                                {/*--Hiding--{row.ProductType}--*/}
+                            {/*------ Not working---------------------------------------
+                             * 
+                            {row.ProductType > 0 && row.ProductType < 4 ?
+                                //    (<td>Pizza Klass: {row.ProductType} </td>)
+                                //  : (<td> {row.ProductType} </td>)
+                                //}
+                                //{row.ProductType == 4 ?
+                                //    (<td>Special Pizzor</td>)
+                                //  : (<td> {row.ProductType} </td>)
+                                //} */}
+
+                                <td> {row.ProductType} </td>
                                 <td>{row.Number}</td>
                                 <td>{row.Name}</td>
                                 <td>{row.Description}</td>

@@ -9,19 +9,18 @@ using Project_Assignment_Webshop.Models.ViewModels;
 
 namespace Project_Assignment_Webshop.Controllers
 {
-    //[Authorize]
-    public class OrdersController : Controller
+    public class OrderRowsController : Controller
     {
-        readonly IOrderService _orderService;
+        readonly IOrderRowService _orderRowService;
 
-        public OrdersController(IOrderService orderService)
+        public OrderRowsController(IOrderRowService orderRowService)
         {
-            _orderService = orderService;
+            _orderRowService = orderRowService;
         }
 
         public IActionResult Index()
         {
-            return View(_orderService.All());
+            return View(_orderRowService.All());
         }
 
         //Create-----------------------------------------------------------------------
@@ -31,14 +30,14 @@ namespace Project_Assignment_Webshop.Controllers
             return View();
         }
         [HttpPost]
-        public IActionResult Create(OrderViewModel order)
+        public IActionResult Create(OrderRowViewModel orderRow)
         {
             if (ModelState.IsValid)
             {
-                _orderService.Create(order);
+                _orderRowService.Create(orderRow);
                 return RedirectToAction("Index");
             }
-            return View(order);
+            return View(orderRow);
         }
         //-----------------------------------------------------------------------------
 
@@ -46,34 +45,34 @@ namespace Project_Assignment_Webshop.Controllers
         [HttpGet]
         public IActionResult Details(int id)
         {
-            Order order_Details = _orderService.Find(id);
-            if (order_Details == null)
+            OrderRow orderRow_Details = _orderRowService.Find(id);
+            if (orderRow_Details == null)
             {
                 return RedirectToAction("Index");
             }
-            return View(order_Details);
+            return View(orderRow_Details);
         }
         [HttpPost]
         public IActionResult Details() //uses this postaction for back to option
         {
-            return View("Index", _orderService.All());
+            return View("Index", _orderRowService.All());
         }
 
         [HttpGet]
         public IActionResult Remove(int id)
         {
-            Order removeOrder = _orderService.Find(id);
-            if (removeOrder == null)
+            OrderRow removeOrderRow = _orderRowService.Find(id);
+            if (removeOrderRow == null)
             {
                 return RedirectToAction("Index");
             }
-            return View(removeOrder);
+            return View(removeOrderRow);
         }
 
         [HttpPost]
-        public IActionResult Remove(Order order)
+        public IActionResult Remove(Order orderRow)
         {
-            bool result = _orderService.Remove(order.Id);
+            bool result = _orderRowService.Remove(orderRow.Id);
 
             if (result)
             {
@@ -84,29 +83,29 @@ namespace Project_Assignment_Webshop.Controllers
                 ViewBag.msg = "Unable to remove Order from database.";
             }
 
-            return View("Index", _orderService.All());
+            return View("Index", _orderRowService.All());
         }
 
         [HttpGet]
-        public IActionResult Rename(int id)
+        public IActionResult Edit(int id)
         {
-            Order order = _orderService.Find(id);
-            if (order == null)
+            OrderRow orderRow = _orderRowService.Find(id);
+            if (orderRow == null)
             {
                 ViewBag.msg = "The Order was not found";
-                return View(_orderService.All());
+                return View(_orderRowService.All());
             }
-            return View(order);
+            return View(orderRow);
         }
         [HttpPost]
-        public IActionResult Rename(Order order)
+        public IActionResult Edit(OrderRow orderRow)
         {
             if (ModelState.IsValid)
             {
-                _orderService.Update(order);
+                _orderRowService.Update(orderRow);
                 return RedirectToAction("Index");
             }
-            return View(order);
+            return View(orderRow);
         }
     }
 }
