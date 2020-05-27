@@ -94,7 +94,7 @@ namespace Project_Assignment_Webshop.Controllers
         }
 
         [HttpGet]
-        public IActionResult Edit(int id)
+        public IActionResult Rename(int id)
         {
             Product product = _productService.Find(id);
             if (product == null)
@@ -105,7 +105,7 @@ namespace Project_Assignment_Webshop.Controllers
             return View(product);
         }
         [HttpPost]
-        public IActionResult Edit(Product product)
+        public IActionResult Rename(Product product)
         {
             if (ModelState.IsValid)
             {

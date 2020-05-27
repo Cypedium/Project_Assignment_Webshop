@@ -87,7 +87,7 @@ namespace Project_Assignment_Webshop.Controllers
         }
 
         [HttpGet]
-        public IActionResult Edit(int id)
+        public IActionResult Rename(int id)
         {
             OrderRow orderRow = _orderRowService.Find(id);
             if (orderRow == null)
@@ -98,7 +98,7 @@ namespace Project_Assignment_Webshop.Controllers
             return View(orderRow);
         }
         [HttpPost]
-        public IActionResult Edit(OrderRow orderRow)
+        public IActionResult Rename(OrderRow orderRow)
         {
             if (ModelState.IsValid)
             {

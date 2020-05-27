@@ -1,0 +1,26 @@
+﻿@model OrderRow
+@{
+    ViewData["Title"] = "Details";
+}
+<h1>Details</h1>
+<hr />
+<br />
+
+<form asp-action="Details" method="post" class="btn btn-info col-lg-8">
+
+    
+
+    <label asp-for="Product"></label>
+    <input asp-for="Product" disabled />
+    <br />
+
+    <label asp-for="Amount"></label>
+    <input asp-for="Amount" disabled />
+    <br />
+
+    <label asp-for="GlutenFree"></label>
+    <input asp-for="GlutenFree" disabled />
+    <br />
+    <br />
+    <input type="submit" value="Back To List" asp-action="Index" class="align-content-end" />
+</form>

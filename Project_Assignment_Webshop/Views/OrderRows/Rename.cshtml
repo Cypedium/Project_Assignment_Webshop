@@ -1,8 +1,8 @@
-﻿@model Customer
+﻿@model OrderRow
 @{
     ViewData["Title"] = "Rename";
 }
-<h1>Rename Product</h1>
+<h1>Rename OrderRow</h1>
 <br />
 @*asp-controller="TheController" isn't needed when the cshtml-file is in the same sub-folder as the controller*@
 <form asp-action="Rename" method="post" class="btn btn-warning">
@@ -11,24 +11,19 @@
 
         <div asp-validation-summary="All"></div>
 
-        <label asp-for="F_Name"></label>
-        <input asp-for="F_Name" />
-        <span asp-validation-for="F_Name"></span>
+        <label asp-for="Product"></label>
+        <input asp-for="Product" />
+        <span asp-validation-for="Product"></span>
         <br />
 
-        <label asp-for="L_Name"></label>
-        <input asp-for="L_Name" />
-        <span asp-validation-for="L_Name"></span>
+        <label asp-for="Amount"></label>
+        <input asp-for="Amount" />
+        <span asp-validation-for="Amount"></span>
         <br />
 
-        <label asp-for="E_mail"></label>
-        <input asp-for="E_mail" />
-        <span asp-validation-for="E_mail"></span>
-        <br />
-
-        <label asp-for="CreditCard"></label>
-        <input asp-for="CreditCard" />
-        <span asp-validation-for="CreditCard"></span>
+        <label asp-for="GlutenFree"></label>
+        <input asp-for="GlutenFree" />
+        <span asp-validation-for="GlutenFree"></span>
         <br />
 
         <hr />

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Project_Assignment_Webshop.Models.IServices
 {
-    interface IReceiptService
+    public interface IReceiptService
     {
         Receipt Create(ReceiptViewModel receipt);
         Receipt Find(int id);

@@ -226,9 +226,19 @@ namespace Project_Assignment_Webshop.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("Order")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("OrderId")
+                        .HasColumnType("int");
+
                     b.Property<string>("OrderTime")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("ReceiptsId")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
@@ -262,6 +272,9 @@ namespace Project_Assignment_Webshop.Migrations
                         .HasColumnType("nvarchar(31)")
                         .HasMaxLength(31);
 
+                    b.Property<int>("OrderId")
+                        .HasColumnType("int");
+
                     b.HasKey("Id");
 
                     b.ToTable("Customers");
@@ -274,10 +287,16 @@ namespace Project_Assignment_Webshop.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<int>("Amount")
+                        .HasColumnType("int");
+
                     b.Property<int?>("CashierId")
                         .HasColumnType("int");
 
                     b.Property<int?>("CustomerId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("OrderRowId")
                         .HasColumnType("int");
 
                     b.Property<string>("OrderTime")
@@ -318,7 +337,7 @@ namespace Project_Assignment_Webshop.Migrations
                     b.Property<bool>("GlutenFree")
                         .HasColumnType("bit");
 
-                    b.Property<int?>("OrderId")
+                    b.Property<int>("OrderId")
                         .HasColumnType("int");
 
                     b.Property<int>("ProductId")
@@ -466,7 +485,9 @@ namespace Project_Assignment_Webshop.Migrations
 
                     b.HasOne("Project_Assignment_Webshop.Models.Order", null)
                         .WithMany("OrderRows")
-                        .HasForeignKey("OrderId");
+                        .HasForeignKey("OrderId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("Project_Assignment_Webshop.Models.Product", "Product")
                         .WithMany()

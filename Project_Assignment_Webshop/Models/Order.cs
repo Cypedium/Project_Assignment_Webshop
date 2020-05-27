@@ -19,7 +19,12 @@ namespace Project_Assignment_Webshop.Models
         [Display(Name = "Payed, not payed, delivered.")]
         public string Status { get; set; }
 
+        [Required]
+        public int Amount { get; set; }
+
         /*---Database connections-----------------------------------*/
+
+        public int OrderRowId { get; set; }
         public Cashier Cashier { get; set; }
 
         public Receipt Receipt { get; set; }

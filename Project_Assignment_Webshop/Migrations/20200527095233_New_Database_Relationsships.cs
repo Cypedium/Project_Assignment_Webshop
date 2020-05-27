@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Project_Assignment_Webshop.Migrations
 {
-    public partial class Seeded_Products_Done : Migration
+    public partial class New_Database_Relationsships : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -53,7 +53,10 @@ namespace Project_Assignment_Webshop.Migrations
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Customer = table.Column<string>(nullable: false),
-                    OrderTime = table.Column<string>(nullable: false)
+                    OrderTime = table.Column<string>(nullable: false),
+                    Order = table.Column<string>(nullable: false),
+                    OrderId = table.Column<int>(nullable: false),
+                    ReceiptsId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -69,7 +72,8 @@ namespace Project_Assignment_Webshop.Migrations
                     F_Name = table.Column<string>(maxLength: 31, nullable: false),
                     L_Name = table.Column<string>(maxLength: 31, nullable: false),
                     E_mail = table.Column<string>(maxLength: 63, nullable: false),
-                    CreditCard = table.Column<string>(maxLength: 16, nullable: false)
+                    CreditCard = table.Column<string>(maxLength: 16, nullable: false),
+                    OrderId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -222,6 +226,8 @@ namespace Project_Assignment_Webshop.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     OrderTime = table.Column<string>(nullable: false),
                     Status = table.Column<string>(nullable: false),
+                    Amount = table.Column<int>(nullable: false),
+                    OrderRowId = table.Column<int>(nullable: false),
                     CashierId = table.Column<int>(nullable: true),
                     ReceiptId = table.Column<int>(nullable: true),
                     CustomerId = table.Column<int>(nullable: true)
@@ -258,8 +264,8 @@ namespace Project_Assignment_Webshop.Migrations
                     Amount = table.Column<int>(nullable: false),
                     GlutenFree = table.Column<bool>(nullable: false),
                     ProductId = table.Column<int>(nullable: false),
+                    OrderId = table.Column<int>(nullable: false),
                     CashierId = table.Column<int>(nullable: true),
-                    OrderId = table.Column<int>(nullable: true),
                     ReceiptId = table.Column<int>(nullable: true)
                 },
                 constraints: table =>
@@ -276,7 +282,7 @@ namespace Project_Assignment_Webshop.Migrations
                         column: x => x.OrderId,
                         principalTable: "Orders",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_OrderRows_Products_ProductId",
                         column: x => x.ProductId,

@@ -22,6 +22,7 @@ namespace Project_Assignment_Webshop.Models
         /*---Database connections-----------------------------------*/
         public Product Product { get; set; }
         public int ProductId { get; set; }
+        public int OrderId { get; set; }
         public Cashier Cashier { get; set; }
 
 

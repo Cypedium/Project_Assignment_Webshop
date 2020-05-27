@@ -1,0 +1,21 @@
+﻿@model Receipt
+@{
+    ViewData["Title"] = "Remove";
+}
+<h1>Remove Order</h1>
+<br />
+<form asp-action="Remove" method="post" class="btn btn-danger">
+    <input asp-for="Id" value="@Model.Id" type="hidden" />
+    <font style="align-content: stretch">
+
+        <label asp-for="OrderDate"></label>
+        <input asp-for="OrderDate" disabled />
+        <br />
+        <hr />
+
+        <input type="submit" value="Remove Receipt?" />
+        <br />
+
+        <input type="submit" value="Back To List" asp-action="Index" />
+    </font>
+</form>

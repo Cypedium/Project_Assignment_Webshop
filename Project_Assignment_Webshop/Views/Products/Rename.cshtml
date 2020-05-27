@@ -5,7 +5,8 @@
 <h1>Rename Product</h1>
 <br />
 
-<form asp-action="Edit" method="post" class="btn btn-warning"> @*asp-controller="TheController" isn't needed when the cshtml-file is in the same sub-folder as the controller*@
+<form asp-action="Edit" method="post" class="btn btn-warning">
+    @*asp-controller="TheController" isn't needed when the cshtml-file is in the same sub-folder as the controller*@
     <font style="align-content: stretch">
 
         <div asp-validation-summary="All"></div>
@@ -37,7 +38,7 @@
 
         <hr />
 
-        <input type="submit" value="Rename Product" asp-action="Edit" formmethod="post" />
+        <input type="submit" value="Rename Product" asp-action="Rename" formmethod="post" />
         <br />
 
         <input type="submit" value="Back to List" asp-action="Index" />

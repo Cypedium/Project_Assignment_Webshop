@@ -6,7 +6,7 @@
 <hr />
 <br />
 
-<form asp-controller="Products" asp-action="Create" method="post" class="btn btn-success">
+<form asp-action="Create" method="post" class="btn btn-success">
 
     <div asp-validation-summary="All"></div>
 
@@ -16,14 +16,15 @@
     <span asp-validation-for="OrderTime"></span>
     <br />
 
-    <label asp-for="Status"></label>
-    <input asp-for="Status" />
-    <span asp-validation-for="Status"></span>
-    <br />
 
     <label asp-for="Amount"></label>
     <input asp-for="Amount" />
     <span asp-validation-for="Amount"></span>
+    <br />
+
+    <label asp-for="Status"></label>
+    <input asp-for="Status" />
+    <span asp-validation-for="Status"></span>
     <br />
 
     @*<select asp-for="OrderRows" asp-items="@Model.OrderRows">

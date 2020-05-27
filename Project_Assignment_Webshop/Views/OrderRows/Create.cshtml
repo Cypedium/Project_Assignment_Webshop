@@ -1,0 +1,37 @@
+﻿@model OrderRowViewModel
+@{
+    ViewData["Title"] = "Create";
+}
+<h1>Create OrderRow</h1>
+<hr />
+<br />
+
+<form asp-action="Create" method="post" class="btn btn-success">
+
+    <div asp-validation-summary="All"></div>
+
+    <br />
+
+    <label asp-for="Product"></label>
+    <input asp-for="Product" />
+    <span asp-validation-for="Product"></span>
+    <br />
+
+    <label asp-for="Amount"></label>
+    <input asp-for="Amount" />
+    <span asp-validation-for="Amount"></span>
+    <br />
+
+    <!----//<div class="custom-control custom-radio"-</div>-->
+    <label asp-for="GlutenFree">Glutenfree</label><br>
+        <input asp-for="GlutenFree "type="checkbox" name="Glutenfree" value="true">
+        <span asp-validation-for="GlutenFree"></span>
+    <br />
+
+    <hr />
+    <input type="submit" value="Create OrderRow" />
+    <br />
+
+    <input type="submit" value="Back To List" asp-action="Index" />
+
+</form>

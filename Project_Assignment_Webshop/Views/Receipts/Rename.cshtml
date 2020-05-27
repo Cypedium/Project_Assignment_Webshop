@@ -1,0 +1,38 @@
+﻿@model Receipt
+@{
+    ViewData["Title"] = "Rename";
+}
+<h1>Rename Order</h1>
+<br />
+
+<form asp-action="Rename" method="post" class="btn btn-warning">
+    @*asp-controller="TheController" isn't needed when the cshtml-file is in the same sub-folder as the controller*@
+    <font style="align-content: stretch">
+
+        <div asp-validation-summary="All"></div>
+
+        <label asp-for="OrderDate"></label>
+        <input asp-for="OrderDate" />
+        <span asp-validation-for="OrderDate"></span>
+        <br />
+
+        <label asp-for="Customer"></label>
+        <input asp-for="Customer" />
+        <span asp-validation-for="Customer"></span>
+        <br />
+
+        <label asp-for="OrderRows"></label>
+        <input asp-for="OrderRows" />
+        <span asp-validation-for="OrderRows"></span>
+        <br />
+
+        <br />
+
+        <hr />
+
+        <input type="submit" value="Rename Product" asp-action="Rename" formmethod="post" />
+        <br />
+
+        <input type="submit" value="Back to List" asp-action="Index" />
+    </font>
+</form>

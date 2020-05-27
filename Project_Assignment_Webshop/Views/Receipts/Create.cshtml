@@ -1,0 +1,42 @@
+﻿@model ReceiptViewModel
+@{
+    ViewData["Title"] = "Create";
+}
+<h1>Create Receipt</h1>
+<hr />
+<br />
+
+<form asp-action="Create" method="post" class="btn btn-success">
+
+    <div asp-validation-summary="All"></div>
+
+    <br />
+    <label asp-for="OrderDate"></label>
+    <input asp-for="OrderDate" />
+    <span asp-validation-for="OrderDate"></span>
+    <br />
+
+
+    <label asp-for="Customer"></label>
+    <input asp-for="Customer" />
+    <span asp-validation-for="Customer"></span>
+    <br />
+
+    <label asp-for="OrderRows"></label>
+    <input asp-for="OrderRows" />
+    <span asp-validation-for="OrderRows" ></span>
+    <br />
+
+    @*<select asp-for="OrderRows" asp-items="@Model.OrderRows">
+            <option value=""></option>
+        </select>*@
+    <br />
+
+    <br />
+    <hr />
+    <input type="submit" value="Create Product" />
+    <br />
+
+    <input type="submit" value="Back To List" asp-action="Index" />
+
+</form>

@@ -32,6 +32,7 @@ namespace Project_Assignment_Webshop.Models
         public string CreditCard { get; set; }
 
         /*---Database connections-----------------------------------*/
+        public int OrderId { get; set; }
         public List<Order> Orders { get; set; } //init for database one to many User to Order
         /*----------------------------------------------------------*/
     }

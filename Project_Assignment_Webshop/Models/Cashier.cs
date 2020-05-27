@@ -17,7 +17,13 @@ namespace Project_Assignment_Webshop.Models
         [Required]
         public string OrderTime { get; set; }
 
+        [Required]
+        public string Order { get; set; }
+
+
         /*---Database connections-----------------------------------*/
+        public int OrderId {get; set;}
+        public int ReceiptsId { get; set; }
         public List<OrderRow> OrderRows { get; set; } // This list will be in the cache on browser but saved to simulate the database connections
         public List<Order> Receipts { get; set; } // This list will be saved in the database with the orderrows.
         /*----------------------------------------------------------*/

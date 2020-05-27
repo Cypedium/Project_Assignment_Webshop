@@ -99,9 +99,9 @@ class App extends Component {
     }
 
     //---PREPARED FUNCTION FOR PROJECT WEBSHOP------------------------------------------------------------------------
-    //addProductToCart = Id => {
-    //  const { productList } = this.state;
-    //}
+    addProductToCart = Id => {
+      const { productList } = this.state;
+    }
     //-----------------------------------------------------------------------------------------------------------------
 
     detailProduct = Id => {
