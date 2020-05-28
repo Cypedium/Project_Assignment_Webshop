@@ -15,6 +15,9 @@ namespace Project_Assignment_Webshop.Models.ViewModels
         [Display(Name = "If you want GlutenFree bread.")]
         public bool GlutenFree { get; set; }
 
-        public Product Product { get; set; }
+        public int ProductId { get; set; }
+
+        public List <Product> Products { get; set; }
+
     }
 }

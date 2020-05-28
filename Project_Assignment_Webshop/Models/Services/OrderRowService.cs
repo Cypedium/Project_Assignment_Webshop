@@ -27,9 +27,8 @@ namespace Project_Assignment_Webshop.Models
             {
                 Amount = orderRow.Amount,
                 GlutenFree = orderRow.GlutenFree,
-                Product = orderRow.Product
-                
-        };
+                ProductId = orderRow.ProductId /*the choosen product*/
+            };
             return _orderRowRepo.Create(newOrderRow);
 
         }

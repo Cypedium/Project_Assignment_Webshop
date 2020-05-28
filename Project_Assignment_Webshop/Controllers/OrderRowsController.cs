@@ -12,10 +12,12 @@ namespace Project_Assignment_Webshop.Controllers
     public class OrderRowsController : Controller
     {
         readonly IOrderRowService _orderRowService;
+        readonly IProductService _productService;
 
-        public OrderRowsController(IOrderRowService orderRowService)
+        public OrderRowsController(IOrderRowService orderRowService, IProductService productService)
         {
             _orderRowService = orderRowService;
+            _productService = productService;
         }
 
         public IActionResult Index()
