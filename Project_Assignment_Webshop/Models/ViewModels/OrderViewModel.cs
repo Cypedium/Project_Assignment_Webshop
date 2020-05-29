@@ -21,6 +21,10 @@ namespace Project_Assignment_Webshop.Models.ViewModels
         [Required]
         public int Amount { get; set; }
 
+        [Required]
+        
+        public int OrderRowId {get; set; }
+
         public List<OrderRow> OrderRows { get; set; }
 
         

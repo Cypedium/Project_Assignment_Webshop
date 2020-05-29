@@ -29,8 +29,13 @@ namespace Project_Assignment_Webshop.Controllers
         [HttpGet]
         public IActionResult Create()
         {
-            return View();
+            OrderRowViewModel vm = new OrderRowViewModel();
+            
+            vm.Products = _productService.All_Current();
+            
+            return View(vm);
         }
+
         [HttpPost]
         public IActionResult Create(OrderRowViewModel orderRow)
         {

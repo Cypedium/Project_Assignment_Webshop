@@ -11,11 +11,14 @@
     <div asp-validation-summary="All"></div>
 
     <br />
+    <select>
+        @*Iterating Employee ViewModel *@
+        @foreach (var item in Model.Products)
+        {
+            <option>@item.Name</option>
 
-    <label asp-for="ProductId"></label>
-    <input asp-for="ProductId" />
-    <span asp-validation-for="ProductId"></span>
-    <br />
+        }
+    </select>
 
     <label asp-for="Amount"></label>
     <input asp-for="Amount" />
