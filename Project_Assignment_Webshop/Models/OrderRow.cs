@@ -12,17 +12,14 @@ namespace Project_Assignment_Webshop.Models
         [Key]
         public int Id { get; set; }
 
-        [Required]
-        [Display(Name = "Amount is sum of all Products.")]
-        public int Amount { get; set; }
+        public int ProductId { get; set; }
+        public int OrderId { get; set; }
 
         [Display(Name = "If you want GlutenFree bread.")]
         public bool GlutenFree { get; set; }
 
         /*---Database connections-----------------------------------*/
         public Product Product { get; set; }
-        public int ProductId { get; set; }
-        public int OrderId { get; set; }
         public Cashier Cashier { get; set; }
 
 

@@ -12,10 +12,10 @@
 
     <br />
     <select>
-        @*Iterating Employee ViewModel *@
+        @*Iterating Product ViewModel *@
         @foreach (var item in Model.Products)
         {
-            <option>@item.Name</option>
+            <option>@item.Name @item.Price</option>
 
         }
     </select>

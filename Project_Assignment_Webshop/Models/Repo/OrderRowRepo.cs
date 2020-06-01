@@ -47,9 +47,8 @@ namespace Project_Assignment_Webshop.Models.Repo.IRepo
         {
             OrderRow newOrderRow = Find(orderRow.Id);
 
-            newOrderRow.Amount = orderRow.Amount;
-            newOrderRow.GlutenFree = orderRow.GlutenFree;
             newOrderRow.Product = orderRow.Product;
+            newOrderRow.GlutenFree = orderRow.GlutenFree;
 
 
             _handleWebshopsDbContext.SaveChanges();
