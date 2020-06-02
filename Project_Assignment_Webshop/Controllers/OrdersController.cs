@@ -13,10 +13,12 @@ namespace Project_Assignment_Webshop.Controllers
     public class OrdersController : Controller
     {
         readonly IOrderService _orderService;
+        readonly ICustomerService _customerService;
 
-        public OrdersController(IOrderService orderService)
+        public OrdersController(IOrderService orderService, ICustomerService customerService)
         {
             _orderService = orderService;
+            _customerService = customerService;
         }
 
         public IActionResult Index()
@@ -28,7 +30,11 @@ namespace Project_Assignment_Webshop.Controllers
         [HttpGet]
         public IActionResult Create()
         {
-            return View();
+            OrderViewModel vm = new OrderViewModel();
+
+            vm.Customers = _customerService.All();
+
+            return View(vm);
         }
         [HttpPost]
         public IActionResult Create(OrderViewModel order)

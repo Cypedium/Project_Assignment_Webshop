@@ -12,6 +12,9 @@ namespace Project_Assignment_Webshop.Models
         public int Id { get; set; }
 
         [Required]
+        public int CustomerId { get; set; }
+
+        [Required]
         public string OrderTime { get; set; }
         //public DateTime(int year, int month, int day, int hour, int minute, int second) {  }
 

@@ -15,15 +15,15 @@
         @*Iterating Product ViewModel *@
         @foreach (var item in Model.Products)
         {
-            <option>@item.Name @item.Price</option>
+            <option value="@item.Id">@item.Name @item.Price</option>
 
         }
     </select>
 
-    <label asp-for="Amount"></label>
-    <input asp-for="Amount" />
-    <span asp-validation-for="Amount"></span>
-    <br />
+    @*<label asp-for="Price"></label>
+    <input asp-for="Price"  />
+    <span asp-validation-for="Price"></span>
+    <br />*@
 
     <!----//<div class="custom-control custom-radio"-</div>-->
     <label asp-for="GlutenFree">Glutenfree</label><br>

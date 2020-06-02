@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using Project_Assignment_Webshop.Models;
 using Project_Assignment_Webshop.Models.IServices;
 using Project_Assignment_Webshop.Models.ViewModels;
@@ -32,7 +33,7 @@ namespace Project_Assignment_Webshop.Controllers
             OrderRowViewModel vm = new OrderRowViewModel();
             
             vm.Products = _productService.All_Current();
-            
+
             return View(vm);
         }
 

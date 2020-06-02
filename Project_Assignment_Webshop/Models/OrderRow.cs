@@ -12,6 +12,8 @@ namespace Project_Assignment_Webshop.Models
         [Key]
         public int Id { get; set; }
 
+        public int Price { get; set; }
+
         public int ProductId { get; set; }
         public int OrderId { get; set; }
 

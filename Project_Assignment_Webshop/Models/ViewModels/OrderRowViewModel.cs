@@ -10,7 +10,7 @@ namespace Project_Assignment_Webshop.Models.ViewModels
     {
         [Required]
         [Display(Name = "Amount is sum of all Products.")]
-        public int Amount { get; set; }
+        public int Price { get; set; }
 
         [Display(Name = "If you want GlutenFree bread.")]
         public bool GlutenFree { get; set; }

@@ -10,12 +10,11 @@ namespace Project_Assignment_Webshop.Models.IServices.InterfaceServices
     public class OrderService : IOrderService
     {
         readonly IOrderRepo _orderRepo;
-        readonly ICustomerRepo _customerRepo;
 
-        public OrderService(IOrderRepo orderRepo, ICustomerRepo customerRepo)
+        public OrderService(IOrderRepo orderRepo)
         {
             _orderRepo = orderRepo;
-            _customerRepo = customerRepo;
+           
         }
         public List<Order> All()
         {
@@ -28,9 +27,8 @@ namespace Project_Assignment_Webshop.Models.IServices.InterfaceServices
             {
                 OrderTime = order.OrderTime,
                 Status = order.Status,
-                Customer = order.Customer,
+                CustomerId = order.CustomerId,
                 OrderRows = order.OrderRows
-                //List < Customer > = _customerRepo.All().ToString();
             };
             return _orderRepo.Create(newOrder);
 

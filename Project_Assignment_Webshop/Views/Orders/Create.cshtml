@@ -10,6 +10,14 @@
 
     <div asp-validation-summary="All"></div>
 
+    <select>
+        @foreach (var item in Model.Customers)
+        {
+        <option value="@item.Id">@item.F_Name @item.L_Name</option>
+
+        }
+    </select>
+
     <br />
     <label asp-for="OrderTime"></label>
     <input asp-for="OrderTime" />
@@ -28,8 +36,8 @@
     <br />
 
     @*<select asp-for="OrderRows" asp-items="@Model.OrderRows">
-        <option value=""></option>
-    </select>*@
+            <option value=""></option>
+        </select>*@
     <br />
 
     <br />

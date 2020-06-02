@@ -9,9 +9,6 @@ namespace Project_Assignment_Webshop.Models.ViewModels
     public class OrderViewModel
     {
         [Required]
-        public Customer Customer { get; set; }
-
-        [Required]
         public string OrderTime { get; set; }
 
         [Required]
@@ -20,12 +17,14 @@ namespace Project_Assignment_Webshop.Models.ViewModels
 
         [Required]
         public int Amount { get; set; }
-
-        [Required]
         
         public int OrderRowId {get; set; }
 
         public List<OrderRow> OrderRows { get; set; }
+
+        public int CustomerId { get; set; }
+
+        public List<Customer> Customers { get; set; }
 
         
     }
