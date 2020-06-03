@@ -10,7 +10,7 @@
 
     <div asp-validation-summary="All"></div>
 
-    <select>
+    <select asp-for="CustomerId">
         @foreach (var item in Model.Customers)
         {
         <option value="@item.Id">@item.F_Name @item.L_Name</option>
@@ -42,7 +42,7 @@
 
     <br />
     <hr />
-    <input type="submit" value="Create Product" />
+    <input type="submit" value="Create Order" />
     <br />
 
     <input type="submit" value="Back To List" asp-action="Index" />

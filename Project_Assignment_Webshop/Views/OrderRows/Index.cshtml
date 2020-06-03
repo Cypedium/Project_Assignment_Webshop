@@ -13,10 +13,11 @@
 <table class="table table-striped">
     <thead class="thead-light">
         <tr>
-            <th>Product</th>
-            <th>Amount</th>
-            <th>GlutenFree</th>
             <th></th>
+            <th>OrderId</th>
+            <th>ProductId</th>
+            <th>Price</th>
+            <th>GlutenFree</th>
             <th>Actions</th>
             <th></th>
             <th></th>
@@ -30,10 +31,10 @@
                     <img src="~/pic/salami.jpg" width="25" height="25" />
                 </td>
                 @*<td><img src="~/pic/@(item.Id).jpg" /></td>*@
-                <td>@item.Product</td>
-                <td></td>
+                <td>@item.OrderId</td>
+                <td>@item.ProductId</td>
+                <td>@item.Price</td>
                 <td>@item.GlutenFree</td>
-                <td></td>
                 <td>
                     <a asp-route-id="@item.Id" asp-action="Details" type="button" class="btn btn-info m-2">Details</a>
                 </td>

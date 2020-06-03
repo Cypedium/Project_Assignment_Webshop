@@ -16,8 +16,8 @@
             <th>OrderTime</th>
             <th>Customer</th>
             <th>OrderRows</th>
+            <th>Amount</th>
             <th>Status</th>
-
             <th>Actions</th>
             <th></th>
             <th></th>
@@ -27,9 +27,11 @@
         @foreach (var item in Model)
         {
             <tr id="@("OrderId" + item.Id)">
+                <td>@item.Id</td>
                 <td>@item.OrderTime</td>
-                <td>@item.Customer</td>
-                <td>@item.OrderRows</td>
+                <td>@item.CustomerId</td>
+                <td>@item.OrderRowId</td>
+                <td>@item.Amount</td>
                 <td>@item.Status</td>
                 <td>
                     <a asp-route-id="@item.Id" asp-action="Details" type="button" class="btn btn-info m-2">Details</a>

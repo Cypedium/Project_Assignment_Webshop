@@ -11,19 +11,32 @@
     <div asp-validation-summary="All"></div>
 
     <br />
-    <select>
+    <select asp-for="ProductId">
         @*Iterating Product ViewModel *@
         @foreach (var item in Model.Products)
         {
             <option value="@item.Id">@item.Name @item.Price</option>
+        }
+    </select>
+    
+    <select asp-for="Price">
+        @*Iterating Product ViewModel *@
+        @foreach (var item in Model.Products)
+        {
+            <option value="@item.Price">@item.Name @item.Price</option>
+        }
+    </select>
+
+    <select asp-for="OrderId">
+        @*Iterating Order ViewModel *@
+        @foreach (var item in Model.Orders)
+        {
+            <option value="@item.Id">@item.CustomerId @item.OrderTime @item.Amount</option>
 
         }
     </select>
 
-    @*<label asp-for="Price"></label>
-    <input asp-for="Price"  />
-    <span asp-validation-for="Price"></span>
-    <br />*@
+
 
     <!----//<div class="custom-control custom-radio"-</div>-->
     <label asp-for="GlutenFree">Glutenfree</label><br>

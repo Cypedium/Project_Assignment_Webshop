@@ -25,6 +25,7 @@ namespace Project_Assignment_Webshop.Models
         {
             OrderRow newOrderRow = new OrderRow()
             {
+                OrderId = orderRow.OrderId,
                 ProductId = orderRow.ProductId, /*the choosen product*/
                 Price = orderRow.Price,
                 GlutenFree = orderRow.GlutenFree

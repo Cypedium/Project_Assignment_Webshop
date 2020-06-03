@@ -28,7 +28,8 @@ namespace Project_Assignment_Webshop.Models.IServices.InterfaceServices
                 OrderTime = order.OrderTime,
                 Status = order.Status,
                 CustomerId = order.CustomerId,
-                OrderRows = order.OrderRows
+                OrderRows = order.OrderRows,
+                Amount = order.Amount
             };
             return _orderRepo.Create(newOrder);
 

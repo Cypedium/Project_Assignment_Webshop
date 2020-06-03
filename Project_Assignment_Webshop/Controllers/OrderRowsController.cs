@@ -14,11 +14,13 @@ namespace Project_Assignment_Webshop.Controllers
     {
         readonly IOrderRowService _orderRowService;
         readonly IProductService _productService;
+        readonly IOrderService _orderService;
 
-        public OrderRowsController(IOrderRowService orderRowService, IProductService productService)
+        public OrderRowsController(IOrderRowService orderRowService, IProductService productService, IOrderService orderService)
         {
             _orderRowService = orderRowService;
-            _productService = productService;
+            _productService = productService; //to acess ProductList in view
+            _orderService = orderService;     //to acess OrderList in view
         }
 
         public IActionResult Index()
@@ -32,6 +34,7 @@ namespace Project_Assignment_Webshop.Controllers
         {
             OrderRowViewModel vm = new OrderRowViewModel();
             
+            vm.Orders = _orderService.All();        
             vm.Products = _productService.All_Current();
 
             return View(vm);

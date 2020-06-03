@@ -46,7 +46,7 @@ namespace Project_Assignment_Webshop.Models.Repo
         {
             Order newOrder = Find(order.Id);
 
-            newOrder.Customer = order.Customer;
+            newOrder.CustomerId = order.CustomerId;
             newOrder.OrderTime = order.OrderTime;
             newOrder.Status = order.Status;
             newOrder.OrderRows = order.OrderRows;

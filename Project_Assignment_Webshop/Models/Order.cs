@@ -12,9 +12,6 @@ namespace Project_Assignment_Webshop.Models
         public int Id { get; set; }
 
         [Required]
-        public int CustomerId { get; set; }
-
-        [Required]
         public string OrderTime { get; set; }
         //public DateTime(int year, int month, int day, int hour, int minute, int second) {  }
 
@@ -25,17 +22,21 @@ namespace Project_Assignment_Webshop.Models
         [Required]
         public int Amount { get; set; }
 
-        /*---Database connections-----------------------------------*/
 
+        /*--Lists from other classes--------------------------------*/
+        [Required]
+        public int CustomerId { get; set; }       
+        public List<Customer> Customers { get; set; }
+
+        
         public int OrderRowId { get; set; }
-        public Cashier Cashier { get; set; }
-
-        public Receipt Receipt { get; set; }
-
-        public Customer Customer { get; set; }
-
         public List<OrderRow> OrderRows { get; set; }
         /*----------------------------------------------------------*/
-       
+
+
+        /*---Database connections-----------------------------------*/
+        public Cashier Cashier { get; set; }
+        public Receipt Receipt { get; set; }
+        /*----------------------------------------------------------*/
     }
 }

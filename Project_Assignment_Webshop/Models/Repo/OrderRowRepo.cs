@@ -47,6 +47,7 @@ namespace Project_Assignment_Webshop.Models.Repo.IRepo
         {
             OrderRow newOrderRow = Find(orderRow.Id);
 
+            newOrderRow.OrderId = orderRow.OrderId;
             newOrderRow.Product = orderRow.Product;
             newOrderRow.Price = orderRow.Price;
             newOrderRow.GlutenFree = orderRow.GlutenFree;

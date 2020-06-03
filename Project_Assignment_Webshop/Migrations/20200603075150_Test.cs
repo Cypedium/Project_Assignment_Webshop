@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Project_Assignment_Webshop.Migrations
 {
-    public partial class New_Databasefields : Migration
+    public partial class Test : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -61,41 +61,6 @@ namespace Project_Assignment_Webshop.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Cashiers", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Customers",
-                columns: table => new
-                {
-                    Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    F_Name = table.Column<string>(maxLength: 31, nullable: false),
-                    L_Name = table.Column<string>(maxLength: 31, nullable: false),
-                    E_mail = table.Column<string>(maxLength: 63, nullable: false),
-                    CreditCard = table.Column<string>(maxLength: 16, nullable: false),
-                    OrderId = table.Column<int>(nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Customers", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Products",
-                columns: table => new
-                {
-                    Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    ProductType = table.Column<int>(nullable: false),
-                    Number = table.Column<int>(nullable: false),
-                    Name = table.Column<string>(nullable: false),
-                    Description = table.Column<string>(nullable: false),
-                    Price = table.Column<int>(nullable: false),
-                    Out_of_Order = table.Column<bool>(nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Products", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -224,10 +189,10 @@ namespace Project_Assignment_Webshop.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    CustomerId = table.Column<int>(nullable: false),
                     OrderTime = table.Column<string>(nullable: false),
                     Status = table.Column<string>(nullable: false),
                     Amount = table.Column<int>(nullable: false),
+                    CustomerId = table.Column<int>(nullable: false),
                     OrderRowId = table.Column<int>(nullable: false),
                     CashierId = table.Column<int>(nullable: true),
                     ReceiptId = table.Column<int>(nullable: true)
@@ -242,15 +207,32 @@ namespace Project_Assignment_Webshop.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_Orders_Customers_CustomerId",
-                        column: x => x.CustomerId,
-                        principalTable: "Customers",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
                         name: "FK_Orders_Receipts_ReceiptId",
                         column: x => x.ReceiptId,
                         principalTable: "Receipts",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Customers",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    F_Name = table.Column<string>(maxLength: 31, nullable: false),
+                    L_Name = table.Column<string>(maxLength: 31, nullable: false),
+                    E_mail = table.Column<string>(maxLength: 63, nullable: false),
+                    CreditCard = table.Column<string>(maxLength: 16, nullable: false),
+                    OrderId = table.Column<int>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Customers", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Customers_Orders_OrderId",
+                        column: x => x.OrderId,
+                        principalTable: "Orders",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                 });
@@ -262,9 +244,9 @@ namespace Project_Assignment_Webshop.Migrations
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Price = table.Column<int>(nullable: false),
-                    ProductId = table.Column<int>(nullable: false),
                     OrderId = table.Column<int>(nullable: false),
                     GlutenFree = table.Column<bool>(nullable: false),
+                    ProductId = table.Column<int>(nullable: false),
                     CashierId = table.Column<int>(nullable: true),
                     ReceiptId = table.Column<int>(nullable: true)
                 },
@@ -284,15 +266,34 @@ namespace Project_Assignment_Webshop.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_OrderRows_Products_ProductId",
-                        column: x => x.ProductId,
-                        principalTable: "Products",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
                         name: "FK_OrderRows_Receipts_ReceiptId",
                         column: x => x.ReceiptId,
                         principalTable: "Receipts",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Products",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    ProductType = table.Column<int>(nullable: false),
+                    Number = table.Column<int>(nullable: false),
+                    Name = table.Column<string>(nullable: false),
+                    Description = table.Column<string>(nullable: false),
+                    Price = table.Column<int>(nullable: false),
+                    Out_of_Order = table.Column<bool>(nullable: false),
+                    OrderRowId = table.Column<int>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Products", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Products_OrderRows_OrderRowId",
+                        column: x => x.OrderRowId,
+                        principalTable: "OrderRows",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                 });
@@ -337,6 +338,11 @@ namespace Project_Assignment_Webshop.Migrations
                 filter: "[NormalizedUserName] IS NOT NULL");
 
             migrationBuilder.CreateIndex(
+                name: "IX_Customers_OrderId",
+                table: "Customers",
+                column: "OrderId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_OrderRows_CashierId",
                 table: "OrderRows",
                 column: "CashierId");
@@ -362,18 +368,38 @@ namespace Project_Assignment_Webshop.Migrations
                 column: "CashierId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Orders_CustomerId",
-                table: "Orders",
-                column: "CustomerId");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_Orders_ReceiptId",
                 table: "Orders",
                 column: "ReceiptId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Products_OrderRowId",
+                table: "Products",
+                column: "OrderRowId");
+
+            migrationBuilder.AddForeignKey(
+                name: "FK_OrderRows_Products_ProductId",
+                table: "OrderRows",
+                column: "ProductId",
+                principalTable: "Products",
+                principalColumn: "Id",
+                onDelete: ReferentialAction.Cascade);
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.DropForeignKey(
+                name: "FK_OrderRows_Orders_OrderId",
+                table: "OrderRows");
+
+            migrationBuilder.DropForeignKey(
+                name: "FK_OrderRows_Cashiers_CashierId",
+                table: "OrderRows");
+
+            migrationBuilder.DropForeignKey(
+                name: "FK_OrderRows_Products_ProductId",
+                table: "OrderRows");
+
             migrationBuilder.DropTable(
                 name: "AspNetRoleClaims");
 
@@ -390,7 +416,7 @@ namespace Project_Assignment_Webshop.Migrations
                 name: "AspNetUserTokens");
 
             migrationBuilder.DropTable(
-                name: "OrderRows");
+                name: "Customers");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");
@@ -402,13 +428,13 @@ namespace Project_Assignment_Webshop.Migrations
                 name: "Orders");
 
             migrationBuilder.DropTable(
-                name: "Products");
-
-            migrationBuilder.DropTable(
                 name: "Cashiers");
 
             migrationBuilder.DropTable(
-                name: "Customers");
+                name: "Products");
+
+            migrationBuilder.DropTable(
+                name: "OrderRows");
 
             migrationBuilder.DropTable(
                 name: "Receipts");

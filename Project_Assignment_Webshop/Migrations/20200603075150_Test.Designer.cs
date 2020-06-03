@@ -10,8 +10,8 @@ using Project_Assignment_Webshop.Models;
 namespace Project_Assignment_Webshop.Migrations
 {
     [DbContext(typeof(HandleWebshopsDbContext))]
-    [Migration("20200602140339_New_Databasefields")]
-    partial class New_Databasefields
+    [Migration("20200603075150_Test")]
+    partial class Test
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -274,10 +274,12 @@ namespace Project_Assignment_Webshop.Migrations
                         .HasColumnType("nvarchar(31)")
                         .HasMaxLength(31);
 
-                    b.Property<int>("OrderId")
+                    b.Property<int?>("OrderId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("OrderId");
 
                     b.ToTable("Customers");
                 });
@@ -315,8 +317,6 @@ namespace Project_Assignment_Webshop.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("CashierId");
-
-                    b.HasIndex("CustomerId");
 
                     b.HasIndex("ReceiptId");
 
@@ -379,6 +379,9 @@ namespace Project_Assignment_Webshop.Migrations
                     b.Property<int>("Number")
                         .HasColumnType("int");
 
+                    b.Property<int?>("OrderRowId")
+                        .HasColumnType("int");
+
                     b.Property<bool>("Out_of_Order")
                         .HasColumnType("bit");
 
@@ -389,6 +392,8 @@ namespace Project_Assignment_Webshop.Migrations
                         .HasColumnType("int");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("OrderRowId");
 
                     b.ToTable("Products");
                 });
@@ -464,17 +469,18 @@ namespace Project_Assignment_Webshop.Migrations
                         .IsRequired();
                 });
 
+            modelBuilder.Entity("Project_Assignment_Webshop.Models.Customer", b =>
+                {
+                    b.HasOne("Project_Assignment_Webshop.Models.Order", "Order")
+                        .WithMany("Customers")
+                        .HasForeignKey("OrderId");
+                });
+
             modelBuilder.Entity("Project_Assignment_Webshop.Models.Order", b =>
                 {
                     b.HasOne("Project_Assignment_Webshop.Models.Cashier", "Cashier")
                         .WithMany("Receipts")
                         .HasForeignKey("CashierId");
-
-                    b.HasOne("Project_Assignment_Webshop.Models.Customer", "Customer")
-                        .WithMany("Orders")
-                        .HasForeignKey("CustomerId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
 
                     b.HasOne("Project_Assignment_Webshop.Models.Receipt", "Receipt")
                         .WithMany()
@@ -502,6 +508,13 @@ namespace Project_Assignment_Webshop.Migrations
                     b.HasOne("Project_Assignment_Webshop.Models.Receipt", null)
                         .WithMany("OrderRows")
                         .HasForeignKey("ReceiptId");
+                });
+
+            modelBuilder.Entity("Project_Assignment_Webshop.Models.Product", b =>
+                {
+                    b.HasOne("Project_Assignment_Webshop.Models.OrderRow", null)
+                        .WithMany("Products")
+                        .HasForeignKey("OrderRowId");
                 });
 #pragma warning restore 612, 618
         }
