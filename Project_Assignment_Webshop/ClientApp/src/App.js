@@ -207,15 +207,17 @@ class App extends Component {
                                         sortByInt={this.sortByInt}
                                         sortByString={this.sortByString}   
                                     />
-                                    <span>
-                                        <button onClick={() => this.setState({ addToCartButtonClicked: true })}> AddToCart </button>
-                                    </span>
+                                    {/*
+                                     *<span>
+                                    <button className="btn btn-secondary" onClick={() => this.setState({ addToCartButtonClicked: true })}> AddToCart </button>
+                                    </span>*/
+                                    }
                                 </Fragment>
                             ) : (
                                     <Fragment>
                                         <h2>Details</h2>
                                         <span>
-                                            <button onClick={() => this.setState({ details: true })}> Back to List </button>
+                                            <button className="btn btn-secondary" onClick={() => this.setState({ details: true })}> Back to List </button>
                                         </span>
                                         <Details
                                             productListView={this.state.productListView}

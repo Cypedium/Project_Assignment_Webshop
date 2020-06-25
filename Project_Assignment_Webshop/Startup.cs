@@ -71,9 +71,6 @@ namespace Project_Assignment_Webshop
             services.AddScoped<IReceiptRepo, ReceiptRepo>();
             services.AddScoped<IReceiptService, ReceiptService>();
 
-
-
-
             //-------------------------------------------------------
 
             services.AddMvc();

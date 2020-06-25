@@ -8,12 +8,13 @@ export default class Details extends Component {
             const TableHeader = () => {
                 return (
                     <thead>
-                        <tr>
-                            <th>Brand</th>
-                            <th>Model</th>
-                            <th>Year</th>
+                        <tr className="m-2">
+                            <th>ProductType</th>
+                            <th>Number</th>
+                            <th>Name</th>
+                            <th>Description</th>
                             <th>Price</th>
-                            <th>Options</th>                           
+                            <th>Options</th>
                         </tr>
                     </thead>
                 )
@@ -21,18 +22,19 @@ export default class Details extends Component {
             const TableBody = props => {
                 const rows = props.productListView.map((row) => {
                     return (                    
-                            <tr key={"ProductId" + row.Id}>
-                                <td>{row.brand}</td>
-                                <td>{row.model}</td>
-                                <td>{row.year}</td>
-                                <td>{row.price}</td>
-                                <td>
+                        <tr key={"ProductId" + row.Id} className="m-2">
+                                <td>{row.ProductType}</td>
+                                <td>{row.Number}</td>
+                                <td>{row.Name}</td>
+                                <td>{row.Description}</td>
+                                <td>{row.Price}</td>
+                            {/*<td>
                                     <button className="btn btn-danger" onClick={() => props.removeProduct(row.Id) }>Delete</button>
                                 </td>
                                 {" "}
                                 <td>
                                     <button className="btn btn-primary" onClick={() => props.editProduct(row.Id)}>Edit</button>
-                                </td>                                                  
+                                </td>*/}                                                  
                             </tr>                    
                     )
                 });
