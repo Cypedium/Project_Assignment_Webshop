@@ -18,13 +18,7 @@ namespace Project_Assignment_Webshop.Models
             // Check if our database is created if not then create it
             context.Database.EnsureCreated();
 
-            //Look for Data in the Db
-            //if (
-            //    context.Products.Any()
-            //    )
-            //{
-            //    return; //DB has been seeded
-            //}
+
 
             //----------Roles seed-----------------------------------//
 
@@ -65,14 +59,15 @@ namespace Project_Assignment_Webshop.Models
 
 
             //-------Products seeed-----------------------------------//
-            
+
+
+
             Product[] productSeed = new Product[]
-            {        
-                
+            {
                 new Product() /*--Pizza Klass 1--*/
                 {
                     ProductType = 1,
-                    Number =  1,
+                    Number = 1,
                     Name = "Vesuvo",
                     Description = "Skinka",
                     Price = 70
@@ -80,7 +75,7 @@ namespace Project_Assignment_Webshop.Models
                 new Product()
                 {
                     ProductType = 1,
-                    Number =  2,
+                    Number = 2,
                     Name = "Calzone",
                     Description = "Skinka (Inbakad)",
                     Price = 70
@@ -88,7 +83,7 @@ namespace Project_Assignment_Webshop.Models
                 new Product()
                 {
                     ProductType = 1,
-                    Number =  3,
+                    Number = 3,
                     Name = "Salami",
                     Description = "Salami, Färsk Vitlök",
                     Price = 70
@@ -96,7 +91,7 @@ namespace Project_Assignment_Webshop.Models
                 new Product() /*--Pizza Klass 2------------*/
                 {
                     ProductType = 2,
-                    Number =  4,
+                    Number = 4,
                     Name = "Roma",
                     Description = "Champinjoner, Räkor",
                     Price = 75
@@ -104,7 +99,7 @@ namespace Project_Assignment_Webshop.Models
                 new Product()
                 {
                     ProductType = 2,
-                    Number =  5,
+                    Number = 5,
                     Name = "Vegetarisk",
                     Description = "Champinjoner, Lök, Paprika, Ananas, Oliver, Kronärtskocka",
                     Price = 75
@@ -112,7 +107,7 @@ namespace Project_Assignment_Webshop.Models
                 new Product()
                 {
                     ProductType = 2,
-                    Number =  6,
+                    Number = 6,
                     Name = "Kreta",
                     Description = "Pepperonikorv, Salladsost, Färsk Tomat, Vitlök, Mozzarella",
                     Price = 75
@@ -120,7 +115,7 @@ namespace Project_Assignment_Webshop.Models
                 new Product() /*--Pizza Klass 3--*/
                 {
                     ProductType = 3,
-                    Number =  7,
+                    Number = 7,
                     Name = "Kebabpizza",
                     Description = "Kebab, Lök, Tomat, Pefferoni, Vitlöksås",
                     Price = 80
@@ -128,7 +123,7 @@ namespace Project_Assignment_Webshop.Models
                 new Product()
                 {
                     ProductType = 3,
-                    Number =  8,
+                    Number = 8,
                     Name = "Gyrospizza",
                     Description = "Gyros, Lök, Tomat, Pefferoni, Vitlöksås",
                     Price = 80
@@ -136,7 +131,7 @@ namespace Project_Assignment_Webshop.Models
                 new Product()
                 {
                     ProductType = 3,
-                    Number =  9,
+                    Number = 9,
                     Name = "Qautro Stagioni",
                     Description = "Skinka, Räkor, Musslor, Championer, Kronärtskocka",
                     Price = 80
@@ -365,14 +360,16 @@ namespace Project_Assignment_Webshop.Models
                     Description = "1 l",
                     Price = 40
                 }
-            };
+              };
 
-
-            foreach (Product product in productSeed)
-            {
-                context.Products.Add(product);
+            if (!context.Products.Any())
+            { 
+                foreach (Product product in productSeed)
+                {
+                    context.Products.Add(product);
+                }
+                context.SaveChanges();          
             }
-            context.SaveChanges();          
         }
     }
 }
