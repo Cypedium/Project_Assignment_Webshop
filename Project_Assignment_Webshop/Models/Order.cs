@@ -12,14 +12,17 @@ namespace Project_Assignment_Webshop.Models
         public int Id { get; set; }
 
         [Required]
+        [MaxLength(5)]
         public string OrderTime { get; set; }
         //public DateTime(int year, int month, int day, int hour, int minute, int second) {  }
 
         [Required]
+        [MaxLength(20)]
         [Display(Name = "Payed, not payed, delivered.")]
         public string Status { get; set; }
 
         [Required]
+        [MaxLength(6)]
         public int Amount { get; set; }
 
 

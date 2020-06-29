@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Project_Assignment_Webshop.Models;
 
 namespace Project_Assignment_Webshop.Migrations
 {
     [DbContext(typeof(HandleWebshopsDbContext))]
-    partial class HandleWebshopsDbContextModelSnapshot : ModelSnapshot
+    [Migration("20200629072542_Added_MaxLength_all_fields_in_classes")]
+    partial class Added_MaxLength_all_fields_in_classes
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

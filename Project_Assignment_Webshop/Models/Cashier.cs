@@ -12,12 +12,15 @@ namespace Project_Assignment_Webshop.Models
         public int Id { get; set; }
 
         [Required]
+        [MaxLength(100)]
         public string Customer { get; set; }
 
         [Required]
+        [MaxLength(5)]
         public string OrderTime { get; set; }
 
         [Required]
+        [MaxLength(100)]
         public string Order { get; set; }
 
 

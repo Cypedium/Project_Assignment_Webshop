@@ -17,22 +17,22 @@ namespace Project_Assignment_Webshop.Models
 
         [Required]
         [Display(Name = "Number")]
-        //[StringLength(255)]
+        [MaxLength(3)]
         public int Number { get; set; }
 
         [Required]
         [Display(Name = "Name of Product")]
-        //[StringLength(63)]
+        [MaxLength(100)]
         public string Name { get; set; }
 
         [Required]
         [Display(Name = "Description")]
-        //[StringLength(127)]
+        [MaxLength(255)]
         public string Description { get; set; }
 
         [Required]
         [Display(Name = "Price")]
-        //[StringLength(511)]
+        [MaxLength(6)]
         public int Price { get; set; }
 
         public bool Out_of_Order { get; set; }
