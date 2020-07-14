@@ -10,7 +10,7 @@ using Project_Assignment_Webshop.Models.ViewModels;
 
 namespace Project_Assignment_Webshop.Controllers
 {
-    [Authorize]
+    [Authorize(Roles = "Admin")]
     public class OrdersController : Controller
     {
         readonly IOrderService _orderService;

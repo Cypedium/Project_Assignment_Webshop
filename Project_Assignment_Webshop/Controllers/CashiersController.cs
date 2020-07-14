@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Project_Assignment_Webshop.Models;
 using Project_Assignment_Webshop.Models.IServices;
@@ -9,9 +10,10 @@ using Project_Assignment_Webshop.Models.ViewModels;
 
 namespace Project_Assignment_Webshop.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class CashiersController : Controller
     {
-            //[Authorize]
+       
         readonly ICashierService _cashierService;
 
         public CashiersController(ICashierService cashierService)

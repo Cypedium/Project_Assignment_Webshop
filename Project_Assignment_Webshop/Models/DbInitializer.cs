@@ -54,8 +54,8 @@ namespace Project_Assignment_Webshop.Models
 
             //----------Role to Users seed----------------------------//
 
+            userManager.AddToRoleAsync(userManager.FindByEmailAsync("a@a.a").Id, "Admin");
 
-            //--Write role to users seed here---
 
 
             //-------Products seeed-----------------------------------//

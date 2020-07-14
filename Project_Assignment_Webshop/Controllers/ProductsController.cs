@@ -10,7 +10,7 @@ using Project_Assignment_Webshop.Models;
 
 namespace Project_Assignment_Webshop.Controllers    
 {
-    [Authorize]
+    [Authorize(Roles = "Admin")] 
     public class ProductsController : Controller
     {
         readonly IProductService _productService;

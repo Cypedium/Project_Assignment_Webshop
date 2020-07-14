@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using Project_Assignment_Webshop.Models;
@@ -10,6 +11,7 @@ using Project_Assignment_Webshop.Models.ViewModels;
 
 namespace Project_Assignment_Webshop.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class OrderRowsController : Controller
     {
         readonly IOrderRowService _orderRowService;
