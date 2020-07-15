@@ -18,8 +18,6 @@ namespace Project_Assignment_Webshop.Models
             // Check if our database is created if not then create it
             context.Database.EnsureCreated();
 
-
-
             //----------Roles seed-----------------------------------//
 
             IdentityRole[] identityRoles = new IdentityRole[]
@@ -53,14 +51,13 @@ namespace Project_Assignment_Webshop.Models
             }
 
             //----------Role to Users seed----------------------------//
-
-            userManager.AddToRoleAsync(userManager.FindByEmailAsync("a@a.a").Id, "Admin");
-
-
-
+           if ( identityUsers.Any() && identityRoles.Any())
+            {
+                userManager.AddToRoleAsync(identityUsers[0], "Admin");
+                userManager.AddToRoleAsync(identityUsers[1], "God");
+            }
+            
             //-------Products seeed-----------------------------------//
-
-
 
             Product[] productSeed = new Product[]
             {
