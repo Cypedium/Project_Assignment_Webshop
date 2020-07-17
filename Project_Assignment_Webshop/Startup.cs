@@ -16,6 +16,8 @@ using Project_Assignment_Webshop.Models.Repo.IRepo;
 using Project_Assignment_Webshop.Models.IServices;
 using Project_Assignment_Webshop.Models.IServices.InterfaceServices;
 using Project_Assignment_Webshop.Models.Repo;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc.Authorization;
 
 namespace Project_Assignment_Webshop
 {
@@ -36,7 +38,9 @@ namespace Project_Assignment_Webshop
                     Configuration.GetConnectionString("DefaultConnection")));
 
             services.AddIdentity<IdentityUser, IdentityRole>(options => options.SignIn.RequireConfirmedAccount = false)
+                .AddRoles<IdentityRole>() //Added new role why no ; here?
                 .AddEntityFrameworkStores<HandleWebshopsDbContext>();
+                
 
             services.Configure<IdentityOptions>(options =>
             {
@@ -49,7 +53,20 @@ namespace Project_Assignment_Webshop
                 options.Password.RequireUppercase = true;
                 options.Password.RequiredLength = 6;
                 options.Password.RequiredUniqueChars = 1;
+
+                
             });
+
+            //Added New config----------------------------------
+            services.AddControllers(config =>
+            {
+                var policy = new AuthorizationPolicyBuilder()
+                                 .RequireAuthenticatedUser()
+                                 .Build();
+                config.Filters.Add(new AuthorizeFilter(policy));
+            });
+            //-----------------------------------------------------------
+
             //More Identity settings ca be found at https://docs.microsoft.com/en-us/aspnet/core/security/authentication/identity?view=aspnetcore-3.1&tabs=visual-studio
 
             //---Inpendecy Injection configures----------------------
