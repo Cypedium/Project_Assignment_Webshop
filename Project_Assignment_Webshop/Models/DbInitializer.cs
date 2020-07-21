@@ -74,7 +74,7 @@ namespace Project_Assignment_Webshop.Models
 
             if (!context.UserRoles.Any())
             {
-                var result = userManager.AddToRoleAsync(userManager.FindByNameAsync("a@a.a").Result, "Admin").Result;
+                var result = userManager.AddToRoleAsync(userManager.FindByEmailAsync("a@a.a").Result, "Admin").Result;
             
                 if (result.Succeeded)
                 {

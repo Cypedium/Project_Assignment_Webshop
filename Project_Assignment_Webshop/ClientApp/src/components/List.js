@@ -54,11 +54,10 @@ export default class List extends Component {
                                 <td>{row.Description}</td>                               
                                 <td>{row.Price}</td> 
                                 <td>
-                                    <button className="btn btn-primary m-2" onClick={() => props.detailProduct(row.Id) }>Detail</button>
-                                
-                            {/*
-                             * <button className="btn btn-danger m-2" onClick={() => props.removeProduct(row.Id) }>Delete</button>*/}
-                                
+                                {/*
+                                * <button className="btn btn-danger m-2" onClick={() => props.removeProduct(row.Id) }>Delete</button>*/}
+
+                                    <button className="btn btn-primary m-2" onClick={() => props.detailProduct(row.Id) }>Detail</button>    
                                     <button className="btn btn-success m-2" onClick={() => props.addProductToCart(row.Id) }>AddToCart</button>                                   
                                 </td>                            
                             </tr>                   
@@ -76,7 +75,7 @@ export default class List extends Component {
                                 productList={this.props.productList}
                                 detailProduct={this.props.detailProduct}
                                 removeProduct={this.props.removeProduct}
-                                addProductToProduct={this.props.addProductToCart}
+                                addProductToCart={this.props.addProductToCart}
                             />
                         </Fragment>
                     );

@@ -90,22 +90,29 @@ class App extends Component {
     //-----------------------------------------------------------------------------------------------------------------
 
     //------MANAGE CAR-------------------------------------------------------------------------------------------------
-    removeCar = Id => {
-        const { productList } = this.state;
-        this.setState(
-            {
-                carList: productList.filter((aProduct) => { return aProduct.Id !== Id })
-            });
-    }
+    //removeCar = Id => {
+    //    const { productList } = this.state;
+    //    this.setState(
+    //        {
+    //           productList: productList.filter((aProduct) => { return aProduct.Id !== Id })
+    //        });
+    //}
 
     //---PREPARED FUNCTION FOR PROJECT WEBSHOP------------------------------------------------------------------------
     addProductToCart = Id => {
-      const { productList } = this.state;
+        const { productList } = this.state;
+        console.log("add:" + Id);
+        this.setState(
+            {
+                productCartList: productList.filter((cartProduct) => { return cartProduct.Id === Id }),
+                //addToCartButtonClicked: true
+            }
+        );
+        console.log("pushed:" + this.productCartList);
     }
     //-----------------------------------------------------------------------------------------------------------------
 
     detailProduct = Id => {
-
         const { productList } = this.state;
         this.setState(
             {
@@ -203,6 +210,7 @@ class App extends Component {
                                     <h2>List of Products</h2>
                                     <List productList={this.state.productList}
                                         detailProduct={this.detailProduct}
+                                        addProductToCart={this.addProductToCart}
                                         removeProduct={this.removeProduct}
                                         sortByInt={this.sortByInt}
                                         sortByString={this.sortByString}   
