@@ -37,8 +37,8 @@ class App extends Component {
             isLoading: false,
             error: null
         }
-        //---END OF STATE-----------------------------------------------------------------------------------------------------------------------------------
-    //}   
+     //---END OF STATE---------------------------------------------------------------------------------------------------------------------------
+      
    
     componentDidMount() {
         this.setState({ isLoading: true });
@@ -100,15 +100,15 @@ class App extends Component {
 
     //---PREPARED FUNCTION FOR PROJECT WEBSHOP------------------------------------------------------------------------
     addProductToCart = Id => {
-        const { productList } = this.state;
+        const { productList, addToCartButtonClicked } = this.state;
         console.log("add:" + Id);
         this.setState(
             {
                 productCartList: productList.filter((cartProduct) => { return cartProduct.Id === Id }),
-                //addToCartButtonClicked: true
-            }
-        );
-        console.log("pushed:" + this.productCartList);
+
+            });
+            this.setState({ addToCartButtonClicked: true });
+            console.log("button:" + addToCartButtonClicked);
     }
     //-----------------------------------------------------------------------------------------------------------------
 
@@ -166,7 +166,7 @@ class App extends Component {
         })
     }
 
-    sortByInt = (column) => { /* use arrowfunction to binds this */
+    sortByInt = (column) => { /* use arrowfunction to bind this */
         const { productList, toggleSort, oldColumn } = this.state;
         this.setState({
             productList: productList.sort((a, b) => (
@@ -237,32 +237,36 @@ class App extends Component {
                             <br />
                         </td>
                         <td>
-                            {createButtonClicked ? (
-                                <Create handleSubmitCreate={this.handleSubmitCreate} />
-                            )
-                            : editButtonClicked ? (
-                                <Edit
-                                    productListEdit={this.state.productListEdit}
-                                    handleSubmitEdit={this.handleSubmitEdit}
-                                />
-                            )
-                            : addToCartButtonClicked ? (  
-                                <main className="container">
-                                    <Counters
-                                        counters={counters}
-                                        onReset={this.handleReset}
-                                        onIncrement={this.handleIncrement}
-                                        onDecrement={this.handleDecrement}
-                                        onDelete={this.handleDelete}
+                            {   createButtonClicked ? (
+                                    <Create handleSubmitCreate={this.handleSubmitCreate} />
+                                ) : editButtonClicked ? (
+                                    <Edit
+                                        productListEdit={this.state.productListEdit}
+                                        handleSubmitEdit={this.handleSubmitEdit}
                                     />
-                               
-                                <span>
-                                    <button onClick={() => this.setState({ addToCartButtonClicked: false })}> Back to List </button>
-                                            </span>
-                                        </main>
-                            )
-                     : (null)
+                                ): addToCartButtonClicked ? (
+                                        <div>
+                                            <main className="container">
+                                                <Counters
+                                                    counters={counters}
+                                                    onReset={this.handleReset}
+                                                    onIncrement={this.handleIncrement}
+                                                    onDecrement={this.handleDecrement}
+                                                    onDelete={this.handleDelete}
+                                                />
+                                            </main>
+                                            <List productCartList={this.productCartList}/>
+                                        </div>
+                                ) : (null)
                             }
+                                {/*
+                                *<span>
+                                   <button onClick={() => this.setState({ addToCartButtonClicked: false })}> Back to List </button>
+                            </span>
+                            */}
+                            
+                     
+                            
                         </td>
                         <td></td>
                         <td></td>
