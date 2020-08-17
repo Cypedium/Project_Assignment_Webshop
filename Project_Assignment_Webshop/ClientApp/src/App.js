@@ -6,6 +6,7 @@ import List from './components/List';
 import Edit from './components/Edit';
 import NavBar from './components/navbar';
 import Counters from './components/counters';
+import Cart from './components/Cart';
 
 const API = 'https://localhost:44399/API/'; //Hur kommer jag åt min genererade API lista?
 
@@ -18,6 +19,14 @@ class App extends Component {
 
         state = {
             productList: [],
+
+            cartList: [
+                {   ProductType: 1,
+                    Number: 1,
+                    Name: "Ost" ,
+                    Description: "Ko Ost",
+                    Price: 10 }
+            ],
                 
             counters: [
                 { id: 1, value: 0 },
@@ -197,8 +206,8 @@ class App extends Component {
                     <tr>
                         <td></td>
                         <td>
-                            <h1>Handle Products</h1>
-                            <button className="btn btn-info" onClick={() => this.setState({ createButtonClicked: true })}>Create new Product</button>
+                            <h1>Products</h1>
+                            {/*<button className="btn btn-info" onClick={() => this.setState({ createButtonClicked: true })}>Create new Product</button>*/}
                         </td>
                         <td></td>
                     </tr>
@@ -207,7 +216,7 @@ class App extends Component {
                         <td>
                             {details ? (
                                 <Fragment>
-                                    <h2>List of Products</h2>
+                                    <h2>List of Food</h2>
                                     <List productList={this.state.productList}
                                         detailProduct={this.detailProduct}
                                         addProductToCart={this.addProductToCart}
@@ -237,27 +246,14 @@ class App extends Component {
                             <br />
                         </td>
                         <td>
-                            {   createButtonClicked ? (
+                            {   (createButtonClicked && !addToCartButtonClicked) ? (
                                     <Create handleSubmitCreate={this.handleSubmitCreate} />
                                 ) : editButtonClicked ? (
                                     <Edit
                                         productListEdit={this.state.productListEdit}
                                         handleSubmitEdit={this.handleSubmitEdit}
                                     />
-                                ): addToCartButtonClicked ? (
-                                        <div>
-                                            <main className="container">
-                                                <Counters
-                                                    counters={counters}
-                                                    onReset={this.handleReset}
-                                                    onIncrement={this.handleIncrement}
-                                                    onDecrement={this.handleDecrement}
-                                                    onDelete={this.handleDelete}
-                                                />
-                                            </main>
-                                            <List productCartList={this.productCartList}/>
-                                        </div>
-                                ) : (null)
+                                ): (null)
                             }
                                 {/*
                                 *<span>
@@ -269,6 +265,20 @@ class App extends Component {
                             
                         </td>
                         <td></td>
+                        {   addToCartButtonClicked ? (
+                            <div>
+                                {/*<main className="container">
+                                                <Counters
+                                                    counters={counters}
+                                                    onReset={this.handleReset}
+                                                    onIncrement={this.handleIncrement}
+                                                    onDecrement={this.handleDecrement}
+                                                    onDelete={this.handleDelete}
+                                                />
+                                            </main>*/}
+                                <Cart cartList={this.state.cartList} />
+                            </div>) : (null)
+                            }
                         <td></td>
                     </tr>
                 </table>
