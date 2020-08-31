@@ -35,10 +35,11 @@ class App extends Component {
                 { id: 4, value: 0 }
             ],
 
+            indexList: true,
             createButtonClicked: false,
             addToCartButtonClicked: false,
             editButtonClicked: false,
-            details: true,
+            details: false,
             showEditCar: false,
             toggleSort: true,
             oldColumn: "",
@@ -53,8 +54,7 @@ class App extends Component {
         this.setState({ isLoading: true });
         axios.get(API)
             .then(result => this.setState({
-                productList: result.data, //before result.data.productList
-
+                productList: result.data,
                 isLoading: false
             }))
             .catch(error => this.setState({
@@ -98,14 +98,6 @@ class App extends Component {
     };
     //-----------------------------------------------------------------------------------------------------------------
 
-    //------MANAGE CAR-------------------------------------------------------------------------------------------------
-    //removeCar = Id => {
-    //    const { productList } = this.state;
-    //    this.setState(
-    //        {
-    //           productList: productList.filter((aProduct) => { return aProduct.Id !== Id })
-    //        });
-    //}
 
     //---PREPARED FUNCTION FOR PROJECT WEBSHOP------------------------------------------------------------------------
     addProductToCart = Id => {
@@ -116,18 +108,20 @@ class App extends Component {
                 productCartList: productList.filter((cartProduct) => { return cartProduct.Id === Id }),
 
             });
-            this.setState({ addToCartButtonClicked: true });
+        this.setState({ addToCartButtonClicked: true });
+        this.setState({ indexList: false})
             console.log("button:" + addToCartButtonClicked);
     }
     //-----------------------------------------------------------------------------------------------------------------
 
     detailProduct = Id => {
-        const { productList } = this.state;
+        const { productList, } = this.state;
         this.setState(
             {
                 productListView: productList.filter((aProduct) => { return aProduct.Id === Id })
             });
-        this.setState({ details: false });
+        this.setState({ details: true });
+        this.setState({ indexList: false });
     }
 
     editProduct = Id => {
@@ -138,7 +132,6 @@ class App extends Component {
                 productListEdit: productList.filter((aProduct) => { return aProduct.Id === Id })
             });
     }
-
 
     handleSubmitCreate = product => {
         this.setState({ productList: [...this.state.productList, product] });
@@ -190,12 +183,13 @@ class App extends Component {
             oldColumn: column
         })
     }
+
     //----------------------------------------------------------------------------------------------------------------------
 
     render() {
         console.log("App - Rendered");
         console.log("ComponentDidMount:" + this.productList);
-        const { addToCartButtonClicked, createButtonClicked, details, editButtonClicked, counters } = this.state;
+        const { addToCartButtonClicked, createButtonClicked, details, editButtonClicked, counters, indexList } = this.state;
         return (
             <Fragment>
                 <NavBar
@@ -214,60 +208,41 @@ class App extends Component {
                     <tr>
                         <td></td>
                         <td>
-                            {details ? (
-                                <Fragment>
-                                    <h2>List of Food</h2>
-                                    <List productList={this.state.productList}
-                                        detailProduct={this.detailProduct}
-                                        addProductToCart={this.addProductToCart}
-                                        removeProduct={this.removeProduct}
-                                        sortByInt={this.sortByInt}
-                                        sortByString={this.sortByString}   
-                                    />
-                                    {/*
-                                     *<span>
-                                    <button className="btn btn-secondary" onClick={() => this.setState({ addToCartButtonClicked: true })}> AddToCart </button>
-                                    </span>*/
-                                    }
-                                </Fragment>
-                            ) : (
+                            {
+                                indexList ?  (
+                                    <Fragment>
+                                        <h2>List of Food</h2>
+                                        <List
+                                            productList={this.state.productList}
+                                            detailProduct={this.detailProduct}
+                                            addProductToCart={this.addProductToCart}
+                                            removeProduct={this.removeProduct}
+                                            sortByInt={this.sortByInt}
+                                            sortByString={this.sortByString}
+                                        />
+                                    </Fragment>
+                                ) : null
+                            }
+                            {    
+                                (details && !indexList) ? (
                                     <Fragment>
                                         <h2>Details</h2>
                                         <span>
-                                            <button className="btn btn-secondary" onClick={() => this.setState({ details: true })}> Back to List </button>
+                                            <button className="btn btn-secondary" onClick={
+                                                () => this.setState({ indexList: true })}> Back to List </button>
                                         </span>
                                         <Details
                                             productListView={this.state.productListView}
                                             removeProduct={this.removeProduct}
                                             editProduct={this.editProduct} />
                                     </Fragment>
-                                )
+                                ) : null
                             }
-                            <br />
-                        </td>
-                        <td>
-                            {   (createButtonClicked && !addToCartButtonClicked) ? (
-                                    <Create handleSubmitCreate={this.handleSubmitCreate} />
-                                ) : editButtonClicked ? (
-                                    <Edit
-                                        productListEdit={this.state.productListEdit}
-                                        handleSubmitEdit={this.handleSubmitEdit}
-                                    />
-                                ): (null)
-                            }
-                                {/*
-                                *<span>
-                                   <button onClick={() => this.setState({ addToCartButtonClicked: false })}> Back to List </button>
-                            </span>
-                            */}
-                            
-                     
-                            
-                        </td>
-                        <td></td>
-                        {   addToCartButtonClicked ? (
-                            <div>
-                                {/*<main className="container">
+                       
+                            {
+                                (addToCartButtonClicked && !indexList) ? (
+                                <div>
+                                    <main className="container">
                                                 <Counters
                                                     counters={counters}
                                                     onReset={this.handleReset}
@@ -275,11 +250,40 @@ class App extends Component {
                                                     onDecrement={this.handleDecrement}
                                                     onDelete={this.handleDelete}
                                                 />
-                                            </main>*/}
-                                <Cart cartList={this.state.cartList} />
-                            </div>) : (null)
+                                            </main>*/
+                                    
+                                    <Cart
+                                        cartList={this.state.cartList}
+                                    />
+                                    <span>
+                                        <button className="btn btn-secondary" onClick={
+                                            () => this.setState({ indexList: true })}> Back to List </button>
+                                    </span>
+                                </div>
+                                ) : (null)
                             }
-                        <td></td>
+                        </td>
+                        <td>
+                        </td>
+                        {/*
+                                addToCartButtonClicked ? (
+                                    <Create
+                                        handleSubmitCreate={this.handleSubmitCreate}
+                                    />
+
+                                ) : editButtonClicked ? (
+                                    <Edit
+                                        productListEdit={this.state.productListEdit}
+                                        handleSubmitEdit={this.handleSubmitEdit}
+                                    />
+                                ): (null)
+                            
+                                
+                            <span>
+                            <button onClick={() => this.setState({ indexList: true })}> Back to List </button>
+                            </span>
+                            */}
+
                     </tr>
                 </table>
             </Fragment>
