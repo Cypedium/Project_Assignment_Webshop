@@ -38,45 +38,47 @@ componentWillUnmount() {
   // before the component is deleted from the DOM
 }
 
- render() {
-    console.log("Counter  - Rendered");
-    return ( 
-      <Fragment> {/*Creating row*/}
-        <span className={this.getBadgeClasses()}>{this.formatCount()}</span>
-        <button 
-          onClick={() => this.props.onIncrement(this.props.counter)} /*inline arg*/
-          className="btn btn-secondary btn-sm"
-        >
-          +
-        </button>
-        {" "}
-        <button 
-          onClick={() => this.props.onDecrement(this.props.counter)} /*inline arg*/
-          className="btn btn-secondary btn-sm"
-        >
-          -
-        </button>
-        <button
-          onClick={() => this.props.onDelete(this.props.counter.id)} 
-          className="btn btn-danger btn-sm m-2"
-        >
-        Delete
-        </button> 
-        <br /> {/* Preparing new row*/}   
-      </Fragment>
-    );
-  }
+    render()
+    {
+        console.log("Counter  - Rendered");
+        return ( 
+            <Fragment> {/*Creating row*/}
+            <span className={this.getBadgeClasses()}>{this.formatCount()}</span>
+            <button 
+                onClick={() => this.props.onIncrement(this.props.counter)} /*inline arg*/
+                className="btn btn-secondary btn-sm"
+            >
+                +
+            </button>
+            {" "}
+            <button 
+                onClick={() => this.props.onDecrement(this.props.counter)} /*inline arg*/
+                className="btn btn-secondary btn-sm"
+            >
+                -
+            </button>
+            
+            <br /> {/* Preparing new row*/}   
+            </Fragment>
+        );
+     }
 
+      getBadgeClasses() {
+        let classes = "badge m-2 badge-"; /*let=changable const*/ 
+        classes += this.props.counter.value <= 0 ? "warning" : "primary";
+        return classes;
+      }
 
-  getBadgeClasses() {
-    let classes = "badge m-2 badge-"; /*let=changable const*/ 
-    classes += this.props.counter.value <= 0 ? "warning" : "primary";
-    return classes;
-  }
-
-  formatCount() {
-    /* object distructer */
-    const { value } = this.props.counter; /*CHANGED: before this.state but no state exists now*/
-    return value <= 0 ? "Zero" : value; /* was count before */
-  } 
+      formatCount() {
+        /* object distructer */
+        const { value } = this.props.counter; /*CHANGED: before this.state but no state exists now*/
+        return value <= 0 ? "Zero" : value; /* was count before */
+      } 
 }
+
+{/*<button
+    onClick={() => this.props.onDelete(this.props.counter.id)}
+    className="btn btn-danger btn-sm m-2"
+    >
+    Delete
+   </button>*/}

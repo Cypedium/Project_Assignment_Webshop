@@ -8,16 +8,15 @@ export default class Counters extends Component {
   render() {
     console.log("Counters - Rendered");
 
-    const { counters, onReset, onDelete, onIncrement, onDecrement } = this.props;
+      const { counters, onDelete, onIncrement, onDecrement } = this.props; {/*onReset*/ }
 
     return (
       <Fragment>
-        <button onClick={onReset} className="btn btn-primary btn-sm m- 2"> Reset </button>
+            {/*<button onClick={onReset} className="btn btn-primary btn-sm m- 2"> Reset </button>*/}
         <br />
           {counters.map(counter => (
             <Counter
               key={counter.id}
-              onDelete={onDelete} /*is a function*/ /*bubbeling this event  to counter component*/
               onIncrement={onIncrement}
               onDecrement={onDecrement}
               counter={counter}
@@ -28,3 +27,5 @@ export default class Counters extends Component {
     );
   }
 }
+
+{/*onDelete = { onDelete }*/ } /*is a function*/ /*bubbeling this event  to counter component*/

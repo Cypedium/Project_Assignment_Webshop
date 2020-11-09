@@ -1,0 +1,88 @@
+﻿import React, { Component, Fragment, } from 'react';
+import Details from './components/YourComponent';
+
+
+1. Define state in App as list: yourList []
+
+2. Filter your list with a function exampleList: newList.filter((yourname) => {return yourItem.Id})
+
+3. In render(){} function call component <YourComponent yourList={this.state.yourList} />
+
+(The computer makes the call to YourComponent)
+4. Create YourComponent in the folder components 
+
+5. <div className="text-left btn btn-link"> this is bootstrap btn=button btn-link=use button link color for more https://getbootstrap.com/docs/4.0/components/buttons/
+
+6. TableHeader and TableBody
+
+6.1 Table Header Here you render your heads
+
+6.2 TableBody Here you render your list using props.yourList (function props calls for your state in App.js)
+
+6.2.1 props.yourList.map((row) => {return (our html to DOM)})
+
+6.2.2 I uses Axio to achive my yourList from the backend thus a arrayList like yourList[Id=1, ProductType=1, Name="TheName", Description="Text", Price=100]
+
+6.3 You dont need to know how only why row.Name uses in this tutorial
+
+6.4 When you uses the funciton map you render all your rows that are in your arrayList as the same why like using foreach in the BackEnd
+
+6.5 <button onClick={() => props.addProductToCart(row.Id)}>AddToCart</button> this button calls for the function addProductToCart in App.js
+
+6.7 Befor we go to our function addProductToCart we need to understand that react need one mor thing to work.
+
+6.8 Look at return (
+                    <Fragment>
+                        <TableHeader />
+                        <TableBody cartList={this.props.cartList} />
+                    </Fragment> )
+
+import React, { Component, Fragment } from 'react';
+export default class YourComponent extends Component {
+
+    render() {
+        const TableHeader = props => {
+            return (
+                <tr>
+                    <th>Picture</div></th>                          
+                    <th><button>ProductType</button></th>                              
+                    <th><button>Number</button></th>                                         
+                    <th><button>Name</button></th>                                          
+                    <th><button>Description</button></th>                                           
+                    <th><button>Price</button></th>                                          
+                    <th><div className="text-left m-2">Options</div></th>                                      
+                </tr>
+            );
+        }
+        const TableBody = props => {
+            const rows = props.yourList.map((row) => {
+                return (<tr key={"ProductId" + row.Id}>
+                    <td><img src={salami} height="49" width="49" /></td>
+                    <td> {row.ProductType} </td>
+                    <td>{row.Number}</td>
+                    <td>{row.Name}</td>
+                    <td>{row.Description}</td>
+                    <td>{row.Price}</td>
+                    <td>
+                        <p>Do you want Tillbehör</p>
+                        <button className="btn btn-success m-2" onClick={() => props.addProductToCart(row.Id)}>AddToCart</button> 
+                    </td>
+                </tr>
+                )
+            });
+            return <tbody className="table table-striped">{rows}</tbody>
+        }
+        return (
+            <Fragment>
+                <TableHeader
+                    sortByInt={this.props.sortByInt}
+                    sortByString={this.props.sortByString}
+                />
+                <TableBody
+                    cartList={this.props.cartList} 
+                />
+            </Fragment>
+        );
+    }
+}
+													

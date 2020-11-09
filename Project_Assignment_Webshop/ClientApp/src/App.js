@@ -4,7 +4,7 @@ import Details from './components/Details';
 import Create from './components/Create';
 import List from './components/List';
 import Edit from './components/Edit';
-import NavBar from './components/navbar';
+import NavBar from './components/NavBar';
 import Counters from './components/counters';
 import Cart from './components/Cart';
 
@@ -20,19 +20,12 @@ class App extends Component {
         state = {
             productList: [],
 
-            cartList: [
-                {   ProductType: 1,
-                    Number: 1,
-                    Name: "Ost" ,
-                    Description: "Ko Ost",
-                    Price: 10 }
-            ],
+            cartList: [],
                 
             counters: [
                 { id: 1, value: 0 },
-                { id: 2, value: 0 },
-                { id: 3, value: 0 },
-                { id: 4, value: 0 }
+                { id: 2, value: 0 },  
+                { id: 3, value: 0 }  
             ],
 
             indexList: true,
@@ -40,7 +33,6 @@ class App extends Component {
             addToCartButtonClicked: false,
             editButtonClicked: false,
             details: false,
-            showEditCar: false,
             toggleSort: true,
             oldColumn: "",
 
@@ -84,6 +76,8 @@ class App extends Component {
         }
     };
 
+   
+
     handleReset = () => {
         const counters = this.state.counters.map(c => { /*this creates an array*/
             c.value = 0;
@@ -98,14 +92,14 @@ class App extends Component {
     };
     //-----------------------------------------------------------------------------------------------------------------
 
-
+    
     //---PREPARED FUNCTION FOR PROJECT WEBSHOP------------------------------------------------------------------------
     addProductToCart = Id => {
         const { productList, addToCartButtonClicked } = this.state;
         console.log("add:" + Id);
         this.setState(
             {
-                productCartList: productList.filter((cartProduct) => { return cartProduct.Id === Id }),
+                cartList: productList.filter((cartProduct) => { return cartProduct.Id === Id }),
 
             });
         this.setState({ addToCartButtonClicked: true });
@@ -194,13 +188,18 @@ class App extends Component {
             <Fragment>
                 <NavBar
                     totalCounters={counters.filter(c => c.value > 0).length} /*only display values greater than zero*/
+                    onReset={this.handleReset} /*new code*/
                 />
-
-                <table> {/* Head */}
-                    <tr>
+                
+                <table class="center"> {/* App Table */}
+                    <tr> 
                         <td></td>
                         <td>
-                            <h1>Products</h1>
+                            {/*Head*/}
+                            {(indexList && !(details && addToCartButtonClicked)) ? ( <Fragment> <h1> List of Food        </h1> </Fragment> ) : ( null ) } 
+                            {(details && !(indexList && addToCartButtonClicked)) ? ( <Fragment> <h1> Details             </h1> </Fragment> ) : ( null ) } 
+                            {(addToCartButtonClicked && !(details && indexList)) ? ( <Fragment> <h1> Add Product To Cart </h1> </Fragment> ) : ( null ) }
+                            
                             {/*<button className="btn btn-info" onClick={() => this.setState({ createButtonClicked: true })}>Create new Product</button>*/}
                         </td>
                         <td></td>
@@ -209,9 +208,10 @@ class App extends Component {
                         <td></td>
                         <td>
                             {
-                                indexList ?  (
-                                    <Fragment>
-                                        <h2>List of Food</h2>
+                                (indexList) ?  (
+                                    <Fragment>                                       
+                                        {/*List of Products*/}
+                                        <p>Choose your Food Product to your order.</p>
                                         <List
                                             productList={this.state.productList}
                                             detailProduct={this.detailProduct}
@@ -220,52 +220,80 @@ class App extends Component {
                                             sortByInt={this.sortByInt}
                                             sortByString={this.sortByString}
                                         />
-                                    </Fragment>
-                                ) : null
+                                    </Fragment>                                      
+                                ) : (null)
                             }
                             {    
-                                (details && !indexList) ? (
+                                (details) ? (
                                     <Fragment>
-                                        <h2>Details</h2>
-                                        <span>
-                                            <button className="btn btn-secondary" onClick={
-                                                () => this.setState({ indexList: true })}> Back to List </button>
-                                        </span>
+                                        {/*Details*/}
+                                        <p>These are the details for the product</p>
                                         <Details
                                             productListView={this.state.productListView}
                                             removeProduct={this.removeProduct}
                                             editProduct={this.editProduct} />
+                                        <span>
+                                            <button className="btn btn-secondary" onClick={() => this.setState({
+                                                indexList: true,
+                                                details: false
+                                            })}> Back to List </button>
+                                        </span>
                                     </Fragment>
-                                ) : null
+                                ) : (null)
                             }
                        
                             {
-                                (addToCartButtonClicked && !indexList) ? (
-                                <div>
-                                    <main className="container">
+                                (addToCartButtonClicked) ? (
+                                    <Fragment>
+                                        {/*Add Product To Cart*/}
+                                        <p>Do you want to order the product?</p>
+                                        <td>
+                                            <Cart
+                                                cartList={this.state.cartList}
+                                            />
+                                        </td>
+                                        <td> 
+                                            <main className="container">
                                                 <Counters
                                                     counters={counters}
-                                                    onReset={this.handleReset}
                                                     onIncrement={this.handleIncrement}
-                                                    onDecrement={this.handleDecrement}
-                                                    onDelete={this.handleDelete}
+                                                    onDecrement={this.handleDecrement}     
                                                 />
-                                            </main>*/
-                                    
-                                    <Cart
-                                        cartList={this.state.cartList}
-                                    />
-                                    <span>
-                                        <button className="btn btn-secondary" onClick={
-                                            () => this.setState({ indexList: true })}> Back to List </button>
-                                    </span>
-                                </div>
+                                            </main>
+                                        </td>   
+                                        <span>
+                                            <button className="btn btn-secondary" onClick={() => this.setState({
+                                                indexList: true,
+                                                addToCartButtonClicked: false
+                                            })}> Back to List </button>
+                                        </span>
+                                    </Fragment>
                                 ) : (null)
                             }
                         </td>
-                        <td>
-                        </td>
-                        {/*
+                        <td></td>
+                    </tr>
+                </table>                            
+            </Fragment>
+        );
+    }
+}
+
+export default App;
+{/*Optional code*/ }
+{/*onDelete = { this.handleDelete }
+  onReset={this.handleReset} 
+
+    handleReset = () => {
+        const counters = this.state.counters.map(c => { /*this creates an array
+           c.value = 0;
+           return c;
+           });
+        this.setState({ counters });
+    };*/}
+
+{/* New Developments*/}
+{/*
                                 addToCartButtonClicked ? (
                                     <Create
                                         handleSubmitCreate={this.handleSubmitCreate}
@@ -283,12 +311,3 @@ class App extends Component {
                             <button onClick={() => this.setState({ indexList: true })}> Back to List </button>
                             </span>
                             */}
-
-                    </tr>
-                </table>
-            </Fragment>
-        );
-    }
-}
-
-export default App;
